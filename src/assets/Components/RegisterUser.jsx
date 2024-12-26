@@ -25,9 +25,10 @@ const RegisterUser = () => {
 
    return(
         <>
-        <div>
-       <h2 className='center'>Register</h2>
-       <form className='center'>
+       <div className='container'> 
+       <div className='center'>
+       <h2 className=''>Register</h2>
+       <form className=''>
          <div>
            <label>First Name</label>
            <input className='input' placeholder="Enter your first name" 
@@ -48,10 +49,11 @@ const RegisterUser = () => {
          </div>
          <button type="submit"  onClick={saveUser}>Register</button>
        </form>
-       <button className='center button' onClick={() => {navigate('/login')}}>Login</button>
+       <button className=' button' onClick={() => {navigate('/login')}}>Login</button>
        {errorMessage && <div className="error center"> {errorMessage} </div>}
      </div>
-     
+       </div>
+        
      </>
       )
 };
