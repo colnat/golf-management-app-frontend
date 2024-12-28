@@ -1,10 +1,10 @@
 
 
 body {
-  display: block;
+  display: flex;
   min-width: 320px;
   min-height: 100vh;
-  background-color:rgb(212, 223, 213);
+  background-color:rgb(190, 201, 189);
   margin:0;
 }
 
@@ -20,13 +20,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;

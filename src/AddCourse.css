@@ -55,6 +55,16 @@ input.location {
     padding: 10px;
     border: 1px solid #ccc; /* Optional: Adds a border around each hole for clarity */
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Optional: Adds a subtle shadow */
     width: 200px; /* Adjust width to suit your design */
+  }
+
+  .error{
+    background-color: transparent;
+    color: red;
+  }
+
+  .saved-message{
+    background-color: transparent;
+    color: rgb(255, 255, 255);
   }

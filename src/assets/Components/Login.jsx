@@ -22,7 +22,7 @@ const Login = () => {
   <div className="container">
     <div className="center">
       <h2>Login</h2>
-      <form>
+      <form >
         <div>
           <label>Email</label>
           <input
@@ -48,7 +48,7 @@ const Login = () => {
         </button>
       </form>
       <button onClick={() => navigate('/register')} className="button">Register</button>
-      {errorMessage && <div className="error center">{errorMessage}</div>}
+      {errorMessage && <div className="error">{errorMessage}</div>}
     </div>
   </div>
 </>

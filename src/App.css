@@ -1,7 +1,14 @@
-
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+}
 
 .center{
   text-align: center;
+  align-items: center;
 }
 
 
@@ -30,11 +37,13 @@
 
 
 .container {
-  display:flex;
-  justify-content: center; /* Horizontal centering */
-  align-items: center;    /* Vertical centering */
-  height: 100vh;          /* Full viewport height */
-  
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center content inside the container */
+  align-items: center; /* Center content horizontally */
+  width: 100%;
+  padding:20px;
 }
+
 
 
