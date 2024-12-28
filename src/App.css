@@ -7,7 +7,7 @@
 
 .input{
   width: 100%;
-  padding:10px 20px;
+  padding:5px 20px;
   margin: 5px 0px;
   box-sizing:border-box;
 }
@@ -30,7 +30,7 @@
 
 
 .container {
-  display: flex;
+  display:flex;
   justify-content: center; /* Horizontal centering */
   align-items: center;    /* Vertical centering */
   height: 100vh;          /* Full viewport height */

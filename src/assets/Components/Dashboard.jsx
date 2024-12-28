@@ -1,41 +1,95 @@
 import  { useState } from 'react';
 import CourseService from './CourseService.jsx';
-import '/src/App.css';
+import '/src/AddCourse.css';
 import { useNavigate } from "react-router-dom";
-import set from 'lodash/set';
+import set from "lodash/set";
 
 const Dashboard = () => {
     const[course,setCourse] = useState({
         courseName:'',
-        courseHolesList: {
-            courseHolePar: 0,
-            courseHoleNumber: 0
-        }
+        courseRating: 0,
+        courseHolesList: Array(9).fill({courseHoleNumber:0, courseHolePar: 0})
+   
     });
 
-   const handleChange = (e) => {
-    const courseCopy = JSON.parse(JSON.stringify(course));
-    set(courseCopy,e.target.name,e.target.value);
-    setCourse(courseCopy);
-   }
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+         const courseCopy = JSON.parse(JSON.stringify(course));
+         set(courseCopy, name, value);
+         setCourse(courseCopy);
+      };
    
     const addCourse = (e) => {
     e.preventDefault();
-    CourseService.addCourse(course);
+    console.log("Course being sent:",course);
+    CourseService.addCourse(course).then(() => {
+        console.log("The course has been saved succesfully");
+    }).catch(error => console.error('Error adding course:',error));
+    
    }
     
-    console.log(course);
+
     
     return (
         <div className='container'>
-             <div className='centered'>
-             <h2>Add Course</h2>
-        <form>
-            
-        </form>
-            
+           <div className='center'>
+                <h2>Add Course</h2>
+                <div>
+                    <form>
+                        <div>
+                            <label>Course Name</label>
+                            <input  className="input name"
+                                    type = "text"
+                                    placeholder="Enter course name"
+                                    name="courseName"
+                                    value={course.courseName}
+                                    onChange={handleChange}/>
 
-        </div>
+                            <label>Course Rating</label>
+                            <input  className="input rating"
+                                    type = "number"
+                                    placeholder="What do you rate this course"
+                                    name="courseRating"
+                                    value={course.courseRating}
+                                    onChange={handleChange}/>
+                        </div>
+                        <div>
+                            
+                            <h3>Hole 1</h3>
+                            <label>Enter Hole Number</label>
+                            <input  className='input'
+                                    type= "number"
+                                    name = "courseHolesList[0].courseHoleNumber"
+                                    value = {course.courseHolesList[0].courseHoleNumber}
+                                    onChange={handleChange}/>
+                            <label>Enter the Par</label>
+                            <input  className='input'
+                                    type= "number"
+                                    name = "courseHolesList[0].courseHolePar"
+                                    value = {course.courseHolesList[0].courseHolePar}
+                                    onChange={handleChange}/>
+                       </div>   
+
+                       <div>
+                            
+                            <h3>Hole 2</h3>
+                            <label>Enter Hole Number</label>
+                            <input  className='input'
+                                    type= "number"
+                                    name = "courseHolesList[1].courseHoleNumber"
+                                    value = {course.courseHolesList[1].courseHoleNumber}
+                                    onChange={handleChange}/>
+                            <label>Enter the Par</label>
+                            <input  className='input'
+                                    type= "number"
+                                    name = "courseHolesList[1].courseHolePar"
+                                    value = {course.courseHolesList[1].courseHolePar}
+                                    onChange={handleChange}/>
+                       </div>  
+                       <button className="button" type="submit" onClick={addCourse}>Save Course </button>
+                    </form>
+                </div>
+           </div>
         </div>
         
         
