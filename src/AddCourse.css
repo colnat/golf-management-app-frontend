@@ -17,12 +17,16 @@
   }
   
   .input.name {
-    width: 400px; 
-    max-width: 400px; 
+    width: 500px; 
+    max-width: 500px; 
   }
   
   .input.rating {
-    width: 75%; 
+    width: 250px; 
+}
+
+input.location {
+  width:500px;
 }
   
   label {
@@ -30,4 +34,27 @@
     text-align: center; 
     margin-bottom: 5px; 
   }
+
+  h3 {
+    display: block; 
+    text-align: center; 
+    margin-bottom: 5px;
+  }
   
+  .holes {
+    display: flex; /* Aligns all holes side by side */
+    gap: 30px; /* Adds space between each hole */
+    justify-content: center; /* Centers the holes horizontally */
+    margin-top: 20px;
+  }
+
+  .hole {
+    display: flex; /* Ensures vertical stacking for inputs inside each hole */
+    flex-direction: column;
+    align-items: center; /* Centers the content inside each hole */
+    padding: 10px;
+    border: 1px solid #ccc; /* Optional: Adds a border around each hole for clarity */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+    width: 200px; /* Adjust width to suit your design */
+  }
