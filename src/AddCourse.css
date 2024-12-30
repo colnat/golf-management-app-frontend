@@ -1,14 +1,30 @@
+.switch-course{
+    background-color:transparent;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: large;
+}
+
 .container {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-    align-items: center; 
-    min-height: 100vh; 
-    padding-top: 50px;
+    padding: 10px;
+    overflow-x: auto;
+    align-items: center;
+    padding-top: 20px;
+    overflow-y: auto;
+    margin: 0 auto;
+    width: 100vw;
+    scroll-behavior: smooth;
   }
+
   
   .center {
     text-align: center;
+    overflow-y: visible
   }
   
   .input {
@@ -38,33 +54,51 @@ input.location {
   h3 {
     display: block; 
     text-align: center; 
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
   
   .holes {
-    display: flex; /* Aligns all holes side by side */
-    gap: 30px; /* Adds space between each hole */
-    justify-content: center; /* Centers the holes horizontally */
+    display: flex; 
+    gap: 30px; 
+    justify-content: center; 
     margin-top: 20px;
+    width: 100%;
+    overflow-y: visible;
+    flex-wrap:wrap;
   }
 
   .hole {
-    display: flex; /* Ensures vertical stacking for inputs inside each hole */
+    display: flex; 
     flex-direction: column;
-    align-items: center; /* Centers the content inside each hole */
+    align-items: center; 
     padding: 10px;
-    border: 1px solid #ccc; /* Optional: Adds a border around each hole for clarity */
+    border: 1px solid #ccc; 
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Optional: Adds a subtle shadow */
-    width: 200px; /* Adjust width to suit your design */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+    max-width: 90%; 
+    flex-wrap: wrap;
   }
 
   .error{
     background-color: transparent;
     color: red;
+    font-size: large;
+    padding-top: 5px;
   }
 
   .saved-message{
     background-color: transparent;
     color: rgb(255, 255, 255);
+    padding-top: 5px;
+    font-size: large;
+  }
+
+  .save-button{
+    background-color:white;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
   }

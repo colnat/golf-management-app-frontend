@@ -1,18 +1,25 @@
+//Array(9).fill({courseHoleNumber:0, courseHolePar: 0, courseHoleLength: 0})
 import  { useState } from 'react';
 import CourseService from './CourseService.jsx';
 import '/src/AddCourse.css';
 import { useNavigate } from "react-router-dom";
 import set from "lodash/set";
 
-const Dashboard = () => {
+
+const AddCourse = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [savedMessage,setSavedMessage] = useState('');
+    const navigate = useNavigate();
     const[course,setCourse] = useState({
         courseName:'',
-        courseRating: 0,
+        courseRating: null,
         courseLocation: '',
-        courseHolesList: Array(9).fill({courseHoleNumber:0, courseHolePar: 0, courseHoleLength: 0})
-   
+        courseHolesList: Array(9).fill().map((_, i) => ({
+                courseHoleNumber: i + 1,  
+                courseHolePar: null,
+                courseHoleLength: null,
+          })) 
+
     });
 
     const handleChange = (e) => {
@@ -26,19 +33,38 @@ const Dashboard = () => {
     e.preventDefault();
     console.log("Course being sent:",course);
     CourseService.addCourse(course).then(() => {
-         console.log("The course has been saved succesfully",setSavedMessage('Course has been saved')).document.getElementById("add-course").reset();
-    }).catch(error => console.error('Error adding course:',error, setErrorMessage('Error saving course')));
+         setSavedMessage('Course has been saved');
+         setErrorMessage('');
+         setCourse({
+                courseName:'',
+                courseRating: null,
+                courseLocation: '',
+                courseHolesList: Array(9).fill().map((_, i) => ({
+                        courseHoleNumber: i + 1,  
+                        courseHolePar: null,
+                        courseHoleLength: null,
+                  }))
+         })
+
+         document.getElementById("add-course").reset();
+    }).catch(error => console.error('Error adding course:',error),
+              setErrorMessage('Error saving course'),
+              setSavedMessage('')
+        );
     
    }
     
-
     
     return (
+        <>
+        
         <div className='container'>
            <div className='center'>
-                <h2>Add Course</h2>
+               
+                <h2>Add 9 Hole Course</h2>
+                
                 <div>
-                    <form name='add-course'>
+                    <form id='add-course'>
                         <div>
                             <label>Course Name</label>
                             <input  className="input name"
@@ -51,8 +77,10 @@ const Dashboard = () => {
                             <label>Course Rating</label>
                             <input  className="input rating"
                                     type = "number"
-                                    placeholder="What do you rate this course"
+                                    placeholder="Rating 1-10"
                                     name="courseRating"
+                                    max={10}
+                                    min={1}
                                     value={course.courseRating}
                                     onChange={handleChange}/>
 
@@ -65,22 +93,26 @@ const Dashboard = () => {
                                     onChange={handleChange}/>
                             
                         </div>
+                        <button className='switch-course' onClick={() => navigate('/add-course18')}>Add 18 hole course</button>
                         <div className='holes'>
-                            <div className='hole'>
+                        <div className='hole'>
                             
                             <h3>Hole 1</h3>
                         
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[0].courseHoleNumber"
-                                    value = {course.courseHolesList[0].courseHoleNumber = 1}
-                                    hidden="true"
-                                    onChange={handleChange}/>
+                                    value = {course.courseHolesList[0].courseHoleNumber}
+                                    readOnly
+                                    hidden
+                                    onChange={handleChange}
+                                    />
                             <label>Enter the Par</label>
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[0].courseHolePar"
                                     value = {course.courseHolesList[0].courseHolePar}
+                                    placeholder='Par 3 to 5'
                                     onChange={handleChange}/>
                             <label>Hole Length</label>
                             <input  className='input'
@@ -97,14 +129,17 @@ const Dashboard = () => {
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[1].courseHoleNumber"
-                                    value = {course.courseHolesList[1].courseHoleNumber = 2}
-                                    hidden ="true"
-                                    onChange={handleChange}/>
+                                    value = {course.courseHolesList[1].courseHoleNumber}
+                                    readOnly
+                                    hidden
+                                    onChange={handleChange}
+                                    />
                             <label>Enter the Par</label>
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[1].courseHolePar"
                                     value = {course.courseHolesList[1].courseHolePar}
+                                    placeholder='Par 3 to 5'
                                     onChange={handleChange}/>
                             <label>Hole Length</label>
                             <input  className='input'
@@ -121,14 +156,17 @@ const Dashboard = () => {
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[2].courseHoleNumber"
-                                    value = {course.courseHolesList[2].courseHoleNumber = 3}
-                                    hidden="true"
-                                    onChange={handleChange}/>
+                                    value = {course.courseHolesList[2].courseHoleNumber}
+                                    readOnly
+                                    hidden
+                                    onChange={handleChange}
+                                    />
                             <label>Enter the Par</label>
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[2].courseHolePar"
                                     value = {course.courseHolesList[2].courseHolePar}
+                                    placeholder='Par 3 to 5'
                                     onChange={handleChange}/>
                             <label>Hole Length</label>
                             <input  className='input'
@@ -139,20 +177,22 @@ const Dashboard = () => {
                             </div>
 
                             <div className='hole'>
-                            
+                        
                             <h3>Hole 4</h3>
                             
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[3].courseHoleNumber"
-                                    value = {course.courseHolesList[3].courseHoleNumber=4}
-                                    hidden="true"
+                                    value = {course.courseHolesList[3].courseHoleNumber}
+                                    readOnly
+                                    hidden
                                     onChange={handleChange}/>
                             <label>Enter the Par</label>
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[3].courseHolePar"
                                     value = {course.courseHolesList[3].courseHolePar}
+                                    placeholder='Par 3 to 5'
                                     onChange={handleChange}/>
                             <label>Hole Length</label>
                             <input  className='input'
@@ -161,21 +201,29 @@ const Dashboard = () => {
                                     value = {course.courseHolesList[3].courseHoleLength}
                                     onChange={handleChange}/>
                             </div>
-                            <div className='hole'>
+                           
+                          
+                       
+                       
+                       
+                       <div className='hole'>
                             
                             <h3>Hole 5</h3>
                             
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[4].courseHoleNumber"
-                                    value = {course.courseHolesList[4].courseHoleNumber = 5}
-                                    hidden="true"
-                                    onChange={handleChange}/>
+                                    value = {course.courseHolesList[4].courseHoleNumber}
+                                    readOnly
+                                    hidden
+                                    onChange={handleChange}
+                                    />
                             <label>Enter the Par</label>
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[4].courseHolePar"
                                     value = {course.courseHolesList[4].courseHolePar}
+                                    placeholder='Par 3 to 5'
                                     onChange={handleChange}/>
                             <label>Hole Length</label>
                             <input  className='input'
@@ -185,21 +233,24 @@ const Dashboard = () => {
                                     onChange={handleChange}/>
                             </div>
 
-                            <div className='hole'>
+                       <div className='hole'>
                             
                             <h3>Hole 6</h3>
                             
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[5].courseHoleNumber"
-                                    value = {course.courseHolesList[5].courseHoleNumber = 6}
-                                    hidden="true"
-                                    onChange={handleChange}/>
+                                    value = {course.courseHolesList[5].courseHoleNumber}
+                                    readOnly
+                                    hidden
+                                    onChange={handleChange}
+                                    />
                             <label>Enter the Par</label>
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[5].courseHolePar"
                                     value = {course.courseHolesList[5].courseHolePar}
+                                    placeholder='Par 3 to 5'
                                     onChange={handleChange}/>
                             <label>Hole Length</label>
                             <input  className='input'
@@ -208,10 +259,6 @@ const Dashboard = () => {
                                     value = {course.courseHolesList[5].courseHoleLength}
                                     onChange={handleChange}/>
                             </div>
-                       </div>   
-                       
-                       <div className='holes'>
-                       
                        <div className='hole'>
                             
                             <h3>Hole 7</h3>
@@ -219,14 +266,17 @@ const Dashboard = () => {
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[6].courseHoleNumber"
-                                    value = {course.courseHolesList[6].courseHoleNumber = 7}
-                                    hidden="true"
-                                    onChange={handleChange}/>
+                                    value = {course.courseHolesList[6].courseHoleNumber  }
+                                    readOnly
+                                    hidden
+                                    onChange={handleChange}
+                                    />
                             <label>Enter the Par</label>
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[6].courseHolePar"
                                     value = {course.courseHolesList[6].courseHolePar}
+                                    placeholder='Par 3 to 5'
                                     onChange={handleChange}/>
                             <label>Hole Length</label>
                             <input  className='input'
@@ -243,14 +293,17 @@ const Dashboard = () => {
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[7].courseHoleNumber"
-                                    value = {course.courseHolesList[7].courseHoleNumber = 8}
-                                    hidden="true"
-                                    onChange={handleChange}/>
+                                    value = {course.courseHolesList[7].courseHoleNumber}
+                                    readOnly
+                                    hidden
+                                    onChange={handleChange}
+                                    />
                             <label>Enter the Par</label>
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[7].courseHolePar"
                                     value = {course.courseHolesList[7].courseHolePar}
+                                    placeholder='Par 3 to 5'
                                     onChange={handleChange}/>
                             <label>Hole Length</label>
                             <input  className='input'
@@ -267,14 +320,17 @@ const Dashboard = () => {
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[8].courseHoleNumber"
-                                    value = {course.courseHolesList[8].courseHoleNumber=9}
-                                    hidden="true"
-                                    onChange={handleChange}/>
+                                    value = {course.courseHolesList[8].courseHoleNumber}
+                                    readOnly
+                                    hidden
+                                    onChange={handleChange}
+                                    />
                             <label>Enter the Par</label>
                             <input  className='input'
                                     type= "number"
                                     name = "courseHolesList[8].courseHolePar"
                                     value = {course.courseHolesList[8].courseHolePar}
+                                    placeholder='Par 3 to 5'
                                     onChange={handleChange}/>
                             <label>Hole Length</label>
                             <input  className='input'
@@ -283,18 +339,24 @@ const Dashboard = () => {
                                     value = {course.courseHolesList[8].courseHoleLength}
                                     onChange={handleChange}/>
                         </div>
-                       
-                       </div> 
-                       <button className="button" type="submit" onClick={addCourse}>Save Course </button>
+
+                        
+                        
+                        </div>          
+                
+                        {errorMessage && <div className="error">{errorMessage}</div>}
+                        {savedMessage && <div className="saved-message">{savedMessage}</div>}
+                       <button className="save-button" type="submit" onClick={addCourse}>Save Course </button>
                     </form>
+
                 </div>
+                
            </div>
-           {errorMessage && <div className="error">{errorMessage}</div>}
-           {savedMessage && <div className="error">{savedMessage}</div>}
+           
         </div>
-        
+        </>
         
 
     )
 };
-export default Dashboard;
+export default AddCourse;

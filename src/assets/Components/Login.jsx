@@ -12,7 +12,7 @@ const Login = () => {
         e.preventDefault();
         const user = {email,password};
         UserService.login(user).then(() => {
-          navigate('/dashboard');
+          navigate('/add-course');
         }).catch(error => console.error('Error logging in:',error, setErrorMessage('Email or password incorrect or missing information'))
        )
       };
@@ -20,9 +20,10 @@ const Login = () => {
     return (
 <>
   <div className="container">
+
     <div className="center">
       <h2>Login</h2>
-      <form >
+      <form className=''>
         <div>
           <label>Email</label>
           <input
