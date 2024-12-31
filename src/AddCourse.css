@@ -1,7 +1,7 @@
 .switch-course{
     background-color:transparent;
     border: none;
-    color: black;
+    color: rgb(0, 0, 0);
     padding: 10px 20px;
     text-decoration: none;
     margin: 4px 2px;
@@ -9,27 +9,43 @@
     font-size: large;
 }
 
+.dashboard{
+    background-color:transparent;
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: x-large;
+    
+}
+
 .container {
     display: flex;
     padding: 10px;
     overflow-x: auto;
     align-items: center;
-    padding-top: 20px;
-    overflow-y: auto;
+    padding-top: 0px;
+    overflow-y: scroll;
     margin: 0 auto;
     width: 100vw;
     scroll-behavior: smooth;
+    
   }
 
   
   .center {
     text-align: center;
-    overflow-y: visible
+    overflow-y: visible;
+    
+    justify-content: center;
   }
   
   .input {
-    margin: 10px auto; 
+    margin: 5px auto; 
     padding: 8px; 
+    border-radius: 7px;
+    border-color: white;
   }
   
   .input.name {
@@ -73,7 +89,7 @@ input.location {
     align-items: center; 
     padding: 10px;
     border: 1px solid #ccc; 
-    border-radius: 8px;
+    border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
     max-width: 90%; 
     flex-wrap: wrap;
@@ -83,7 +99,7 @@ input.location {
     background-color: transparent;
     color: red;
     font-size: large;
-    padding-top: 5px;
+    margin-top: 20px;
   }
 
   .saved-message{
@@ -101,4 +117,6 @@ input.location {
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
+    margin-bottom: 50px;
+    margin-top: 20px;
   }

@@ -56,10 +56,15 @@ const AddCourse18 = () => {
     
     return (
         <>
-        
+     
+     
+      
+      
         <div className='container'>
+        
            <div className='center'>
-               
+           <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
+           
                 <h2>Add 18 Hole Course</h2>
                 
                 <div>
@@ -590,6 +595,7 @@ const AddCourse18 = () => {
                         {errorMessage && <div className="error">{errorMessage}</div>}
                         {savedMessage && <div className="saved-message">{savedMessage}</div>}
                        <button className="save-button" type="submit" onClick={addCourse}>Save Course </button>
+                     
                     </form>
 
                 </div>

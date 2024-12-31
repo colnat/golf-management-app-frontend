@@ -1,0 +1,13 @@
+.dashboard{
+    text-align: center;
+    color: white;
+}
+
+.button-container{
+    text-align: center;
+}
+
+.buttons{
+    margin:auto;
+    margin: 5px 10px;
+}
