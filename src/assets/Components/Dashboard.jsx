@@ -13,7 +13,7 @@ const Dashboard = () => {
         <h1 className='dashboard'>Dashboard</h1>
         <div className='button-container'>
         <button onClick={() => navigate('/add-course18')} className='buttons'>Add New Course</button>
-        <button className='buttons'>Add New Round</button>
+        <button onClick={() => navigate('/add-round')} className='buttons'>Add New Round</button>
         </div>
         </>
 

@@ -7,6 +7,8 @@ import Login from './assets/Components/Login.jsx'
 import AddCourse from './assets/Components/AddCourse.jsx';
 import AddCourse18 from './assets/Components/AddCourse18.jsx';
 import Dashboard from './assets/Components/Dashboard.jsx';
+import AddRound from './assets/Components/AddRound.jsx';
+
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -17,6 +19,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/add-course" element={<AddCourse/>}/>
         <Route path="/add-course18" element={<AddCourse18/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/add-round' element={<AddRound/>}/>
       </Routes>
     
   </BrowserRouter>
