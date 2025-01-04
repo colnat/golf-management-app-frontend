@@ -10,10 +10,13 @@ const Dashboard = () => {
     
     return (
         <>
-        <h1 className='dashboard'>Dashboard</h1>
+        <div className='dashboard'>
+        <h1>Dashboard</h1>
+        </div>
+        
         <div className='button-container'>
         <button onClick={() => navigate('/add-course18')} className='buttons'>Add New Course</button>
-        <button onClick={() => navigate('/add-round')} className='buttons'>Add New Round</button>
+        <button onClick={() => navigate('/add-round18')} className='buttons'>Add New Round</button>
         </div>
         </>
 

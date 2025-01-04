@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import '/src/AddRound.css';
 import set from "lodash/set";
 
-const AddRound = () => {
-
+const AddRound18 = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [courseId,setCourseId] = useState();
     const navigate = useNavigate();
@@ -16,7 +15,7 @@ const AddRound = () => {
         fairwaysHit:0,
         threePutts:0,
         slicesOrDraws:0,
-        roundHolesList: Array(9).fill().map((_, i) => ({
+        roundHolesList: Array(18).fill().map((_, i) => ({
             roundHoleNumber: i + 1,  
             holeScore: 0,
       })) 
@@ -30,7 +29,7 @@ const AddRound = () => {
          };
     
     
-    //If the user selects the default course in the dropdown then onChange will not be called so you need too set the first course manually
+    //If the user selects the default course in the dropdown then onChange will not be called so needed too set the first course manually
     useEffect(() => {
         CourseService.getCourses().then((response) => {
             setCourseNameList(response.data)
@@ -42,15 +41,14 @@ const AddRound = () => {
 
     const addRound = (e) => {
         e.preventDefault();
-        setErrorMessage('');
-        
         RoundService.addRound(round,courseId).then(() => {
+            setErrorMessage('');
             setRound({
                 datePlayed: '',
                 fairwaysHit:0,
                 threePutts:0,
                 slicesOrDraws:0,
-                roundHolesList: Array(9).fill().map((_, i) => ({
+                roundHolesList: Array(18).fill().map((_, i) => ({
                     roundHoleNumber: i + 1,  
                     holeScore: 0,
               })) 
@@ -64,7 +62,7 @@ const AddRound = () => {
            <div className='container'>
             <div className='center'>
             <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
-                <h1>Add 9 Hole Round</h1>
+                <h1>Add 18 Hole Round</h1>
             <form>
                 <div>
                    <label>Course Played</label>
@@ -111,7 +109,7 @@ const AddRound = () => {
                           value={round.slicesOrDraws}
                           onChange={handleChange}/>
               </div>
-              <button className='switch-round' onClick={() => navigate('/add-round18')}>Add 18 hole round</button>
+              <button className='switch-round' onClick={() => navigate('/add-round')}>Add 9 hole round</button>
               <div className='holes'>
                 <div className='hole'>
                 <h3>Hole 1</h3>
@@ -266,6 +264,159 @@ const AddRound = () => {
                             value = {round.roundHolesList[8].holeScore}
                             onChange={handleChange}/>
                 </div>
+                <div className='hole'>
+                <h3>Hole 10</h3>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[9].roundHoleNumber"
+                            value = {round.roundHolesList[9].roundHoleNumber}
+                            readOnly
+                            hidden
+                            onChange={handleChange}
+                            /> 
+                    <label>Enter Your Score</label>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[9].holeScore"
+                            value = {round.roundHolesList[9].holeScore}
+                            onChange={handleChange}/>
+                </div>
+                <div className='hole'>
+                <h3>Hole 11</h3>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[10].roundHoleNumber"
+                            value = {round.roundHolesList[10].roundHoleNumber}
+                            readOnly
+                            hidden
+                            onChange={handleChange}
+                            /> 
+                    <label>Enter Your Score</label>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[10].holeScore"
+                            value = {round.roundHolesList[10].holeScore}
+                            onChange={handleChange}/>
+                </div>
+                <div className='hole'>
+                <h3>Hole 12</h3>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[11].roundHoleNumber"
+                            value = {round.roundHolesList[11].roundHoleNumber}
+                            readOnly
+                            hidden
+                            onChange={handleChange}
+                            /> 
+                    <label>Enter Your Score</label>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[11].holeScore"
+                            value = {round.roundHolesList[11].holeScore}
+                            onChange={handleChange}/>
+                </div>
+                <div className='hole'>
+                <h3>Hole 13</h3>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[12].roundHoleNumber"
+                            value = {round.roundHolesList[12].roundHoleNumber}
+                            readOnly
+                            hidden
+                            onChange={handleChange}
+                            /> 
+                    <label>Enter Your Score</label>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[12].holeScore"
+                            value = {round.roundHolesList[12].holeScore}
+                            onChange={handleChange}/>
+                </div>
+                <div className='hole'>
+                <h3>Hole 14</h3>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[13].roundHoleNumber"
+                            value = {round.roundHolesList[13].roundHoleNumber}
+                            readOnly
+                            hidden
+                            onChange={handleChange}
+                            /> 
+                    <label>Enter Your Score</label>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[13].holeScore"
+                            value = {round.roundHolesList[13].holeScore}
+                            onChange={handleChange}/>
+                </div>
+                <div className='hole'>
+                <h3>Hole 15</h3>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[14].roundHoleNumber"
+                            value = {round.roundHolesList[14].roundHoleNumber}
+                            readOnly
+                            hidden
+                            onChange={handleChange}
+                            /> 
+                    <label>Enter Your Score</label>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[14].holeScore"
+                            value = {round.roundHolesList[14].holeScore}
+                            onChange={handleChange}/>
+                </div>
+                <div className='hole'>
+                <h3>Hole 16</h3>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[15].roundHoleNumber"
+                            value = {round.roundHolesList[15].roundHoleNumber}
+                            readOnly
+                            hidden
+                            onChange={handleChange}
+                            /> 
+                    <label>Enter Your Score</label>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[15].holeScore"
+                            value = {round.roundHolesList[15].holeScore}
+                            onChange={handleChange}/>
+                </div>
+                <div className='hole'>
+                <h3>Hole 17</h3>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[16].roundHoleNumber"
+                            value = {round.roundHolesList[16].roundHoleNumber}
+                            readOnly
+                            hidden
+                            onChange={handleChange}
+                            /> 
+                    <label>Enter Your Score</label>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[16].holeScore"
+                            value = {round.roundHolesList[16].holeScore}
+                            onChange={handleChange}/>
+                </div>
+                <div className='hole'>
+                <h3>Hole 18</h3>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[17].roundHoleNumber"
+                            value = {round.roundHolesList[17].roundHoleNumber}
+                            readOnly
+                            hidden
+                            onChange={handleChange}
+                            /> 
+                    <label>Enter Your Score</label>
+                    <input  className='input'
+                            type= "number"
+                            name = "roundHolesList[17].holeScore"
+                            value = {round.roundHolesList[17].holeScore}
+                            onChange={handleChange}/>
+                </div>
               </div>
               {errorMessage && <div className="error">{errorMessage}</div>}
               <button className="save-button" type="submit" onClick={addRound}>Save Round </button>
@@ -282,4 +433,4 @@ const AddRound = () => {
     )
 }
 
-export default AddRound;
+export default AddRound18;

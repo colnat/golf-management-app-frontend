@@ -7,16 +7,15 @@ import set from "lodash/set";
 
 const AddCourse18 = () => {
     const [errorMessage, setErrorMessage] = useState('');
-    const [savedMessage,setSavedMessage] = useState('');
     const navigate = useNavigate();
     const[course,setCourse] = useState({
         courseName:'',
-        courseRating: null,
+        courseRating: 0,
         courseLocation: '',
         courseHolesList: Array(18).fill().map((_, i) => ({
                 courseHoleNumber: i + 1,  
-                courseHolePar: null,
-                courseHoleLength: null,
+                courseHolePar: 0,
+                courseHoleLength: 0,
           })) 
 
     });
@@ -32,23 +31,23 @@ const AddCourse18 = () => {
     e.preventDefault();
     console.log("Course being sent:",course);
     CourseService.addCourse(course).then(() => {
-         setSavedMessage('Course has been saved');
+         
          setErrorMessage('');
          setCourse({
                 courseName:'',
-                courseRating: null,
+                courseRating: 0,
                 courseLocation: '',
                 courseHolesList: Array(18).fill().map((_, i) => ({
                         courseHoleNumber: i + 1,  
-                        courseHolePar: null,
-                        courseHoleLength: null,
+                        courseHolePar: 0,
+                        courseHoleLength: 0,
                   }))
          })
 
          document.getElementById("add-course").reset();
     }).catch(error => console.error('Error adding course:',error),
               setErrorMessage('Error saving course'),
-              setSavedMessage('')
+              
         );
     
    }
@@ -57,10 +56,7 @@ const AddCourse18 = () => {
     return (
         <>
      
-     
-      
-      
-        <div className='container'>
+     <div className='container'>
         
            <div className='center'>
            <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
@@ -593,7 +589,7 @@ const AddCourse18 = () => {
                         </div>          
                 
                         {errorMessage && <div className="error">{errorMessage}</div>}
-                        {savedMessage && <div className="saved-message">{savedMessage}</div>}
+                        
                        <button className="save-button" type="submit" onClick={addCourse}>Save Course </button>
                      
                     </form>

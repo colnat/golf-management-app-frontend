@@ -8,16 +8,15 @@ import set from "lodash/set";
 
 const AddCourse = () => {
     const [errorMessage, setErrorMessage] = useState('');
-    const [savedMessage,setSavedMessage] = useState('');
     const navigate = useNavigate();
     const[course,setCourse] = useState({
         courseName:'',
-        courseRating: null,
+        courseRating: 0,
         courseLocation: '',
         courseHolesList: Array(9).fill().map((_, i) => ({
                 courseHoleNumber: i + 1,  
-                courseHolePar: null,
-                courseHoleLength: null,
+                courseHolePar: 0,
+                courseHoleLength: 0,
           })) 
 
     });
@@ -33,23 +32,23 @@ const AddCourse = () => {
     e.preventDefault();
     console.log("Course being sent:",course);
     CourseService.addCourse(course).then(() => {
-         setSavedMessage('Course has been saved');
+         
          setErrorMessage('');
          setCourse({
                 courseName:'',
-                courseRating: null,
+                courseRating: 0,
                 courseLocation: '',
                 courseHolesList: Array(9).fill().map((_, i) => ({
                         courseHoleNumber: i + 1,  
-                        courseHolePar: null,
-                        courseHoleLength: null,
+                        courseHolePar: 0,
+                        courseHoleLength: 0,
                   }))
          })
 
          document.getElementById("add-course").reset();
     }).catch(error => console.error('Error adding course:',error),
               setErrorMessage('Error saving course'),
-              setSavedMessage('')
+             
         );
     
    }
@@ -345,7 +344,7 @@ const AddCourse = () => {
                         </div>          
                 
                         {errorMessage && <div className="error">{errorMessage}</div>}
-                        {savedMessage && <div className="saved-message">{savedMessage}</div>}
+                       
                        <button className="save-button" type="submit" onClick={addCourse}>Save Course </button>
                     </form>
 

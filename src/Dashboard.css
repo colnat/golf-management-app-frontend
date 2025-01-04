@@ -1,6 +1,7 @@
 .dashboard{
     text-align: center;
     color: white;
+    
 }
 
 .button-container{
@@ -10,4 +11,8 @@
 .buttons{
     margin:auto;
     margin: 5px 10px;
+}
+
+h1{
+    font-size: xx-large;
 }
