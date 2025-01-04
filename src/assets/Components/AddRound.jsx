@@ -30,7 +30,7 @@ const AddRound = () => {
          };
     
     
-    //If the user selects the default course in the dropdown then onChange will not be called so you need too set the first course manually
+    //If the user selects the default course in the dropdown then onChange will not be called so I set the first course manually
     useEffect(() => {
         CourseService.getCourses().then((response) => {
             setCourseNameList(response.data)
@@ -43,7 +43,6 @@ const AddRound = () => {
     const addRound = (e) => {
         e.preventDefault();
         setErrorMessage('');
-        
         RoundService.addRound(round,courseId).then(() => {
             setRound({
                 datePlayed: '',
@@ -55,7 +54,9 @@ const AddRound = () => {
                     holeScore: 0,
               })) 
             })
-        }).catch(error => console.log('Error adding round',error),setErrorMessage('Error saving round'));
+        }).catch(error => {console.log('Error adding round',error); 
+                           setErrorMessage('Error saving round');
+        });
     }
     
     
@@ -84,7 +85,7 @@ const AddRound = () => {
                   </select>
 
                   <label>Date Played</label>
-                  <input  className="input round-info"
+                  <input  className="input date"
                           type = "date"
                           name="datePlayed"
                           value={round.datePlayed}

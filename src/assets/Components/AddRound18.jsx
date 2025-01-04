@@ -53,7 +53,9 @@ const AddRound18 = () => {
                     holeScore: 0,
               })) 
             })
-        }).catch(error => console.log('Error adding round',error),setErrorMessage('Error saving round'));
+        }).catch(error => {console.log('Error adding round',error);
+                           setErrorMessage('Error saving round');
+        });
     }
     
     
@@ -82,7 +84,7 @@ const AddRound18 = () => {
                   </select>
 
                   <label>Date Played</label>
-                  <input  className="input round-info"
+                  <input  className="input date"
                           type = "date"
                           name="datePlayed"
                           value={round.datePlayed}

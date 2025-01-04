@@ -45,10 +45,9 @@ const AddCourse18 = () => {
          })
 
          document.getElementById("add-course").reset();
-    }).catch(error => console.error('Error adding course:',error),
-              setErrorMessage('Error saving course'),
-              
-        );
+    }).catch(error => {console.error('Error adding course:',error);
+                       setErrorMessage('Error saving course');
+        });
     
    }
     

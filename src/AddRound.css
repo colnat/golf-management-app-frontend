@@ -17,13 +17,12 @@
     justify-content: center;
   }
 
-  .pick-course{
-    margin-top: 15px;
-  }
+ 
 
   .custom-select {
     min-width: 450px;
-    height: 25px;
+    height: 30px;
+    border-radius: 0.50rem;
   }
   
   .custom-select select {
@@ -32,9 +31,9 @@
     font-size: 1.15rem;
     padding: 0.675em 6em 0.675em 1em;
     background-color: #fff;
-    border: 1px solid #caced1;
+    border: 1px solid #ffffff;
     border-radius: 0.50rem;
-    color: #000;
+    color: #ffffff;
     cursor: pointer;
     
   }
@@ -42,12 +41,18 @@
   .input {
     margin: 5px auto; 
     padding: 5px; 
-    border-radius: 7px;
-    border-color: white;
+    border-color: rgb(255, 255, 255);
+    border: 1px solid #caced1;
+    border-radius: 0.50rem;
+    height: 30px;
   }
 
   .input.round-info{
     width:auto;
+  }
+
+  .input.date{
+    width: 25%;
   }
 
 
