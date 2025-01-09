@@ -11,7 +11,12 @@
 .buttons{
     margin:auto;
     margin: 5px 10px;
+    background-color: white;
+    color: black;
 }
+
+
+
 
 h1{
     font-size: xx-large;

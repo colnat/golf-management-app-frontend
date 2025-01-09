@@ -17,6 +17,7 @@ const Dashboard = () => {
         <div className='button-container'>
         <button onClick={() => navigate('/add-course18')} className='buttons'>Add New Course</button>
         <button onClick={() => navigate('/add-round18')} className='buttons'>Add New Round</button>
+        <button onClick={() => navigate('/manage-courses')} className='buttons'>Manage Courses</button>
         </div>
         </>
 
