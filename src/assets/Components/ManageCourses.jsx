@@ -6,19 +6,33 @@ import '/src/Manage.css';
 const ManageCourses = () => {
  
 const [courses,setCourses] = useState([]);
+const navigate = useNavigate();
+ 
+const fetchCourses = async() => {
+  CourseService.getCourses().then((response) => {
+    setCourses(response.data)
+   }).catch((error) => console.log(error));
+ }
 
- useEffect(() => {
-         CourseService.getCourses().then((response) => {
-             setCourses(response.data)
-            }).catch((error) => console.log(error));
+ const deleteCourse = async(courseId) =>{
+  CourseService.deleteCourse(courseId);
+  fetchCourses();
+ }
+
+useEffect(() => {
+         fetchCourses();
      },[])
+
+
  
     return(
         <>
          <div className='container' >
+         <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
          <h1>Your Courses</h1>
 {courses.map((course) => (
-  <table key={course.id}>
+  <>
+  <table>
     <thead>
       <tr>
         <th>Course Name</th>
@@ -29,7 +43,7 @@ const [courses,setCourses] = useState([]);
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr key={course.id}>
         <td>{course.courseName}</td>
         <td>{course.courseRating}</td>
         <td>{course.coursePar}</td>
@@ -68,11 +82,17 @@ const [courses,setCourses] = useState([]);
             </tbody>
           </table>
         </td>
+        
       </tr>
-     
+   
+    
     </tbody>
-    <button className='delete-button'>Delete</button>
+   
   </table>
+  <button className='delete-button' onClick={() => deleteCourse(course.id)}>Delete</button>
+  </>
+    
+   
 ))}
 
 </div>

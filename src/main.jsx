@@ -10,6 +10,7 @@ import Dashboard from './assets/Components/Dashboard.jsx';
 import AddRound from './assets/Components/AddRound.jsx';
 import AddRound18 from './assets/Components/AddRound18.jsx';
 import ManageCourses from './assets/Components/ManageCourses.jsx';
+import ManageRounds from './assets/Components/ManageRounds.jsx';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')).render(
         <Route path='/add-round' element={<AddRound/>}/>
         <Route path='/add-round18' element={<AddRound18/>}/>
         <Route path='/manage-courses' element={<ManageCourses/>}/>
+        <Route path='/manage-rounds' element={<ManageRounds/>}/>
       </Routes>
     
   </BrowserRouter>
