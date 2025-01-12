@@ -11,6 +11,10 @@ class RoundService {
             return axios.get(`${ROUNDS_API}/getRounds`,{withCredentials:true,headers:{'Content-Type': 'application/json'}})
         }
 
+        deleteRound(roundId){
+            return axios.delete(`${ROUNDS_API}/deleteRound/${roundId}`,{withCredentials:true,headers:{'Content-Type': 'application/json'}})
+        }
+
        
 }
 

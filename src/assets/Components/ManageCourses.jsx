@@ -10,7 +10,8 @@ const navigate = useNavigate();
  
 const fetchCourses = async() => {
   CourseService.getCourses().then((response) => {
-    setCourses(response.data)
+    setCourses(response.data);
+    console.log("Fetched courses:", response.data);
    }).catch((error) => console.log(error));
  }
 
@@ -25,13 +26,14 @@ useEffect(() => {
 
 
  
-    return(
-        <>
-         <div className='container' >
-         <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
-         <h1>Your Courses</h1>
-{courses.map((course) => (
+return(
+<>
+    <div className='container' >
+      <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
+      <h1>Your Courses</h1>
+      {courses.map((course) => (
   <>
+ 
   <table>
     <thead>
       <tr>
@@ -49,32 +51,33 @@ useEffect(() => {
         <td>{course.coursePar}</td>
         <td>{course.courseType}</td>
         <td>{course.courseLocation}</td>
+        
       </tr>
      
       <tr>
         <td colSpan="5">
           <table style={{ width: "100%" }}>
             <tbody>
-              <tr>
-                <th>Hole Number</th>
-                {course.courseHolesList.map((courseHole, index) => (
-                  <td key={index} >
-                    {courseHole.courseHoleNumber}
-                  </td>
+                <tr>
+                   <th>Hole</th>
+                    {course.courseHolesList.map((courseHole) => (
+                     <td key={courseHole.id} >
+                      {courseHole.courseHoleNumber}
+                     </td>
                 ))}
               </tr>
               <tr>
                <th>Par</th>
-                {course.courseHolesList.map((courseHole, index) => (
-                  <td key={index} >
+                {course.courseHolesList.map((courseHole) => (
+                  <td key={courseHole.id} >
                     {courseHole.courseHolePar}
                   </td>
                 ))}
               </tr>
               <tr>
                <th>Length</th>
-                {course.courseHolesList.map((courseHole, index) => (
-                  <td key={index}>
+                {course.courseHolesList.map((courseHole) => (
+                  <td key={courseHole.id}>
                     {courseHole.courseHoleLength}
                   </td>
                 ))}
@@ -82,12 +85,10 @@ useEffect(() => {
             </tbody>
           </table>
         </td>
-        
       </tr>
    
     
     </tbody>
-   
   </table>
   <button className='delete-button' onClick={() => deleteCourse(course.id)}>Delete</button>
   </>
@@ -97,7 +98,7 @@ useEffect(() => {
 
 </div>
         
-        </>
+</>
     )
 }
 
