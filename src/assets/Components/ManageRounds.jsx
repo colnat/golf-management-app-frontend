@@ -5,12 +5,17 @@ import '/src/Manage.css';
 
 const ManageRounds = () => {
     const [rounds,setRounds] = useState([]);
-    
+    const navigate = useNavigate();
     const fetchRounds = async() => {
       RoundService.getRounds().then((response) => {
         setRounds(response.data);
         console.log("Fetched courses:", response.data);
        }).catch((error) => console.log(error));
+     }
+
+    const deleteRound = async(roundId) =>{
+      RoundService.deleteRound(roundId);
+      fetchRounds();
      }
 
      useEffect(() => {
@@ -20,6 +25,7 @@ const ManageRounds = () => {
     return(
         <>
          <div className='container'>
+         <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
          <h1>Your Rounds</h1>
             {rounds.map((round) => (
                 <>
@@ -71,7 +77,7 @@ const ManageRounds = () => {
                         </tr>
                     </tbody>
                      </table>
-                
+                     <button className='delete-button' onClick={() => deleteRound(round.id)}>Delete</button>
                 </>
             ))}
          </div>

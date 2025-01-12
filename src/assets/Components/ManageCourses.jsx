@@ -40,7 +40,6 @@ return(
         <th>Course Name</th>
         <th>Course Rating</th>
         <th>Course Par</th>
-        <th>Course Length</th>
         <th>Course Location</th>
       </tr>
     </thead>
@@ -49,13 +48,12 @@ return(
         <td>{course.courseName}</td>
         <td>{course.courseRating}</td>
         <td>{course.coursePar}</td>
-        <td>{course.courseType}</td>
         <td>{course.courseLocation}</td>
         
       </tr>
      
       <tr>
-        <td colSpan="5">
+        <td colSpan="4">
           <table style={{ width: "100%" }}>
             <tbody>
                 <tr>
