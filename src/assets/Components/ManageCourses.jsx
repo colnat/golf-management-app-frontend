@@ -39,7 +39,8 @@ return(
       <tr>
         <th>Course Name</th>
         <th>Course Rating</th>
-        <th>Course Par</th>
+        <th>Eighteen Hole Par</th>
+        <th>Nine Hole Par</th>
         <th>Course Location</th>
       </tr>
     </thead>
@@ -47,13 +48,14 @@ return(
       <tr key={course.id}>
         <td>{course.courseName}</td>
         <td>{course.courseRating}</td>
-        <td>{course.coursePar}</td>
+        <td>{course.eighteenHolePar}</td>
+        <td>{course.nineHolePar}</td>
         <td>{course.courseLocation}</td>
         
       </tr>
      
       <tr>
-        <td colSpan="4">
+        <td colSpan="5">
           <table style={{ width: "100%" }}>
             <tbody>
                 <tr>

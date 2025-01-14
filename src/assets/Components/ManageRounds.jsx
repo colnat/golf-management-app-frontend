@@ -38,7 +38,8 @@ const ManageRounds = () => {
                             <th>Three Putts</th>
                             <th>Slices and Draws</th>
                             <th>Round Score</th>
-                            <th>Course Par</th>
+                            <th>Eighteen Hole Par</th>
+                            <th>Nine Hole Par</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,7 +54,8 @@ const ManageRounds = () => {
                            <td>{round.threePutts}</td>
                            <td>{round.slicesOrDraws}</td>
                            <td>{round.roundScore}</td>
-                           <td>{round.course.coursePar}</td>
+                           <td>{round.course.eighteenHolePar}</td>
+                           <td>{round.course.nineHolePar}</td>
                         </tr>
                         <tr>
                             <td colSpan="8">
