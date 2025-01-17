@@ -11,7 +11,6 @@ const navigate = useNavigate();
 const fetchCourses = async() => {
   CourseService.getCourses().then((response) => {
     setCourses(response.data);
-    console.log("Fetched courses:", response.data);
    }).catch((error) => console.log(error));
  }
 
@@ -28,19 +27,19 @@ useEffect(() => {
  
 return(
 <>
+
     <div className='container' >
       <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
       <h1>Your Courses</h1>
       {courses.map((course) => (
   <>
  
-  <table>
+  <table className='course-table'>
     <thead>
       <tr>
         <th>Course Name</th>
         <th>Course Rating</th>
-        <th>Eighteen Hole Par</th>
-        <th>Nine Hole Par</th>
+        <th>Course Par</th>
         <th>Course Location</th>
       </tr>
     </thead>
@@ -48,15 +47,15 @@ return(
       <tr key={course.id}>
         <td>{course.courseName}</td>
         <td>{course.courseRating}</td>
-        <td>{course.eighteenHolePar}</td>
-        <td>{course.nineHolePar}</td>
+        {/* Show course par. If 18 hole course show 18 hole par else show 9 hole par. Every Course has a 9 and 18 hole par */}
+        <td>{course.courseType == 18 ? course.eighteenHolePar: course.nineHolePar}</td>
         <td>{course.courseLocation}</td>
         
       </tr>
      
       <tr>
-        <td colSpan="5">
-          <table style={{ width: "100%" }}>
+        <td colSpan="4">
+          <table className='hole-table'>
             <tbody>
                 <tr>
                    <th>Hole</th>

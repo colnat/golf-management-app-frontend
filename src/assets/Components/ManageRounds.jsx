@@ -6,10 +6,10 @@ import '/src/Manage.css';
 const ManageRounds = () => {
     const [rounds,setRounds] = useState([]);
     const navigate = useNavigate();
+    
     const fetchRounds = async() => {
       RoundService.getRounds().then((response) => {
         setRounds(response.data);
-        console.log("Fetched courses:", response.data);
        }).catch((error) => console.log(error));
      }
 
@@ -24,12 +24,13 @@ const ManageRounds = () => {
 
     return(
         <>
+    
          <div className='container'>
          <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
          <h1>Your Rounds</h1>
             {rounds.map((round) => (
                 <>
-                 <table>
+                 <table className='course-table'>
                     <thead>
                         <tr>
                             <th>Course Name</th>
@@ -38,8 +39,7 @@ const ManageRounds = () => {
                             <th>Three Putts</th>
                             <th>Slices and Draws</th>
                             <th>Round Score</th>
-                            <th>Eighteen Hole Par</th>
-                            <th>Nine Hole Par</th>
+                            <th>Course Par</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,12 +54,12 @@ const ManageRounds = () => {
                            <td>{round.threePutts}</td>
                            <td>{round.slicesOrDraws}</td>
                            <td>{round.roundScore}</td>
-                           <td>{round.course.eighteenHolePar}</td>
-                           <td>{round.course.nineHolePar}</td>
+                          {/* Show course par. If 18 hole round show 18 hole par else show nine hole par. Every Course has a 9 and 18 hole par  */}
+                           <td>{round.roundLength == 18 ? round.course.eighteenHolePar: round.course.nineHolePar}</td>
                         </tr>
                         <tr>
-                            <td colSpan="8">
-                                <table style={{ width: "100%" }}>
+                            <td colSpan="7">
+                                <table className='hole-table'>
                                     <tbody>
                                         <tr>
                                            <th>Hole</th> 
