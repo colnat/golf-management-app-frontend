@@ -15,6 +15,14 @@ class RoundService {
             return axios.delete(`${ROUNDS_API}/deleteRound/${roundId}`,{withCredentials:true,headers:{'Content-Type': 'application/json'}})
         }
 
+        getBestEighteenHole(){
+            return axios.get(`${ROUNDS_API}/best-18-hole`,{withCredentials:true,headers:{'Content-Type': 'application/json'}})
+        }
+
+        getBestNineHole(){
+            return axios.get(`${ROUNDS_API}/best-9-hole`,{withCredentials:true,headers:{'Content-Type': 'application/json'}})
+        }
+
        
 }
 

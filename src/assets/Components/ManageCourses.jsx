@@ -32,7 +32,7 @@ const ManageCourses = () => {
         <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
         <h1>Your Courses</h1>
         {courses.map((course) => (
-          <>
+          <div key={course.id} className='table-container'>
 
             <table className='course-table'>
               <thead>
@@ -90,7 +90,7 @@ const ManageCourses = () => {
               </tbody>
             </table>
             <button className='delete-button' onClick={() => deleteCourse(course.id)}>Delete</button>
-          </>
+          </div>
 
 
         ))}

@@ -15,6 +15,16 @@ class CourseService{
         return  axios.delete(`${COURSE_API}/delete-course/${courseId}`,{withCredentials:true,headers:{ 'Content-Type': 'application/json'}})
     }
 
+    findFavouriteCourse(){
+        return axios.get(`${COURSE_API}/favourite-course`,{withCredentials:true,headers:{ 'Content-Type': 'application/json'}})
+    }
+
+    findMostPlayedCourse(){
+        return axios.get(`${COURSE_API}/most-played-course`,{withCredentials:true,headers:{ 'Content-Type': 'application/json'}})
+    }
+
+    
+
 
 
 }
