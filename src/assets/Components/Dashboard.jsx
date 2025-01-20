@@ -1,5 +1,5 @@
 //This will be the main home page. Here I want users insights displayed, their most recent rounds, favourite courses, best rounds, and handicap.
-//For the AI it could use Spring AI RAG so a user can ask it how to improve on putting for example and it ell them. The insights like averages
+//For the AI it could use Spring AI RAG so a user can ask it how to improve on putting for example and it will tell them. The insights like averages
 //of three putts, slices, and fairways hit can be coded in the back end.
 import { useState, useEffect } from 'react';
 import '/src/Dashboard.css';
@@ -10,44 +10,33 @@ import CourseService from './CourseService.jsx';
 const Dashboard = () => {
     const navigate = useNavigate();
     const [bestEighteenHole, setBestEighteenHole] = useState([]);
+    const [isLoading, setLoading] = useState(true)
     const [bestNineHole, setBestNineHole] = useState([]);
-    const [favouriteCourse,setFavouriteCourse] = useState([]);
+    const [favouriteCourse, setFavouriteCourse] = useState([]);
     const [mostPlayedCourse, setMostPlayedCourse] = useState([]);
-    
-    const fetchBestEighteenHole = async () => {
-        RoundService.getBestEighteenHole().then((response) => {
-            setBestEighteenHole(response.data);
-            console.log(response.data);
-        }).catch((error) => console.log(error))
-    }
 
-    const fetchBestNineHole = async () => {
-        RoundService.getBestNineHole().then((response) => {
-            setBestNineHole(response.data);
-            console.log(response.data);
-        }).catch((error) => console.log(error))
-    }
 
-    const fetchFavouriteCourse = async () => {
-        CourseService.findFavouriteCourse().then((response) => {
-            setFavouriteCourse(response.data);
-            console.log(response.data);
-        }).catch((error) => console.log(error))
-    }
-
-    const fetchMostPlayedCourse = async () => {
-        CourseService.findMostPlayedCourse().then((response) => {
-            setMostPlayedCourse(response.data);
-            console.log(response.data);
-        }).catch((error) => console.log(error))
-    }
-    
     useEffect(() => {
-         fetchBestEighteenHole();
-         fetchBestNineHole();
-         fetchFavouriteCourse();
-    }, [])
-
+        const fetchUserStats = async () => {
+            setLoading(true)
+            try {
+                const bestEighteenHoleRes = await RoundService.getBestEighteenHole();
+                const bestNineHoleRes = await RoundService.getBestNineHole();
+                const favouriteCourseRes = await CourseService.findFavouriteCourse();
+                const mostPlayedCourseRes = await CourseService.findMostPlayedCourse();
+                setBestEighteenHole(bestEighteenHoleRes.data);
+                setBestNineHole(bestNineHoleRes.data);
+                setFavouriteCourse(favouriteCourseRes.data);
+                setMostPlayedCourse(mostPlayedCourseRes.data);
+                setLoading(false);
+            }
+            catch (error) {
+                setLoading(false)
+                console.log(error)
+            }
+        };
+        fetchUserStats();
+    }, []);
 
     return (
         <>
@@ -63,9 +52,251 @@ const Dashboard = () => {
             </div>
 
 
+            {!isLoading ?
+                <>
+                    <h2>Best 18 Hole Round</h2>
+                    {bestEighteenHole == null ? <p>Must have at least one eighteen hole round</p> :
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Date Played</th>
+                                    <th>Fairways Hit</th>
+                                    <th>Three Putts</th>
+                                    <th>Slices and Draws</th>
+                                    <th>Round Score</th>
+                                    <th>Course Par</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>{bestEighteenHole.course.courseName}</td>
+                                    <td>{new Date(bestEighteenHole.datePlayed).toLocaleString("en-US", {
+                                        day: "numeric",
+                                        month: "long",
+                                        year: "numeric",
+                                    })}</td>
+                                    <td>{bestEighteenHole.fairwaysHit}</td>
+                                    <td>{bestEighteenHole.threePutts}</td>
+                                    <td>{bestEighteenHole.slicesOrDraws}</td>
+                                    <td>{bestEighteenHole.roundScore}</td>
+                                    <td>{bestEighteenHole.course.eighteenHolePar}</td>
+                                </tr>
+                                <tr>
+                                    <td colSpan="7">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Hole</th>
+                                                    {bestEighteenHole.roundHolesList.map((roundHole) => (
+                                                        <td key={roundHole.id} >
+                                                            {roundHole.roundHoleNumber}
+                                                        </td>
+                                                    ))}
+                                                </tr>
+                                                <tr>
+                                                    <th>Score</th>
+                                                    {bestEighteenHole.roundHolesList.map((roundHole) => (
+                                                        <td key={roundHole.id} >
+                                                            {roundHole.holeScore}
+                                                        </td>
+                                                    ))}
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    }
+
+                    <h2>Best 9 Hole Round</h2>
+                    {bestNineHole == null ? <p>Must have at least one nine hole round</p> :
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Date Played</th>
+                                    <th>Fairways Hit</th>
+                                    <th>Three Putts</th>
+                                    <th>Slices and Draws</th>
+                                    <th>Round Score</th>
+                                    <th>Course Par</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>{bestNineHole.course.courseName}</td>
+                                    <td>{new Date(bestNineHole.datePlayed).toLocaleString("en-US", {
+                                        day: "numeric",
+                                        month: "long",
+                                        year: "numeric",
+                                    })}</td>
+                                    <td>{bestNineHole.fairwaysHit}</td>
+                                    <td>{bestNineHole.threePutts}</td>
+                                    <td>{bestNineHole.slicesOrDraws}</td>
+                                    <td>{bestNineHole.roundScore}</td>
+                                    <td>{bestNineHole.course.nineHolePar}</td>
+                                </tr>
+                                <tr>
+                                    <td colSpan="7">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Hole</th>
+                                                    {bestNineHole.roundHolesList.map((roundHole) => (
+                                                        <td key={roundHole.id} >
+                                                            {roundHole.roundHoleNumber}
+                                                        </td>
+                                                    ))}
+                                                </tr>
+                                                <tr>
+                                                    <th>Score</th>
+                                                    {bestNineHole.roundHolesList.map((roundHole) => (
+                                                        <td key={roundHole.id} >
+                                                            {roundHole.holeScore}
+                                                        </td>
+                                                    ))}
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+
+                    <h2>Favourite Course</h2>
+                    {favouriteCourse == null ? <p>Must have at least one course added</p> :
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Course Rating</th>
+                                    <th>Course Par</th>
+                                    <th>Course Location</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>{favouriteCourse.courseName}</td>
+                                    <td>{favouriteCourse.courseRating}</td>
+                                    <td>{favouriteCourse.courseType == 18 ? favouriteCourse.eighteenHolePar : favouriteCourse.nineHolePar}</td>
+                                    <td>{favouriteCourse.courseLocation}</td>
+                                </tr>
+                                <tr>
+                                    <td colSpan="4">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Hole</th>
+                                                    {favouriteCourse.courseHolesList.map((courseHole) => (
+                                                        <td key={courseHole.id} >
+                                                            {courseHole.courseHoleNumber}
+                                                        </td>
+                                                    ))}
+                                                </tr>
+                                                <tr>
+                                                    <th>Par</th>
+                                                    {favouriteCourse.courseHolesList.map((courseHole) => (
+                                                        <td key={courseHole.id} >
+                                                            {courseHole.courseHolePar}
+                                                        </td>
+                                                    ))}
+                                                </tr>
+                                                <tr>
+                                                    <th>Length</th>
+                                                    {favouriteCourse.courseHolesList.map((courseHole) => (
+                                                        <td key={courseHole.id} >
+                                                            {courseHole.courseHoleLength}
+                                                        </td>
+                                                    ))}
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+
+
+                    }
+                    <h2>Most Played Course</h2>
+                    {mostPlayedCourse == null ? <p>Need At least one round</p>:
+                    <table>
+                    <thead>
+                        <tr>
+                            <th>Course Name</th>
+                            <th>Course Rating</th>
+                            <th>Course Par</th>
+                            <th>Course Location</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>{mostPlayedCourse.courseName}</td>
+                            <td>{mostPlayedCourse.courseRating}</td>
+                            <td>{mostPlayedCourse.courseType == 18 ? favouriteCourse.eighteenHolePar : favouriteCourse.nineHolePar}</td>
+                            <td>{mostPlayedCourse.courseLocation}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan="4">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>Hole</th>
+                                            {mostPlayedCourse.courseHolesList.map((courseHole) => (
+                                                <td key={courseHole.id} >
+                                                    {courseHole.courseHoleNumber}
+                                                </td>
+                                            ))}
+                                        </tr>
+                                        <tr>
+                                            <th>Par</th>
+                                            {mostPlayedCourse.courseHolesList.map((courseHole) => (
+                                                <td key={courseHole.id} >
+                                                    {courseHole.courseHolePar}
+                                                </td>
+                                            ))}
+                                        </tr>
+                                        <tr>
+                                            <th>Length</th>
+                                            {mostPlayedCourse.courseHolesList.map((courseHole) => (
+                                                <td key={courseHole.id} >
+                                                    {courseHole.courseHoleLength}
+                                                </td>
+                                            ))}
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                    
+                    
+                    }
+                </>
+                : <>loading</>}
+
+
+
         </>
 
     )
 }
 
 export default Dashboard;
+
+// : <>loading</>}
+// {!isLoading ? 

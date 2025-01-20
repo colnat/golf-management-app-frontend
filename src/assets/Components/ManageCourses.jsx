@@ -11,6 +11,7 @@ const ManageCourses = () => {
   const fetchCourses = async () => {
     CourseService.getCourses().then((response) => {
       setCourses(response.data);
+      console.log(response.data);
     }).catch((error) => console.log(error));
   }
 
@@ -54,7 +55,7 @@ const ManageCourses = () => {
                 </tr>
 
                 <tr>
-                  <td colSpan="4">
+                  <td colSpan="7">
                     <table className='hole-table'>
                       <tbody>
                         <tr>
