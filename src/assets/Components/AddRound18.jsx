@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import CourseService from './CourseService.jsx';
-import RoundService from './RoundService.jsx'
+import CourseService from './Service-API-Calls/CourseService.jsx';
+import RoundService from './Service-API-Calls/RoundService.jsx'
 import { useNavigate } from "react-router-dom";
-import '/src/AddRound.css';
+import '/src/CSS/AddRound.css';
 import set from "lodash/set";
 
 const AddRound18 = () => {

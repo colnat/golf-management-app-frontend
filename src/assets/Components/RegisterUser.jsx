@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import UserService from './UserService.jsx';
+import UserService from './Service-API-Calls/UserService.jsx';
 import { useNavigate } from "react-router-dom";
 //import { useNavigate } from 'react-router-dom
-import '/src/App.css';
+import '/src/CSS/App.css';
 const RegisterUser = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import RoundService from './RoundService.jsx';
+import RoundService from './Service-API-Calls/RoundService.jsx';
 import { useNavigate } from "react-router-dom";
-import '/src/Manage.css';
+import '/src/CSS/Manage.css';
 
 const ManageRounds = () => {
     const [rounds, setRounds] = useState([]);

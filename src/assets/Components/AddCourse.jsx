@@ -1,7 +1,7 @@
 //Array(9).fill({courseHoleNumber:0, courseHolePar: 0, courseHoleLength: 0})
 import  { useState } from 'react';
-import CourseService from './CourseService.jsx';
-import '/src/AddCourse.css';
+import CourseService from './Service-API-Calls/CourseService.jsx';
+import '/src/CSS/AddCourse.css';
 import { useNavigate } from "react-router-dom";
 import set from "lodash/set";
 

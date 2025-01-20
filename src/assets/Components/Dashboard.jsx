@@ -2,10 +2,10 @@
 //For the AI it could use Spring AI RAG so a user can ask it how to improve on putting for example and it will tell them. The insights like averages
 //of three putts, slices, and fairways hit can be coded in the back end.
 import { useState, useEffect } from 'react';
-import '/src/Dashboard.css';
+import '/src/CSS/Dashboard.css';
 import { useNavigate } from "react-router-dom";
-import RoundService from './RoundService.jsx';
-import CourseService from './CourseService.jsx';
+import RoundService from './Service-API-Calls/RoundService.jsx';
+import CourseService from './Service-API-Calls/CourseService.jsx';
 
 const Dashboard = () => {
     const navigate = useNavigate();

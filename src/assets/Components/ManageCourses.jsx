@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import CourseService from './CourseService.jsx';
+import CourseService from './Service-API-Calls/CourseService.jsx';
 import { useNavigate } from "react-router-dom";
-import '/src/Manage.css';
+import '/src/CSS/Manage.css';
 
 const ManageCourses = () => {
 
