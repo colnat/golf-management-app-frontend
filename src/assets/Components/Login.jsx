@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import UserService from './Service-API-Calls/UserService.jsx';
-import '/src/CSS/App.css';
+import '/src/CSS/loginRegister.css';
 import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
@@ -18,41 +18,46 @@ const Login = () => {
   };
 
   return (
-    <>
-      <div className="container">
+  
+      
 
         <div className="center">
-          <h2>Login</h2>
-          <form className=''>
+          
+
+          <h2 className=''>Login</h2>
+         <form className=''>
             <div>
-              <label>Email</label>
+            <label>Email</label>
               <input
-                className="input"
+                className="login-input"
                 placeholder="Enter your email"
                 name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </div>
-            <div>
+            
+            
               <label>Password</label>
               <input
-                className="input"
+                className="login-input"
                 placeholder="Enter your password"
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button className="button" type="submit" onClick={login}>
+          </form>
+          <button className="button" type="submit" onClick={login}>
               Login
             </button>
-          </form>
+    
           <button onClick={() => navigate('/register')} className="button">Register</button>
           {errorMessage && <div className="error">{errorMessage}</div>}
-        </div>
-      </div>
-    </>
+      
+          </div>
+        
+     
+    
 
   )
 

@@ -56,14 +56,14 @@ const AddCourse = () => {
     return (
         <>
         
-        <div className='container'>
-           <div className='center'>
+        
+           <div className='center-add-course'>
            <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
                 <h2>Add 9 Hole Course</h2>
                 
-                <div>
-                    <form id='add-course'>
-                        <div>
+                
+                    <form className='center-add-course'>
+                        
                             <label>Course Name</label>
                             <input  className="input name"
                                     type = "text"
@@ -90,7 +90,7 @@ const AddCourse = () => {
                                     value={course.courseLocation}
                                     onChange={handleChange}/>
                             
-                        </div>
+                        
                         <button className='switch-course' onClick={() => navigate('/add-course18')}>Add 18 hole course</button>
                         <div className='holes'>
                         <div className='hole'>
@@ -349,9 +349,9 @@ const AddCourse = () => {
 
                 </div>
                 
-           </div>
            
-        </div>
+           
+        
         </>
         
 

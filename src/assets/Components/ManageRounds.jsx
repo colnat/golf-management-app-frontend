@@ -26,11 +26,11 @@ const ManageRounds = () => {
     return (
         <>
 
-            <div className='container'>
+            
                 <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
                 <h1>Your Rounds</h1>
                 {rounds.map((round) => (
-                    <div key={round.id} className='table-container'>
+                    <div key={round.id} className='center-user-courses'>
                         <table className='course-table'>
                             <thead>
                                 <tr>
@@ -83,7 +83,7 @@ const ManageRounds = () => {
                         <button className='delete-button' onClick={() => deleteRound(round.id)}>Delete</button>
                     </div>
                 ))}
-            </div>
+            
         </>
     )
 

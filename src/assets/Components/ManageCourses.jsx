@@ -29,13 +29,15 @@ const ManageCourses = () => {
   return (
     <>
 
-      <div className='container' >
+      
         <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
         <h1>Your Courses</h1>
+        
+        <div className=''>
         {courses.map((course) => (
-          <div key={course.id} className='table-container'>
-
-            <table className='course-table'>
+          <div key={course.id} className='center-user-courses'>
+            
+            <table className='course-table' >
               <thead>
                 <tr>
                   <th>Course Name</th>
@@ -45,7 +47,7 @@ const ManageCourses = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr key={course.id}>
+                <tr>
                   <td>{course.courseName}</td>
                   <td>{course.courseRating}</td>
                   {/* Show course par. If 18 hole course show 18 hole par else show 9 hole par. Every Course has a 9 and 18 hole par */}
@@ -89,14 +91,23 @@ const ManageCourses = () => {
 
 
               </tbody>
+              
             </table>
             <button className='delete-button' onClick={() => deleteCourse(course.id)}>Delete</button>
           </div>
 
+          
+
+            
+            
+          
+
 
         ))}
+        </div>
+        
 
-      </div>
+      
 
     </>
   )

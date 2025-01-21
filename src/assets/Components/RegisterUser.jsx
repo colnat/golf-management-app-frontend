@@ -2,7 +2,7 @@ import { useState } from 'react';
 import UserService from './Service-API-Calls/UserService.jsx';
 import { useNavigate } from "react-router-dom";
 //import { useNavigate } from 'react-router-dom
-import '/src/CSS/App.css';
+import '/src/CSS/loginRegister.css';
 const RegisterUser = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const RegisterUser = () => {
 
   return (
     <>
-      <div className='container'>
+     
         <div className='center'>
           <h2 className=''>Register</h2>
           <form className=''>
@@ -47,12 +47,13 @@ const RegisterUser = () => {
               <label>Password</label>
               <input className='input' placeholder="Enter your password" name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
-            <button type="submit" className='button' onClick={saveUser}>Register</button>
+            
           </form>
+          <button type="submit" className='button' onClick={saveUser}>Register</button>
           <button className=' button' onClick={() => { navigate('/login') }}>Login</button>
-          {errorMessage && <div className="error center"> {errorMessage} </div>}
+          {errorMessage && <div className="error"> {errorMessage} </div>}
         </div>
-      </div>
+      
 
     </>
   )

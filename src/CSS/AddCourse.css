@@ -20,25 +20,13 @@
     
 }
 
-.container {
-    display: flex;
-    padding: 10px;
-    overflow-x: auto;
-    align-items: center;
-    padding-top: 0px;
-    overflow-y: scroll;
-    margin: 0 auto;
-    width: 100vw;
-    scroll-behavior: smooth;
-    
-  }
 
   
-  .center {
-    text-align: center;
-    overflow-y: visible;
-    
+  .center-add-course {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
   }
   
   .input {
