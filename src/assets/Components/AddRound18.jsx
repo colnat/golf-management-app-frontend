@@ -45,12 +45,12 @@ const AddRound18 = () => {
                         setErrorMessage('');
                         setRound({
                                 datePlayed: '',
-                                fairwaysHit: 0,
-                                threePutts: 0,
-                                slicesOrDraws: 0,
+                                fairwaysHit: '',
+                                threePutts: '',
+                                slicesOrDraws: '',
                                 roundHolesList: Array(18).fill().map((_, i) => ({
                                         roundHoleNumber: i + 1,
-                                        holeScore: 0,
+                                        holeScore: '',
                                 }))
                         })
                 }).catch(error => {
@@ -65,8 +65,8 @@ const AddRound18 = () => {
 
                         <div className='center-add-round'>
                                 <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
-                                <h1>Add 18 Hole Round</h1>
-                                <form className='center-add-round'>
+                                <h1 className='add-round-title'>Add 18 Hole Round</h1>
+                                <form className='center-add-round add-round-form'>
 
                                         <label>Course Played</label>
 
@@ -85,28 +85,28 @@ const AddRound18 = () => {
                                         </select>
 
                                         <label>Date Played</label>
-                                        <input className="input date"
+                                        <input className="add-round-input date"
                                                 type="date"
                                                 name="datePlayed"
                                                 value={round.datePlayed}
                                                 onChange={handleChange} />
 
                                         <label>Number of Fairways Hit</label>
-                                        <input className="input round-info"
+                                        <input className="add-round-input round-info"
                                                 type="number"
                                                 name="fairwaysHit"
                                                 value={round.fairwaysHit}
                                                 onChange={handleChange} />
 
                                         <label>Number of Three Putts</label>
-                                        <input className="input round-info"
+                                        <input className="add-round-input round-info"
                                                 type="number"
                                                 name="threePutts"
                                                 value={round.threePutts}
                                                 onChange={handleChange} />
 
                                         <label>Number of Slices or Draws</label>
-                                        <input className="input round-info"
+                                        <input className="add-round-input round-info"
                                                 type="number"
                                                 name="slicesOrDraws"
                                                 value={round.slicesOrDraws}
@@ -116,7 +116,7 @@ const AddRound18 = () => {
                                         <div className='holes'>
                                                 <div className='hole'>
                                                         <h3>Hole 1</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[0].roundHoleNumber"
                                                                 value={round.roundHolesList[0].roundHoleNumber}
@@ -125,7 +125,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[0].holeScore"
                                                                 value={round.roundHolesList[0].holeScore}
@@ -133,7 +133,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 2</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[1].roundHoleNumber"
                                                                 value={round.roundHolesList[1].roundHoleNumber}
@@ -142,7 +142,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[1].holeScore"
                                                                 value={round.roundHolesList[1].holeScore}
@@ -150,7 +150,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 3</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[2].roundHoleNumber"
                                                                 value={round.roundHolesList[2].roundHoleNumber}
@@ -159,7 +159,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[2].holeScore"
                                                                 value={round.roundHolesList[2].holeScore}
@@ -167,7 +167,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 4</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[3].roundHoleNumber"
                                                                 value={round.roundHolesList[3].roundHoleNumber}
@@ -176,7 +176,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[3].holeScore"
                                                                 value={round.roundHolesList[3].holeScore}
@@ -184,7 +184,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 5</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[4].roundHoleNumber"
                                                                 value={round.roundHolesList[4].roundHoleNumber}
@@ -193,7 +193,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[4].holeScore"
                                                                 value={round.roundHolesList[4].holeScore}
@@ -201,7 +201,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 6</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[5].roundHoleNumber"
                                                                 value={round.roundHolesList[5].roundHoleNumber}
@@ -210,7 +210,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[5].holeScore"
                                                                 value={round.roundHolesList[5].holeScore}
@@ -218,7 +218,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 7</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[6].roundHoleNumber"
                                                                 value={round.roundHolesList[6].roundHoleNumber}
@@ -227,7 +227,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[6].holeScore"
                                                                 value={round.roundHolesList[6].holeScore}
@@ -235,7 +235,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 8</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[7].roundHoleNumber"
                                                                 value={round.roundHolesList[7].roundHoleNumber}
@@ -244,7 +244,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[7].holeScore"
                                                                 value={round.roundHolesList[7].holeScore}
@@ -252,7 +252,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 9</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[8].roundHoleNumber"
                                                                 value={round.roundHolesList[8].roundHoleNumber}
@@ -261,7 +261,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[8].holeScore"
                                                                 value={round.roundHolesList[8].holeScore}
@@ -269,7 +269,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 10</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[9].roundHoleNumber"
                                                                 value={round.roundHolesList[9].roundHoleNumber}
@@ -278,7 +278,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[9].holeScore"
                                                                 value={round.roundHolesList[9].holeScore}
@@ -286,7 +286,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 11</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[10].roundHoleNumber"
                                                                 value={round.roundHolesList[10].roundHoleNumber}
@@ -295,7 +295,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[10].holeScore"
                                                                 value={round.roundHolesList[10].holeScore}
@@ -303,7 +303,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 12</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[11].roundHoleNumber"
                                                                 value={round.roundHolesList[11].roundHoleNumber}
@@ -312,7 +312,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[11].holeScore"
                                                                 value={round.roundHolesList[11].holeScore}
@@ -320,7 +320,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 13</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[12].roundHoleNumber"
                                                                 value={round.roundHolesList[12].roundHoleNumber}
@@ -329,7 +329,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[12].holeScore"
                                                                 value={round.roundHolesList[12].holeScore}
@@ -337,7 +337,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 14</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[13].roundHoleNumber"
                                                                 value={round.roundHolesList[13].roundHoleNumber}
@@ -346,7 +346,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[13].holeScore"
                                                                 value={round.roundHolesList[13].holeScore}
@@ -354,7 +354,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 15</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[14].roundHoleNumber"
                                                                 value={round.roundHolesList[14].roundHoleNumber}
@@ -363,7 +363,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[14].holeScore"
                                                                 value={round.roundHolesList[14].holeScore}
@@ -371,7 +371,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 16</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[15].roundHoleNumber"
                                                                 value={round.roundHolesList[15].roundHoleNumber}
@@ -380,7 +380,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[15].holeScore"
                                                                 value={round.roundHolesList[15].holeScore}
@@ -388,7 +388,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 17</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[16].roundHoleNumber"
                                                                 value={round.roundHolesList[16].roundHoleNumber}
@@ -397,7 +397,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[16].holeScore"
                                                                 value={round.roundHolesList[16].holeScore}
@@ -405,7 +405,7 @@ const AddRound18 = () => {
                                                 </div>
                                                 <div className='hole'>
                                                         <h3>Hole 18</h3>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[17].roundHoleNumber"
                                                                 value={round.roundHolesList[17].roundHoleNumber}
@@ -414,7 +414,7 @@ const AddRound18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter Your Score</label>
-                                                        <input className='input'
+                                                        <input className='add-round-input'
                                                                 type="number"
                                                                 name="roundHolesList[17].holeScore"
                                                                 value={round.roundHolesList[17].holeScore}

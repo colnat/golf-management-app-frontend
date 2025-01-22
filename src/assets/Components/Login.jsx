@@ -25,11 +25,11 @@ const Login = () => {
           
 
           <h2 className=''>Login</h2>
-         <form className=''>
-            <div>
+         <form className='login-register-form'>
+            
             <label>Email</label>
               <input
-                className="login-input"
+                className="login-register-input"
                 placeholder="Enter your email"
                 name="email"
                 value={email}
@@ -39,19 +39,19 @@ const Login = () => {
             
               <label>Password</label>
               <input
-                className="login-input"
+                className="login-register-input"
                 placeholder="Enter your password"
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </div>
+            
           </form>
           <button className="button" type="submit" onClick={login}>
               Login
             </button>
     
-          <button onClick={() => navigate('/register')} className="button">Register</button>
+          <button onClick={() => navigate('/register')} className="button">Need to Create an Account?</button>
           {errorMessage && <div className="error">{errorMessage}</div>}
       
           </div>

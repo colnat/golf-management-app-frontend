@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 h1{
     font-size: xx-large;
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
+    font-family: "Oswald", serif;
 }
 
 .table-container{
@@ -21,7 +24,7 @@ h1{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  
+  font-family: "Oswald", serif;
 }
 
   table.course-table {

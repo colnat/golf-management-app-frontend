@@ -40,9 +40,9 @@ const Dashboard = () => {
 
     return (
         <>
-            <div className='dashboard'>
-                <h1>Dashboard</h1>
-            </div>
+            
+                <h1 className='dashboard-home'>Dashboard</h1>
+            
 
             <div className='button-container'>
                 <button onClick={() => navigate('/add-course18')} className='buttons'>Add New Course</button>

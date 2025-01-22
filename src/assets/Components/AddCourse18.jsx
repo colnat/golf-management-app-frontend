@@ -44,7 +44,7 @@ const AddCourse18 = () => {
                                 }))
                         })
 
-                        document.getElementById("add-course").reset();
+                       
                 }).catch(error => {
                         console.error('Error adding course:', error);
                         setErrorMessage('Error saving course');
@@ -53,12 +53,12 @@ const AddCourse18 = () => {
         return (
                 <>
                         <div className='center-add-course'>
-                                <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
+                                <button className='add-course-dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
                                 <h2>Add 18 Hole Course</h2>
-                                <form className='center-add-course'>
+                                <form className='center-add-course add-course-form'>
 
                                         <label>Course Name</label>
-                                        <input className="input name"
+                                        <input className="add-course-input name"
                                                 type="text"
                                                 placeholder="Enter course name"
                                                 name="courseName"
@@ -66,7 +66,7 @@ const AddCourse18 = () => {
                                                 onChange={handleChange} />
 
                                         <label>Course Rating</label>
-                                        <input className="input rating"
+                                        <input className="add-course-input rating"
                                                 type="number"
                                                 placeholder="Rating 1-10"
                                                 name="courseRating"
@@ -76,7 +76,7 @@ const AddCourse18 = () => {
                                                 onChange={handleChange} />
 
                                         <label>Course Location</label>
-                                        <input className='input location'
+                                        <input className='add-course-input location'
                                                 type="text"
                                                 placeholder='Optional'
                                                 name="courseLocation"
@@ -90,7 +90,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 1</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[0].courseHoleNumber"
                                                                 value={course.courseHolesList[0].courseHoleNumber}
@@ -99,14 +99,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[0].courseHolePar"
                                                                 value={course.courseHolesList[0].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[0].courseHoleLength"
                                                                 value={course.courseHolesList[0].courseHoleLength}
@@ -117,7 +117,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 2</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[1].courseHoleNumber"
                                                                 value={course.courseHolesList[1].courseHoleNumber}
@@ -126,14 +126,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[1].courseHolePar"
                                                                 value={course.courseHolesList[1].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[1].courseHoleLength"
                                                                 value={course.courseHolesList[1].courseHoleLength}
@@ -144,7 +144,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 3</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[2].courseHoleNumber"
                                                                 value={course.courseHolesList[2].courseHoleNumber}
@@ -153,14 +153,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[2].courseHolePar"
                                                                 value={course.courseHolesList[2].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[2].courseHoleLength"
                                                                 value={course.courseHolesList[2].courseHoleLength}
@@ -171,7 +171,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 4</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[3].courseHoleNumber"
                                                                 value={course.courseHolesList[3].courseHoleNumber}
@@ -179,14 +179,14 @@ const AddCourse18 = () => {
                                                                 hidden
                                                                 onChange={handleChange} />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[3].courseHolePar"
                                                                 value={course.courseHolesList[3].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[3].courseHoleLength"
                                                                 value={course.courseHolesList[3].courseHoleLength}
@@ -201,7 +201,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 5</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[4].courseHoleNumber"
                                                                 value={course.courseHolesList[4].courseHoleNumber}
@@ -210,14 +210,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[4].courseHolePar"
                                                                 value={course.courseHolesList[4].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[4].courseHoleLength"
                                                                 value={course.courseHolesList[4].courseHoleLength}
@@ -228,7 +228,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 6</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[5].courseHoleNumber"
                                                                 value={course.courseHolesList[5].courseHoleNumber}
@@ -237,14 +237,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[5].courseHolePar"
                                                                 value={course.courseHolesList[5].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[5].courseHoleLength"
                                                                 value={course.courseHolesList[5].courseHoleLength}
@@ -254,7 +254,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 7</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[6].courseHoleNumber"
                                                                 value={course.courseHolesList[6].courseHoleNumber}
@@ -263,14 +263,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[6].courseHolePar"
                                                                 value={course.courseHolesList[6].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[6].courseHoleLength"
                                                                 value={course.courseHolesList[6].courseHoleLength}
@@ -281,7 +281,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 8</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[7].courseHoleNumber"
                                                                 value={course.courseHolesList[7].courseHoleNumber}
@@ -290,14 +290,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[7].courseHolePar"
                                                                 value={course.courseHolesList[7].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[7].courseHoleLength"
                                                                 value={course.courseHolesList[7].courseHoleLength}
@@ -308,7 +308,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 9</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[8].courseHoleNumber"
                                                                 value={course.courseHolesList[8].courseHoleNumber}
@@ -317,14 +317,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[8].courseHolePar"
                                                                 value={course.courseHolesList[8].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[8].courseHoleLength"
                                                                 value={course.courseHolesList[8].courseHoleLength}
@@ -335,7 +335,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 10</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[9].courseHoleNumber"
                                                                 value={course.courseHolesList[9].courseHoleNumber}
@@ -344,14 +344,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[9].courseHolePar"
                                                                 value={course.courseHolesList[9].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[9].courseHoleLength"
                                                                 value={course.courseHolesList[9].courseHoleLength}
@@ -362,7 +362,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 11</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[10].courseHoleNumber"
                                                                 value={course.courseHolesList[10].courseHoleNumber}
@@ -371,14 +371,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[10].courseHolePar"
                                                                 value={course.courseHolesList[10].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[10].courseHoleLength"
                                                                 value={course.courseHolesList[10].courseHoleLength}
@@ -389,7 +389,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 12</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[11].courseHoleNumber"
                                                                 value={course.courseHolesList[11].courseHoleNumber}
@@ -398,14 +398,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[11].courseHolePar"
                                                                 value={course.courseHolesList[11].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[11].courseHoleLength"
                                                                 value={course.courseHolesList[11].courseHoleLength}
@@ -416,7 +416,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 13</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[12].courseHoleNumber"
                                                                 value={course.courseHolesList[12].courseHoleNumber}
@@ -424,14 +424,14 @@ const AddCourse18 = () => {
                                                                 hidden
                                                                 onChange={handleChange} />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[12].courseHolePar"
                                                                 value={course.courseHolesList[12].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[12].courseHoleLength"
                                                                 value={course.courseHolesList[12].courseHoleLength}
@@ -446,7 +446,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 14</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[13].courseHoleNumber"
                                                                 value={course.courseHolesList[13].courseHoleNumber}
@@ -455,14 +455,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[13].courseHolePar"
                                                                 value={course.courseHolesList[13].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[13].courseHoleLength"
                                                                 value={course.courseHolesList[13].courseHoleLength}
@@ -473,7 +473,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 15</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[14].courseHoleNumber"
                                                                 value={course.courseHolesList[14].courseHoleNumber}
@@ -482,14 +482,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[14].courseHolePar"
                                                                 value={course.courseHolesList[14].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[14].courseHoleLength"
                                                                 value={course.courseHolesList[14].courseHoleLength}
@@ -499,7 +499,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 16</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[15].courseHoleNumber"
                                                                 value={course.courseHolesList[15].courseHoleNumber}
@@ -508,14 +508,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[15].courseHolePar"
                                                                 value={course.courseHolesList[15].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[15].courseHoleLength"
                                                                 value={course.courseHolesList[15].courseHoleLength}
@@ -526,7 +526,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 17</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[16].courseHoleNumber"
                                                                 value={course.courseHolesList[16].courseHoleNumber}
@@ -535,14 +535,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[16].courseHolePar"
                                                                 value={course.courseHolesList[16].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[16].courseHoleLength"
                                                                 value={course.courseHolesList[16].courseHoleLength}
@@ -553,7 +553,7 @@ const AddCourse18 = () => {
 
                                                         <h3>Hole 18</h3>
 
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[17].courseHoleNumber"
                                                                 value={course.courseHolesList[17].courseHoleNumber}
@@ -562,14 +562,14 @@ const AddCourse18 = () => {
                                                                 onChange={handleChange}
                                                         />
                                                         <label>Enter the Par</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[17].courseHolePar"
                                                                 value={course.courseHolesList[17].courseHolePar}
                                                                 placeholder='Par 3 to 5'
                                                                 onChange={handleChange} />
                                                         <label>Hole Length</label>
-                                                        <input className='input'
+                                                        <input className='add-course-input'
                                                                 type="number"
                                                                 name="courseHolesList[17].courseHoleLength"
                                                                 value={course.courseHolesList[17].courseHoleLength}

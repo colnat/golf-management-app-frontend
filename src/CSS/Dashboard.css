@@ -1,7 +1,9 @@
-.dashboard{
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+.dashboard-home{
     text-align: center;
-    color: white;
-    
+    color: rgb(0, 0, 0);
+    font-family: "Oswald", serif;
 }
 
 .button-container{
@@ -20,7 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    font-family: "Oswald", serif;
     flex-direction: column;
    }
 

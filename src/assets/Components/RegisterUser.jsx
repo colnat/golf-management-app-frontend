@@ -28,29 +28,29 @@ const RegisterUser = () => {
      
         <div className='center'>
           <h2 className=''>Register</h2>
-          <form className=''>
+          <form className='login-register-form'>
             <div>
               <label>First Name</label>
-              <input className='input' placeholder="Enter your first name"
+              <input className='login-register-input' placeholder="Enter your first name"
                 name='firstName' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
             </div>
             <div>
               <label>Last Name</label>
-              <input className='input'
+              <input className='login-register-input'
                 placeholder="Enter your last name" name='lastName' value={lastName} onChange={(e) => setLastName(e.target.value)} />
             </div>
             <div>
               <label>Email</label>
-              <input className='input' placeholder="Enter your email" name='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+              <input className='login-register-input' placeholder="Enter your email" name='email' value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div>
               <label>Password</label>
-              <input className='input' placeholder="Enter your password" name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+              <input className='login-register-input' placeholder="Enter your password" name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             
           </form>
           <button type="submit" className='button' onClick={saveUser}>Register</button>
-          <button className=' button' onClick={() => { navigate('/login') }}>Login</button>
+          <button className=' button' onClick={() => { navigate('/login') }}> Already Have an Account?</button>
           {errorMessage && <div className="error"> {errorMessage} </div>}
         </div>
       
