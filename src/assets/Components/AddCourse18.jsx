@@ -31,7 +31,6 @@ const AddCourse18 = () => {
                 e.preventDefault();
                 console.log("Course being sent:", course);
                 CourseService.addCourse(course).then(() => {
-
                         setErrorMessage('');
                         setCourse({
                                 courseName: '',
@@ -53,8 +52,8 @@ const AddCourse18 = () => {
         return (
                 <>
                         <div className='center-add-course'>
-                                <button className='add-course-dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
-                                <h2>Add 18 Hole Course</h2>
+                              
+                                <h1 className='add-course-header'>Add 18 Hole Course</h1>
                                 <form className='center-add-course add-course-form'>
 
                                         <label>Course Name</label>

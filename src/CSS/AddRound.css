@@ -8,6 +8,7 @@
 
 .add-round-title {
   color: black;
+  font-size: 2rem;
 }
 
 .custom-select {
@@ -44,13 +45,6 @@ input.round-info {
 input.date {
   width: 25%;
   margin: 5px;
-}
-
-
-
-
-h1 {
-  font-size: xx-large;
 }
 
 .holes {
@@ -106,11 +100,6 @@ h1 {
 }
 
 
-h3 {
-  display: block;
-  text-align: center;
-  margin-bottom: 3px;
-}
 
 .dashboard {
   background-color: transparent;

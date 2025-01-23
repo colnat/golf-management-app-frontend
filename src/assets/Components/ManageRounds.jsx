@@ -5,7 +5,7 @@ import '/src/CSS/Manage.css';
 
 const ManageRounds = () => {
     const [rounds, setRounds] = useState([]);
-    const navigate = useNavigate();
+    
 
     const fetchRounds = async () => {
         RoundService.getRounds().then((response) => {
@@ -27,8 +27,8 @@ const ManageRounds = () => {
         <>
 
             
-                <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
-                <h1>Your Rounds</h1>
+                
+                <h1 className='manage-header'>Your Rounds</h1>
                 {rounds.map((round) => (
                     <div key={round.id} className='center-user-courses'>
                         <table className='course-table'>

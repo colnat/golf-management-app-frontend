@@ -6,7 +6,7 @@ import '/src/CSS/Manage.css';
 const ManageCourses = () => {
 
   const [courses, setCourses] = useState([]);
-  const navigate = useNavigate();
+ 
 
   const fetchCourses = async () => {
     CourseService.getCourses().then((response) => {
@@ -30,8 +30,8 @@ const ManageCourses = () => {
     <>
 
       
-        <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
-        <h1>Your Courses</h1>
+        
+        <h1 className='manage-header'>Your Courses</h1>
         
         <div className=''>
         {courses.map((course) => (

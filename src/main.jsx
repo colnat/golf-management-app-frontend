@@ -11,10 +11,11 @@ import AddRound from './assets/Components/AddRound.jsx';
 import AddRound18 from './assets/Components/AddRound18.jsx';
 import ManageCourses from './assets/Components/ManageCourses.jsx';
 import ManageRounds from './assets/Components/ManageRounds.jsx';
+import Navbar from './assets/Components/Navbar.jsx';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    
+    <Navbar/>
       <Routes>
         <Route path="/register" element={<RegisterUser/>}/>
         <Route path="/login" element={<Login/>}/>

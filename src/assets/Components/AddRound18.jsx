@@ -64,7 +64,7 @@ const AddRound18 = () => {
                 <>
 
                         <div className='center-add-round'>
-                                <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
+                                
                                 <h1 className='add-round-title'>Add 18 Hole Round</h1>
                                 <form className='center-add-round add-round-form'>
 

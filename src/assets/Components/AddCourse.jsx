@@ -58,8 +58,8 @@ const AddCourse = () => {
         
         
            <div className='center-add-course'>
-           <button className='dashboard' onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
-                <h2>Add 9 Hole Course</h2>
+          
+                <h1 className='add-course-header'>Add 9 Hole Course</h1>
                 
                 
                     <form className='center-add-course add-course-form'>
