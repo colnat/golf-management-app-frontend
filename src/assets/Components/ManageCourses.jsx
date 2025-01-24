@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import CourseService from './Service-API-Calls/CourseService.jsx';
-import { useNavigate } from "react-router-dom";
 import '/src/CSS/Manage.css';
-
+import Pagination from './Pagination.jsx';
 const ManageCourses = () => {
 
   const [courses, setCourses] = useState([]);
- 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [coursesPerPage] = useState(5);
+
 
   const fetchCourses = async () => {
     CourseService.getCourses().then((response) => {
@@ -24,19 +25,17 @@ const ManageCourses = () => {
     fetchCourses();
   }, [])
 
-
-
+   const indexOfLastCourse = currentPage * coursesPerPage;
+   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
+   const currentCourses = courses.slice(indexOfFirstCourse, indexOfLastCourse);
   return (
     <>
+  <h1 className='manage-header'>Your Courses</h1>
 
-      
-        
-        <h1 className='manage-header'>Your Courses</h1>
-        
-        <div className=''>
-        {courses.map((course) => (
+      <div className=''>
+        {currentCourses.map((course) => (
           <div key={course.id} className='center-user-courses'>
-            
+
             <table className='course-table' >
               <thead>
                 <tr>
@@ -91,23 +90,22 @@ const ManageCourses = () => {
 
 
               </tbody>
-              
+
             </table>
             <button className='delete-button' onClick={() => deleteCourse(course.id)}>Delete</button>
           </div>
 
-          
-
-            
-            
-          
-
-
         ))}
-        </div>
-        
+        <Pagination
+          itemsPerPage={coursesPerPage}
+          totalItems={courses.length}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
+      </div>
 
-      
+
+
 
     </>
   )

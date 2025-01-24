@@ -8,7 +8,8 @@ export default function Navbar(){
     if (noNavbar.includes(pathname)) return null;
    
    
-   return (<nav className="nav">
+   return (
+   <nav className="nav">
         <Link to='/dashboard' className='nav-dashboard'>Dashboard</Link>
         <ul>
             <li> 
