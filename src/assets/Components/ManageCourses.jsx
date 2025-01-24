@@ -7,7 +7,7 @@ const ManageCourses = () => {
   const [courses, setCourses] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [coursesPerPage] = useState(5);
-
+  const [search, setSearch] = useState("");
 
   const fetchCourses = async () => {
     CourseService.getCourses().then((response) => {
@@ -25,14 +25,24 @@ const ManageCourses = () => {
     fetchCourses();
   }, [])
 
+  const filteredCourses = courses.filter((course) =>
+    course.courseName.toLowerCase().includes(search.toLocaleLowerCase())
+  );
+
    const indexOfLastCourse = currentPage * coursesPerPage;
    const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
-   const currentCourses = courses.slice(indexOfFirstCourse, indexOfLastCourse);
+   const currentCourses = filteredCourses.slice(indexOfFirstCourse, indexOfLastCourse);
   return (
     <>
   <h1 className='manage-header'>Your Courses</h1>
 
       <div className=''>
+      <input
+          className="search-box"
+          placeholder="Enter Course Name"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
         {currentCourses.map((course) => (
           <div key={course.id} className='center-user-courses'>
 
@@ -112,3 +122,10 @@ const ManageCourses = () => {
 }
 
 export default ManageCourses
+// .length && currentCourses.filter((course)=>{
+//   if(search === ""){
+//     return course;
+//   } else if (course.courseName.toLowerCase().includes(search.toLocaleLowerCase())){
+//     return course;
+//   }
+// }).
