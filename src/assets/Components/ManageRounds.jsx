@@ -6,8 +6,10 @@ const ManageRounds = () => {
     const [rounds, setRounds] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [roundsPerPage] = useState(5);
-
+    const [search, setSearch] = useState("");
+    
     const fetchRounds = async () => {
+        
         RoundService.getRounds().then((response) => {
             setRounds(response.data);
             console.log(response.data);
@@ -23,13 +25,25 @@ const ManageRounds = () => {
         fetchRounds();
     }, [])
 
+    const filteredCRounds = rounds.filter((round) =>
+        round.course.courseName.toLowerCase().includes(search.toLocaleLowerCase()) ||
+        new Date(round.datePlayed).toLocaleDateString("en-US",{day:"numeric",month:"long",year:"numeric"}).toLocaleLowerCase().includes(search.toLocaleLowerCase())
+      );
+
     const indexOfLastRound = currentPage * roundsPerPage;
     const indexOfFirstRound = indexOfLastRound - roundsPerPage;
-    const currentRounds = rounds.slice(indexOfFirstRound, indexOfLastRound);
+    const currentRounds = filteredCRounds.slice(indexOfFirstRound, indexOfLastRound);
 
     return (
         <>
         <h1 className='manage-header'>Your Rounds</h1>
+
+        <input
+          className="search-box"
+          placeholder="Search By Course Name or Date"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
             {currentRounds.map((round) => (
                 <div key={round.id} className='center-user-courses'>
                     <table className='course-table'>

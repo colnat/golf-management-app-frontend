@@ -28,8 +28,7 @@ const AddRound18 = () => {
                 setRound(roundCopy);
         };
 
-
-        //If the user selects the default course in the dropdown then onChange will not be called so needed too set the first course manually
+     //If the user selects the default course in the dropdown then onChange will not be called so needed too set the first course manually
         useEffect(() => {
                 CourseService.getCourses().then((response) => {
                         setCourseNameList(response.data)
@@ -59,12 +58,10 @@ const AddRound18 = () => {
                 });
         }
 
-
         return (
                 <>
-
                         <div className='center-add-round'>
-                                
+
                                 <h1 className='add-round-title'>Add 18 Hole Round</h1>
                                 <form className='center-add-round add-round-form'>
 

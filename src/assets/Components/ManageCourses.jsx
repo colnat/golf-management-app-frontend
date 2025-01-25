@@ -36,13 +36,15 @@ const ManageCourses = () => {
     <>
   <h1 className='manage-header'>Your Courses</h1>
 
-      <div className=''>
-      <input
+    
+    <input
           className="search-box"
-          placeholder="Enter Course Name"
+          placeholder="Search By Course Name"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
         />
+    
+      
         {currentCourses.map((course) => (
           <div key={course.id} className='center-user-courses'>
 
@@ -112,7 +114,7 @@ const ManageCourses = () => {
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
         />
-      </div>
+      
 
 
 
@@ -122,10 +124,3 @@ const ManageCourses = () => {
 }
 
 export default ManageCourses
-// .length && currentCourses.filter((course)=>{
-//   if(search === ""){
-//     return course;
-//   } else if (course.courseName.toLowerCase().includes(search.toLocaleLowerCase())){
-//     return course;
-//   }
-// }).

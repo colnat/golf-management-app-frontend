@@ -25,6 +25,7 @@
   justify-content: center;
   flex-direction: column;
   font-family: "Oswald", serif;
+  
 }
 
   table.course-table {
@@ -70,6 +71,19 @@
   cursor: pointer;
   font-size: x-large;
   
+}
+
+input.search-box{
+  display:block;
+  width:40%;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+  padding: 5px;
+  border-color: rgb(255, 255, 255);
+  border: 1px solid #caced1;
+  border-radius: 0.50rem;
+  height: 15px;
 }
 
 
