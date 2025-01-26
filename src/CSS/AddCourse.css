@@ -23,6 +23,7 @@
 .add-course-header{
   font-size: 2rem;
   color: black;
+  
 }
 
 .center-add-course {
@@ -82,7 +83,7 @@ input.location {
     padding: 10px;
     border: 1px solid #ccc; 
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0); 
     max-width: 90%; 
     flex-wrap: wrap;
   }
