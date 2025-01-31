@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import RoundService from './Service-API-Calls/RoundService.jsx';
 import CourseService from './Service-API-Calls/CourseService.jsx';
 import InsightsService from './Service-API-Calls/InsightsService.jsx';
-
+import { BeatLoader } from 'react-spinners';
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -290,7 +290,7 @@ const Dashboard = () => {
                             </table>
                          }
                     </>
-                    : <>loading</>}
+                    : <BeatLoader />}
 
             </div>
 
