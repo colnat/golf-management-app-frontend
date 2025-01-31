@@ -6,6 +6,8 @@ import '/src/CSS/Dashboard.css';
 import { useNavigate } from "react-router-dom";
 import RoundService from './Service-API-Calls/RoundService.jsx';
 import CourseService from './Service-API-Calls/CourseService.jsx';
+import InsightsService from './Service-API-Calls/InsightsService.jsx';
+
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -14,20 +16,24 @@ const Dashboard = () => {
     const [bestNineHole, setBestNineHole] = useState([]);
     const [favouriteCourse, setFavouriteCourse] = useState([]);
     const [mostPlayedCourse, setMostPlayedCourse] = useState([]);
-
+    const [insights,setInsights] = useState("");
 
     useEffect(() => {
         const fetchUserStats = async () => {
             setLoading(true)
             try {
+                const insightsRes = await InsightsService.getInsights();
                 const bestEighteenHoleRes = await RoundService.getBestEighteenHole();
                 const bestNineHoleRes = await RoundService.getBestNineHole();
                 const favouriteCourseRes = await CourseService.findFavouriteCourse();
                 const mostPlayedCourseRes = await CourseService.findMostPlayedCourse();
+                setInsights(insightsRes.data);
                 setBestEighteenHole(bestEighteenHoleRes.data);
                 setBestNineHole(bestNineHoleRes.data);
                 setFavouriteCourse(favouriteCourseRes.data);
                 setMostPlayedCourse(mostPlayedCourseRes.data);
+                console.log(bestEighteenHole);
+                console.log(insightsRes.data);
                 setLoading(false);
             }
             catch (error) {

@@ -33,18 +33,19 @@
     display: flex;
     align-items: center;
     padding: .25rem;
+    
    }
 
 .nav li:hover{
     background-color: #555;
-  
+    border-bottom:3px solid white;
+    transition: background-color  1s ease, color 1s ease;
+    
 }
 
 .nav li.active  {
-    background-color: #555;
     color: white;
-    border-color: #555;
-    
+    border-bottom:3px solid white;
   }
 
 

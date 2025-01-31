@@ -17,6 +17,7 @@ const Pagination = ({
     setCurrentPage(pageNumber);
   };
 
+
   return (
     <nav>
       <ul className="pagination">
