@@ -16,7 +16,7 @@ const Dashboard = () => {
     const [bestNineHole, setBestNineHole] = useState([]);
     const [favouriteCourse, setFavouriteCourse] = useState([]);
     const [mostPlayedCourse, setMostPlayedCourse] = useState([]);
-    const [insights,setInsights] = useState("");
+    const [insights, setInsights] = useState("");
 
     useEffect(() => {
         const fetchUserStats = async () => {
@@ -46,9 +46,9 @@ const Dashboard = () => {
 
     return (
         <>
-            
-                <h1 className='dashboard-home'>Dashboard</h1>
-            
+
+            <h1 className='dashboard-home'>Dashboard</h1>
+
 
             <div className='button-container'>
                 <button onClick={() => navigate('/add-course18')} className='buttons'>Add New Course</button>
@@ -60,8 +60,10 @@ const Dashboard = () => {
             <div className='center-user-stats'>
                 {!isLoading ?
                     <>
+                    <h2>Your Insights</h2>
+                    <p className='insights'>{insights}</p>
                         <h2>Best 18 Hole Round</h2>
-                        {bestEighteenHole == null ? <p>Must have at least one eighteen hole round</p> :
+                        {bestEighteenHole == null ? <p className='no-data'>Must have at least one eighteen hole round</p> :
                             <table className='course-table'>
                                 <thead>
                                     <tr>
@@ -120,7 +122,7 @@ const Dashboard = () => {
                         }
 
                         <h2>Best 9 Hole Round</h2>
-                        {bestNineHole == null ? <p>Must have at least one nine hole round</p> :
+                        {bestNineHole == null ? <p className='no-data'>Must have at least one nine hole round</p> :
 
                             <table className='course-table'>
                                 <thead>
@@ -179,7 +181,7 @@ const Dashboard = () => {
                         }
 
                         <h2>Favourite Course</h2>
-                        {favouriteCourse == null ? <p>Must have at least one course added</p> :
+                        {favouriteCourse == null ? <p className='no-data'>Must have at least one course added</p> :
                             <table className='course-table'>
                                 <thead>
                                     <tr>
@@ -236,7 +238,7 @@ const Dashboard = () => {
 
                         }
                         <h2>Most Played Course</h2>
-                        {mostPlayedCourse == null ? <p>Need At least one round</p> :
+                        {mostPlayedCourse == null ? <p className='no-data'>Need At least one round</p> :
                             <table className='course-table'>
                                 <thead>
                                     <tr>
@@ -288,7 +290,7 @@ const Dashboard = () => {
                                     </tr>
                                 </tbody>
                             </table>
-                         }
+                        }
                     </>
                     : <BeatLoader />}
 

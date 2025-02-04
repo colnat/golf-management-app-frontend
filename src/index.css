@@ -1,7 +1,7 @@
 
 
 body {
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(234, 234, 235);
   margin: 0;
  
 }
@@ -10,6 +10,10 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+h2 {
+  font-size: 2em;
 }
 
 button {

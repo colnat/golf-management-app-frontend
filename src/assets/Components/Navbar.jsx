@@ -1,6 +1,7 @@
 import '/src/CSS/Navbar.css'
 import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom';
+import { GoHomeFill } from "react-icons/go";
 export default function Navbar(){
     const currentPage = useLocation().pathname;
     
@@ -12,7 +13,7 @@ export default function Navbar(){
    
    return (
    <nav className="nav">
-        <Link to='/dashboard' className='nav-dashboard'>Dashboard</Link>
+        <Link to='/dashboard' className='nav-dashboard'><GoHomeFill /></Link>
         <ul>
             <li  className={currentPage == '/add-course18' || currentPage=='/add-course' ? 'active' : ''}> 
             <Link to="/add-course18">Add Course</Link>
