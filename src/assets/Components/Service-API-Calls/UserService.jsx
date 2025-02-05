@@ -11,5 +11,9 @@ class UserService{
         return axios.post(`${USER_API}/login`,user,{withCredentials:true,headers:{ 'Content-Type': 'application/json',}});
         
     }
+
+    logout(){
+        return axios.get(`${USER_API}/logout`,{withCredentials:true,headers:{'Content-Type':'application/json'}});
+    }
 }
 export default new UserService();

@@ -1,12 +1,11 @@
 //This will be the main home page. Here I want users insights displayed, their most recent rounds, favourite courses, best rounds, and handicap.
-//For the AI it could use Spring AI RAG so a user can ask it how to improve on putting for example and it will tell them. The insights like averages
-//of three putts, slices, and fairways hit can be coded in the back end.
 import { useState, useEffect } from 'react';
 import '/src/CSS/Dashboard.css';
 import { useNavigate } from "react-router-dom";
 import RoundService from './Service-API-Calls/RoundService.jsx';
 import CourseService from './Service-API-Calls/CourseService.jsx';
 import InsightsService from './Service-API-Calls/InsightsService.jsx';
+import UserService from './Service-API-Calls/UserService.jsx';
 import { BeatLoader } from 'react-spinners';
 
 const Dashboard = () => {
@@ -18,6 +17,12 @@ const Dashboard = () => {
     const [mostPlayedCourse, setMostPlayedCourse] = useState([]);
     const [insights, setInsights] = useState("");
 
+    const logout = async () => {
+        UserService.logout().then(() => {
+            navigate('/login');
+        }).catch(error => console.error('Error logging out:', error));
+    }
+    
     useEffect(() => {
         const fetchUserStats = async () => {
             setLoading(true)
@@ -46,8 +51,12 @@ const Dashboard = () => {
 
     return (
         <>
-
-            <h1 className='dashboard-home'>Dashboard</h1>
+            <div className='logout'>
+             <button onClick={logout}>Logout</button>
+            </div>
+            
+            <h1 className='dashboard-home'>Welcome to Your Dashboard</h1>
+            <h2 className='dashboard-home'>Improvement Starts Here</h2>
 
 
             <div className='button-container'>
@@ -61,7 +70,8 @@ const Dashboard = () => {
                 {!isLoading ?
                     <>
                     <h2>Your Insights</h2>
-                    <p className='insights'>{insights}</p>
+                        <p className='insights'>{insights}</p>
+                        
                         <h2>Best 18 Hole Round</h2>
                         {bestEighteenHole == null ? <p className='no-data'>Must have at least one eighteen hole round</p> :
                             <table className='course-table'>
