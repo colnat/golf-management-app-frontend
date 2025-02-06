@@ -2,14 +2,21 @@ import '/src/CSS/Navbar.css'
 import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import { GoHomeFill } from "react-icons/go";
+import UserService from './Service-API-Calls/UserService';
+import { useNavigate } from "react-router-dom";
 export default function Navbar(){
     const currentPage = useLocation().pathname;
-    
+    const navigate = useNavigate();
     //The navbar should not render in these four paths
     const noNavbar = ["/login","/register","/dashboard","/"];
     const {pathname} = useLocation();
     if (noNavbar.includes(pathname)) return null;
    
+     const logout = async () => {
+            UserService.logout().then(() => {
+                navigate('/login');
+            }).catch(error => console.error('Error logging out:', error));
+        }
    
    return (
    <nav className="nav">
@@ -26,6 +33,9 @@ export default function Navbar(){
             </li>
             <li className={currentPage == '/manage-rounds' ? 'active' : ''}>
             <Link to="/manage-rounds">Manage Rounds</Link>
+            </li>
+            <li>
+                <Link onClick={logout}>Logout</Link>
             </li>
         </ul>
     </nav>

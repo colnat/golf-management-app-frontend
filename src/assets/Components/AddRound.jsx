@@ -113,7 +113,7 @@ const AddRound = () => {
                                                         value={round.slicesOrDraws}
                                                         onChange={handleChange} />
                                         
-                                        <button className='switch-round' onClick={() => navigate('/add-round18')}>Add 18 hole round</button>
+                                        <button className='switch-round' onClick={() => navigate('/add-round18')}>Add 18 Hole Round</button>
                                         <div className='holes'>
                                                 <div className='hole'>
                                                         <h3>Hole 1</h3>

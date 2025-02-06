@@ -6,18 +6,25 @@
     font-family: "Oswald", serif;
 }
 
+
 .button-container{
     text-align: center;
     margin-bottom: 50px;
-    font-family: "Oswald", serif;
+   
 }
 
-.buttons{
-    margin:auto;
+.dashboard-buttons{
     margin: 5px 5px;
     background-color: white;
     color: black;
+    font-family: "Oswald", serif;
 }
+
+.dashboard-buttons:hover{
+  background-color: #caced1;
+  transition: background-color ease-in-out 0.3s;
+}
+
 
 .center-user-stats{
     display: flex;

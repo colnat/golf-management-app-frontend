@@ -83,7 +83,7 @@ const AddCourse18 = () => {
                                                 onChange={handleChange} />
 
 
-                                        <button className='switch-course' onClick={() => navigate('/add-course')}>Add 9 hole course</button>
+                                        <button className='switch-course' onClick={() => navigate('/add-course')}>Add 9 Hole Course</button>
                                         <div className='holes'>
                                                 <div className='hole'>
 

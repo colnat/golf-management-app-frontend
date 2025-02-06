@@ -1,5 +1,4 @@
-
-
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
 .nav{
     background-color: #000000;
@@ -8,9 +7,9 @@
     justify-content: space-between;
     align-items: stretch;
     gap:2rem;
-    padding: 0rem 1rem;
+    padding: 0rem 0rem;
     margin:0;
-    
+    font-family: "Oswald", serif;
     }
 
 .nav-dashboard{
@@ -38,7 +37,7 @@
 
 .nav li:hover{
     background-color: #555;
-    transition: background-color  1s ease, color 1s ease;
+    transition: background-color  0.3s ease, color 0.3s ease;
     
 }
 

@@ -44,12 +44,12 @@ const AddRound18 = () => {
                         setErrorMessage('');
                         setRound({
                                 datePlayed: '',
-                                fairwaysHit: '',
-                                threePutts: '',
-                                slicesOrDraws: '',
+                                fairwaysHit: 0,
+                                threePutts: 0,
+                                slicesOrDraws: 0,
                                 roundHolesList: Array(18).fill().map((_, i) => ({
                                         roundHoleNumber: i + 1,
-                                        holeScore: '',
+                                        holeScore: 0,
                                 }))
                         })
                 }).catch(error => {
@@ -109,7 +109,7 @@ const AddRound18 = () => {
                                                 value={round.slicesOrDraws}
                                                 onChange={handleChange} />
 
-                                        <button className='switch-round' onClick={() => navigate('/add-round')}>Add 9 hole round</button>
+                                        <button className='switch-round' onClick={() => navigate('/add-round')}>Add 9 Hole Round</button>
                                         <div className='holes'>
                                                 <div className='hole'>
                                                         <h3>Hole 1</h3>

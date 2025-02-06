@@ -27,23 +27,23 @@ const Dashboard = () => {
         const fetchUserStats = async () => {
             setLoading(true)
             try {
-                const insightsRes = await InsightsService.getInsights();
+                //const insightsRes = await InsightsService.getInsights();
                 const bestEighteenHoleRes = await RoundService.getBestEighteenHole();
                 const bestNineHoleRes = await RoundService.getBestNineHole();
                 const favouriteCourseRes = await CourseService.findFavouriteCourse();
                 const mostPlayedCourseRes = await CourseService.findMostPlayedCourse();
-                setInsights(insightsRes.data);
+                //setInsights(insightsRes.data);
                 setBestEighteenHole(bestEighteenHoleRes.data);
                 setBestNineHole(bestNineHoleRes.data);
                 setFavouriteCourse(favouriteCourseRes.data);
                 setMostPlayedCourse(mostPlayedCourseRes.data);
-                console.log(bestEighteenHole);
                 console.log(insightsRes.data);
-                setLoading(false);
             }
             catch (error) {
                 setLoading(false)
                 console.log(error)
+            } finally{
+                setLoading(false);
             }
         };
         fetchUserStats();
@@ -52,7 +52,7 @@ const Dashboard = () => {
     return (
         <>
             <div className='logout'>
-             <button onClick={logout}>Logout</button>
+             <button className='dashboard-buttons' onClick={logout}>Logout</button>
             </div>
             
             <h1 className='dashboard-home'>Welcome to Your Dashboard</h1>
@@ -60,17 +60,21 @@ const Dashboard = () => {
 
 
             <div className='button-container'>
-                <button onClick={() => navigate('/add-course18')} className='buttons'>Add New Course</button>
-                <button onClick={() => navigate('/add-round18')} className='buttons'>Add New Round</button>
-                <button onClick={() => navigate('/manage-courses')} className='buttons'>Manage Courses</button>
-                <button onClick={() => navigate('/manage-rounds')} className='buttons'>Manage Rounds</button>
+                <button onClick={() => navigate('/add-course18')} className='dashboard-buttons'>Add New Course</button>
+                <button onClick={() => navigate('/add-round18')} className='dashboard-buttons'>Add New Round</button>
+                <button onClick={() => navigate('/manage-courses')} className='dashboard-buttons'>Manage Courses</button>
+                <button onClick={() => navigate('/manage-rounds')} className='dashboard-buttons'>Manage Rounds</button>
             </div>
 
             <div className='center-user-stats'>
                 {!isLoading ?
                     <>
                     <h2>Your Insights</h2>
-                        <p className='insights'>{insights}</p>
+                    <p className='insights'>ifvjfbnfjg fjfjfjfjfj jfjfjfjf jfjffjjffj fjfjfjfjfj fjfjfjfjrirvv swswifapvapv jaipvn aijfndv dapivn dsapnv anvp
+                        ddfvfvfd djdjdj jdjdj djdj djdje dsndv sajpvn apdvn apdj dj apdnf adj djap aidnc apdjfn jss padjn pa aapd apdj ad p a ahd apdjn ahdfnb apedf
+                        aedjn adj reur pr 
+                    </p>
+                        {/* <p className='insights'>{insights}</p> */}
                         
                         <h2>Best 18 Hole Round</h2>
                         {bestEighteenHole == null ? <p className='no-data'>Must have at least one eighteen hole round</p> :
