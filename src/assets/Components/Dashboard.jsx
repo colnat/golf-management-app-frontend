@@ -15,6 +15,7 @@ const Dashboard = () => {
     const [bestNineHole, setBestNineHole] = useState([]);
     const [favouriteCourse, setFavouriteCourse] = useState([]);
     const [mostPlayedCourse, setMostPlayedCourse] = useState([]);
+    const [handicap,setHandicap] = useState("");
     const [insights, setInsights] = useState("");
 
     const logout = async () => {
@@ -27,17 +28,19 @@ const Dashboard = () => {
         const fetchUserStats = async () => {
             setLoading(true)
             try {
-                //const insightsRes = await InsightsService.getInsights();
+                const insightsRes = await InsightsService.getInsights();
+                const handicapRes = await RoundService.getHandicap();
                 const bestEighteenHoleRes = await RoundService.getBestEighteenHole();
                 const bestNineHoleRes = await RoundService.getBestNineHole();
                 const favouriteCourseRes = await CourseService.findFavouriteCourse();
                 const mostPlayedCourseRes = await CourseService.findMostPlayedCourse();
-                //setInsights(insightsRes.data);
+                setInsights(insightsRes.data);
+                setHandicap(handicapRes.data);
                 setBestEighteenHole(bestEighteenHoleRes.data);
                 setBestNineHole(bestNineHoleRes.data);
                 setFavouriteCourse(favouriteCourseRes.data);
                 setMostPlayedCourse(mostPlayedCourseRes.data);
-                console.log(insightsRes.data);
+                
             }
             catch (error) {
                 setLoading(false)
@@ -51,30 +54,31 @@ const Dashboard = () => {
 
     return (
         <>
-            <div className='logout'>
-             <button className='dashboard-buttons' onClick={logout}>Logout</button>
-            </div>
-            
+           <div className='handicap-box'>
+                <div className='handicap'>
+                 {handicap == 101 ? <h3>N/A</h3> : <h3>{handicap}</h3>}
+                </div>
+                <p className='handicap-label'>Handicap</p>
+           </div> 
+           
+
             <h1 className='dashboard-home'>Welcome to Your Dashboard</h1>
             <h2 className='dashboard-home'>Improvement Starts Here</h2>
-
+            
 
             <div className='button-container'>
                 <button onClick={() => navigate('/add-course18')} className='dashboard-buttons'>Add New Course</button>
                 <button onClick={() => navigate('/add-round18')} className='dashboard-buttons'>Add New Round</button>
                 <button onClick={() => navigate('/manage-courses')} className='dashboard-buttons'>Manage Courses</button>
                 <button onClick={() => navigate('/manage-rounds')} className='dashboard-buttons'>Manage Rounds</button>
+                <button className='dashboard-buttons' onClick={logout}>Logout</button>
             </div>
 
             <div className='center-user-stats'>
                 {!isLoading ?
                     <>
                     <h2>Your Insights</h2>
-                    <p className='insights'>ifvjfbnfjg fjfjfjfjfj jfjfjfjf jfjffjjffj fjfjfjfjfj fjfjfjfjrirvv swswifapvapv jaipvn aijfndv dapivn dsapnv anvp
-                        ddfvfvfd djdjdj jdjdj djdj djdje dsndv sajpvn apdvn apdj dj apdnf adj djap aidnc apdjfn jss padjn pa aapd apdj ad p a ahd apdjn ahdfnb apedf
-                        aedjn adj reur pr 
-                    </p>
-                        {/* <p className='insights'>{insights}</p> */}
+                        <p className='insights'>{insights}</p>
                         
                         <h2>Best 18 Hole Round</h2>
                         {bestEighteenHole == null ? <p className='no-data'>Must have at least one eighteen hole round</p> :

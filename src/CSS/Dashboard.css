@@ -55,9 +55,32 @@
     text-align: center;
   }
 
-  .logout{
-    text-align: right;
-    margin-top: 8px;
-    margin-left: 8px;
+
+  .handicap{
+   font-size: 2em;
   }
+
+  .handicap h3 {
+    margin: 0; 
+    padding: 0;
+}
+
+  .handicap-box{
+    text-align: left;
+    margin-left: 15px;
+    display: block;
+   
+    
+  }
+
+  .handicap-label{
+    display: block; 
+    margin-top: 1px;
+    font-family: "Oswald", serif;
+    font-size: 1em;
+}
+
+
+
+
 

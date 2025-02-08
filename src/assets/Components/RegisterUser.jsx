@@ -30,21 +30,21 @@ const RegisterUser = () => {
           <h2 className=''>Register</h2>
           <form className='login-register-form'>
             <div>
-              <label>First Name</label>
+              <label className='login-register'>First Name</label>
               <input className='login-register-input' placeholder="Enter your first name"
                 name='firstName' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
             </div>
             <div>
-              <label>Last Name</label>
+              <label className='login-register'>Last Name</label>
               <input className='login-register-input'
                 placeholder="Enter your last name" name='lastName' value={lastName} onChange={(e) => setLastName(e.target.value)} />
             </div>
             <div>
-              <label>Email</label>
+              <label className='login-register'>Email</label>
               <input className='login-register-input' placeholder="Enter your email" name='email' value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div>
-              <label>Password</label>
+              <label className='login-register'>Password</label>
               <input className='login-register-input' placeholder="Enter your password" name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             

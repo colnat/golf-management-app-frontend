@@ -27,7 +27,7 @@ const Login = () => {
           <h2 className=''>Login</h2>
          <form className='login-register-form'>
             
-            <label>Email</label>
+            <label className='login-register'>Email</label>
               <input
                 className="login-register-input"
                 placeholder="Enter your email"
@@ -37,7 +37,7 @@ const Login = () => {
               />
             
             
-              <label>Password</label>
+              <label className='login-register'>Password</label>
               <input
                 className="login-register-input"
                 placeholder="Enter your password"

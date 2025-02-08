@@ -23,6 +23,10 @@ class RoundService {
             return axios.get(`${ROUNDS_API}/best-9-hole`,{withCredentials:true,headers:{'Content-Type': 'application/json'}})
         }
 
+        getHandicap(){
+            return axios.get(`${ROUNDS_API}/handicap`,{withCredentials:true,headers:{'Content-Type':'application/json'}})
+        }
+
        
 }
 
