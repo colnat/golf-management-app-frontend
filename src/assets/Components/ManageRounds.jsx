@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import RoundService from './Service-API-Calls/RoundService.jsx';
 import '/src/CSS/Manage.css';
 import Pagination from './Pagination.jsx';
+
 const ManageRounds = () => {
     const [rounds, setRounds] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -27,7 +28,7 @@ const ManageRounds = () => {
 
     const filteredCRounds = rounds.filter((round) =>
         round.course.courseName.toLowerCase().includes(search.toLocaleLowerCase()) ||
-        new Date(round.datePlayed).toLocaleDateString("en-US",{day:"numeric",month:"long",year:"numeric"}).toLocaleLowerCase().includes(search.toLocaleLowerCase())
+        new Date(round.datePlayed).toLocaleDateString("en-US",{timeZone: 'UTC',day:"numeric",month:"long",year:"numeric"}).toLocaleLowerCase().includes(search.toLocaleLowerCase())
       );
 
     const indexOfLastRound = currentPage * roundsPerPage;
@@ -61,7 +62,8 @@ const ManageRounds = () => {
                         <tbody>
                             <tr key={round.id}>
                                 <td>{round.course.courseName}</td>
-                                <td>{new Date(round.datePlayed).toLocaleString("en-US", {
+                                <td>{new Date(round.datePlayed).toLocaleDateString("en-US", {
+                                    timeZone: 'UTC',
                                     day: "numeric",
                                     month: "long",
                                     year: "numeric",
