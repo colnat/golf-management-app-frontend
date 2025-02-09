@@ -25,14 +25,17 @@ const ManageCourses = () => {
     fetchCourses();
   }, [])
 
+  //Used to search courses
   const filteredCourses = courses.filter((course) =>
     course.courseName.toLowerCase().includes(search.toLocaleLowerCase())
   );
-
+ 
+  //These three variables are used for the pagination component
    const indexOfLastCourse = currentPage * coursesPerPage;
    const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
    const currentCourses = filteredCourses.slice(indexOfFirstCourse, indexOfLastCourse);
-  return (
+  
+   return (
     <>
   <h1 className='manage-header'>Your Courses</h1>
 
@@ -66,7 +69,7 @@ const ManageCourses = () => {
                   <td>{course.courseLocation}</td>
 
                 </tr>
-
+                {/* Creating a separate table to map the holes horizontally below the course */}
                 <tr>
                   <td colSpan="7">
                     <table className='hole-table'>

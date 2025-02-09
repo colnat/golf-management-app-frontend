@@ -21,6 +21,7 @@ const AddRound18 = () => {
                 }))
         })
 
+        //Uses set from lodash to update the values in the holes array
         const handleChange = (e) => {
                 const { name, value } = e.target;
                 const roundCopy = JSON.parse(JSON.stringify(round));
@@ -66,7 +67,8 @@ const AddRound18 = () => {
                                 <form className='center-add-round add-round-form'>
 
                                         <label>Course Played</label>
-
+                                        
+                                        {/* Display users added courses in a dropdown */}
                                         <select className='pick-course custom-select'
                                                 value={courseId}
                                                 onChange={(e) => {
@@ -80,7 +82,8 @@ const AddRound18 = () => {
                                                         </option>
                                                 ))}
                                         </select>
-
+                                        
+                                        {/* Gets other info about round */}
                                         <label>Date Played</label>
                                         <input className="add-round-input date"
                                                 type="date"
@@ -109,7 +112,10 @@ const AddRound18 = () => {
                                                 value={round.slicesOrDraws}
                                                 onChange={handleChange} />
 
+                                        {/* Navigate to add 9 hole page */}
                                         <button className='switch-round' onClick={() => navigate('/add-round')}>Add 9 Hole Round</button>
+                                        
+                                        {/* Collect hole scores */}
                                         <div className='holes'>
                                                 <div className='hole'>
                                                         <h3>Hole 1</h3>

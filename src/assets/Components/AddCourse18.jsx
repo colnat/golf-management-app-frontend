@@ -20,6 +20,7 @@ const AddCourse18 = () => {
 
         });
 
+        //Uses set from lodash to update the values in the holes array
         const handleChange = (e) => {
                 const { name, value } = e.target;
                 const courseCopy = JSON.parse(JSON.stringify(course));
@@ -55,7 +56,7 @@ const AddCourse18 = () => {
                               
                                 <h1 className='add-course-header'>Add 18 Hole Course</h1>
                                 <form className='center-add-course add-course-form'>
-
+                                        {/* Get information about the course */}
                                         <label>Course Name</label>
                                         <input className="add-course-input name"
                                                 type="text"
@@ -82,8 +83,9 @@ const AddCourse18 = () => {
                                                 value={course.courseLocation}
                                                 onChange={handleChange} />
 
-
+                                        {/* Navigate to add 9 hole course page */}
                                         <button className='switch-course' onClick={() => navigate('/add-course')}>Add 9 Hole Course</button>
+                                        {/* Get inforamtion about each hole (par and length) */}
                                         <div className='holes'>
                                                 <div className='hole'>
 

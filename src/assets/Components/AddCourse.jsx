@@ -21,6 +21,7 @@ const AddCourse = () => {
 
     });
 
+    //Uses set from lodash to update the values in the holes array
     const handleChange = (e) => {
         const { name, value } = e.target;
          const courseCopy = JSON.parse(JSON.stringify(course));
@@ -32,7 +33,6 @@ const AddCourse = () => {
     e.preventDefault();
     console.log("Course being sent:",course);
     CourseService.addCourse(course).then(() => {
-         
          setErrorMessage('');
          setCourse({
                 courseName:'',
@@ -43,10 +43,8 @@ const AddCourse = () => {
                         courseHolePar: 0,
                         courseHoleLength: 0,
                   }))
-         })
-
-         
-    }).catch(error => {console.error('Error adding course:',error);
+                })
+        }).catch(error => {console.error('Error adding course:',error);
                        setErrorMessage('Error saving course');
         });
     
@@ -61,7 +59,7 @@ const AddCourse = () => {
           
                 <h1 className='add-course-header'>Add 9 Hole Course</h1>
                 
-                
+                    {/* Get information about course */}
                     <form className='center-add-course add-course-form'>
                         
                             <label>Course Name</label>
@@ -90,8 +88,10 @@ const AddCourse = () => {
                                     value={course.courseLocation}
                                     onChange={handleChange}/>
                             
-                        
+                        {/* Navigate to add 18 hole course */}
                         <button className='switch-course' onClick={() => navigate('/add-course18')}>Add 18 Hole Course</button>
+
+                        {/* Get information about holes (par and length) */}
                         <div className='holes'>
                         <div className='hole'>
                             

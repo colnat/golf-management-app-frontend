@@ -26,11 +26,13 @@ const ManageRounds = () => {
         fetchRounds();
     }, [])
 
+    //Used to search by course name or by a date
     const filteredCRounds = rounds.filter((round) =>
         round.course.courseName.toLowerCase().includes(search.toLocaleLowerCase()) ||
         new Date(round.datePlayed).toLocaleDateString("en-US",{timeZone: 'UTC',day:"numeric",month:"long",year:"numeric"}).toLocaleLowerCase().includes(search.toLocaleLowerCase())
       );
 
+    //These three variables are used for the pagination component
     const indexOfLastRound = currentPage * roundsPerPage;
     const indexOfFirstRound = indexOfLastRound - roundsPerPage;
     const currentRounds = filteredCRounds.slice(indexOfFirstRound, indexOfLastRound);
@@ -75,6 +77,7 @@ const ManageRounds = () => {
                                 {/* Show course par. If 18 hole round show 18 hole par else show nine hole par. Every Course has a 9 and 18 hole par  */}
                                 <td>{round.roundLength == 18 ? round.course.eighteenHolePar : round.course.nineHolePar}</td>
                             </tr>
+                            {/* Creating a separate table to map the holes horizontally below the course */}
                             <tr>
                                 <td colSpan="7">
                                     <table className='hole-table'>

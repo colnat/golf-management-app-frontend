@@ -54,6 +54,7 @@ const Dashboard = () => {
 
     return (
         <>
+           {/* Display the handicap. If it returns 101 the user does not have enough 18 hole rounds */}
            <div className='handicap-box'>
                 <div className='handicap'>
                  {handicap == 101 ? <h3>N/A</h3> : <h3>{handicap}</h3>}
@@ -77,9 +78,11 @@ const Dashboard = () => {
             <div className='center-user-stats'>
                 {!isLoading ?
                     <>
+                    {/* Display the users insights */}
                     <h2>Your Insights</h2>
                         <p className='insights'>{insights}</p>
                         
+                        {/* Display thier best 18 hole round */}
                         <h2>Best 18 Hole Round</h2>
                         {bestEighteenHole == null ? <p className='no-data'>Must have at least one eighteen hole round</p> :
                             <table className='course-table'>
@@ -100,6 +103,7 @@ const Dashboard = () => {
                                     <tr>
                                         <td>{bestEighteenHole.course.courseName}</td>
                                         <td>{new Date(bestEighteenHole.datePlayed).toLocaleString("en-US", {
+                                            timeZone: 'UTC',
                                             day: "numeric",
                                             month: "long",
                                             year: "numeric",
@@ -138,7 +142,8 @@ const Dashboard = () => {
 
                             </table>
                         }
-
+                        
+                        {/* Display the users best 9 hole round */}
                         <h2>Best 9 Hole Round</h2>
                         {bestNineHole == null ? <p className='no-data'>Must have at least one nine hole round</p> :
 
@@ -160,6 +165,7 @@ const Dashboard = () => {
                                     <tr>
                                         <td>{bestNineHole.course.courseName}</td>
                                         <td>{new Date(bestNineHole.datePlayed).toLocaleString("en-US", {
+                                            timeZone: 'UTC',
                                             day: "numeric",
                                             month: "long",
                                             year: "numeric",
@@ -197,7 +203,8 @@ const Dashboard = () => {
                                 </tbody>
                             </table>
                         }
-
+                        
+                        {/* Display what thier favourite course is */}
                         <h2>Favourite Course</h2>
                         {favouriteCourse == null ? <p className='no-data'>Must have at least one course added</p> :
                             <table className='course-table'>
@@ -255,6 +262,8 @@ const Dashboard = () => {
 
 
                         }
+                        
+                        {/* Display the users most played course */}
                         <h2>Most Played Course</h2>
                         {mostPlayedCourse == null ? <p className='no-data'>Need At least one round</p> :
                             <table className='course-table'>
@@ -323,5 +332,3 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-// : <>loading</>}
-// {!isLoading ? 

@@ -22,6 +22,7 @@ const AddRound = () => {
                 }))
         })
 
+        //Uses set from lodash to update the values in the holes array
         const handleChange = (e) => {
                 const { name, value } = e.target;
                 const roundCopy = JSON.parse(JSON.stringify(round));
@@ -68,9 +69,9 @@ const AddRound = () => {
                                
                                 <h1 className='add-round-title'>Add 9 Hole Round</h1>
                                 <form className='center-add-round add-round-form'>
-                                        
+                                                {/* Display users courses in dropdown */}
                                                 <label>Course Played</label>
-
+                                                
                                                 <select className=' pick-course custom-select'
                                                         value={courseId}
                                                         onChange={(e) => {
@@ -84,7 +85,7 @@ const AddRound = () => {
                                                                 </option>
                                                         ))}
                                                 </select>
-
+                                                {/* Get other info about the round */}
                                                 <label>Date Played</label>
                                                 <input className="add-round-input date"
                                                         type="date"
@@ -112,8 +113,10 @@ const AddRound = () => {
                                                         name="slicesOrDraws"
                                                         value={round.slicesOrDraws}
                                                         onChange={handleChange} />
-                                        
+                                       
+                                        {/* Navigate to add 18 hole round page  */}
                                         <button className='switch-round' onClick={() => navigate('/add-round18')}>Add 18 Hole Round</button>
+                                        {/* Get scores from the round */}
                                         <div className='holes'>
                                                 <div className='hole'>
                                                         <h3>Hole 1</h3>
