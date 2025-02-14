@@ -1,4 +1,5 @@
 //This will be the main home page. Here I want users insights displayed, their most recent rounds, favourite courses, best rounds, and handicap.
+//I should add somthing where a user can add their location and the AI can recommend 
 import { useState, useEffect } from 'react';
 import '/src/CSS/Dashboard.css';
 import { useNavigate } from "react-router-dom";
@@ -20,15 +21,18 @@ const Dashboard = () => {
 
     const logout = async () => {
         UserService.logout().then(() => {
+            sessionStorage.removeItem('userLocation');
             navigate('/login');
         }).catch(error => console.error('Error logging out:', error));
     }
+
+    const userLocation = sessionStorage.getItem('userLocation');
     
     useEffect(() => {
         const fetchUserStats = async () => {
             setLoading(true)
             try {
-                const insightsRes = await InsightsService.getInsights();
+                const insightsRes = await InsightsService.getInsights(userLocation);
                 const handicapRes = await RoundService.getHandicap();
                 const bestEighteenHoleRes = await RoundService.getBestEighteenHole();
                 const bestNineHoleRes = await RoundService.getBestNineHole();
