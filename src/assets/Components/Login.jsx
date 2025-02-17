@@ -9,7 +9,8 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
+  // Getting the users location to use for the AI to suggest courses near them
+  //store thier location in the browser
   const getUserLocation  = () =>{
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(

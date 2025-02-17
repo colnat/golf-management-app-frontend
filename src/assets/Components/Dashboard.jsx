@@ -26,12 +26,11 @@ const Dashboard = () => {
         }).catch(error => console.error('Error logging out:', error));
     }
 
-    const userLocation = sessionStorage.getItem('userLocation');
-    
-    useEffect(() => {
+   useEffect(() => {
         const fetchUserStats = async () => {
             setLoading(true)
             try {
+                const userLocation = sessionStorage.getItem('userLocation');
                 const insightsRes = await InsightsService.getInsights(userLocation);
                 const handicapRes = await RoundService.getHandicap();
                 const bestEighteenHoleRes = await RoundService.getBestEighteenHole();

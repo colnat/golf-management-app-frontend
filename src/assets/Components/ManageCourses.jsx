@@ -12,7 +12,6 @@ const ManageCourses = () => {
   const fetchCourses = async () => {
     CourseService.getCourses().then((response) => {
       setCourses(response.data);
-      console.log(response.data);
     }).catch((error) => console.log(error));
   }
 
