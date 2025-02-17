@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import CourseService from './Service-API-Calls/CourseService.jsx';
 import '/src/CSS/Manage.css';
 import Pagination from './Pagination.jsx';
+import { BeatLoader } from 'react-spinners';
 const ManageCourses = () => {
 
   const [courses, setCourses] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [coursesPerPage] = useState(5);
   const [search, setSearch] = useState("");
+  const [isLoading, setLoading] = useState(true)
 
   const fetchCourses = async () => {
     CourseService.getCourses().then((response) => {
@@ -21,7 +23,21 @@ const ManageCourses = () => {
   }
 
   useEffect(() => {
-    fetchCourses();
+   const fetchUserCourses = async () => {
+    setLoading(true)
+    try{
+      fetchCourses();
+    }
+    catch(error){
+      setLoading(false)
+      console.log(error)
+    }
+    finally{
+      setLoading(false)
+    }
+   };
+   fetchUserCourses();
+    
   }, [])
 
   //Used to search courses
@@ -46,8 +62,9 @@ const ManageCourses = () => {
           onChange={(event) => setSearch(event.target.value)}
         />
     
-      
-        {currentCourses.map((course) => (
+      {!isLoading ?
+        <>
+          {currentCourses.map((course) => (
           <div key={course.id} className='center-user-courses'>
 
             <table className='course-table' >
@@ -117,6 +134,9 @@ const ManageCourses = () => {
           currentPage={currentPage}
         />
       
+        </>
+    :<BeatLoader />}
+        
 
 
 

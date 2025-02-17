@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 import RoundService from './Service-API-Calls/RoundService.jsx';
 import '/src/CSS/Manage.css';
 import Pagination from './Pagination.jsx';
-
+import { BeatLoader } from 'react-spinners';
 const ManageRounds = () => {
     const [rounds, setRounds] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [roundsPerPage] = useState(5);
     const [search, setSearch] = useState("");
-    
+    const [isLoading, setLoading] = useState(true)
+
     const fetchRounds = async () => {
         
         RoundService.getRounds().then((response) => {
@@ -22,7 +23,20 @@ const ManageRounds = () => {
     }
 
     useEffect(() => {
-        fetchRounds();
+    const fetchUserRounds = async () => {
+    setLoading(true)
+    try{
+      fetchRounds();
+    }
+    catch(error){
+      setLoading(false)
+      console.log(error)
+    }
+    finally{
+      setLoading(false)
+    }
+   };
+   fetchUserRounds();
     }, [])
 
     //Used to search by course name or by a date
@@ -46,6 +60,9 @@ const ManageRounds = () => {
           value={search}
           onChange={(event) => setSearch(event.target.value)}
         />
+
+        {!isLoading ? 
+        <> 
             {currentRounds.map((round) => (
                 <div key={round.id} className='center-user-courses'>
                     <table className='course-table'>
@@ -108,6 +125,10 @@ const ManageRounds = () => {
                 setCurrentPage={setCurrentPage}
                 currentPage={currentPage}
             />
+        
+        </> 
+        :<BeatLoader />}
+            
         </>
     )
 
