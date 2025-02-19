@@ -1,5 +1,6 @@
 //This will be the main home page. Here I want users insights displayed, their most recent rounds, favourite courses, best rounds, and handicap.
 //I should add somthing where a user can add their location and the AI can recommend 
+//A possible feature could be users could add friends and compare stats
 import { useState, useEffect } from 'react';
 import '/src/CSS/Dashboard.css';
 import { useNavigate } from "react-router-dom";
@@ -137,6 +138,12 @@ const Dashboard = () => {
                                                             </td>
                                                         ))}
                                                     </tr>
+                                                    <tr>
+                                                        <th>Par</th>
+                                                            {bestEighteenHole.course.courseHolesList.map((courseHole) => (
+                                                                 <td key={courseHole.id}>{courseHole.courseHolePar}</td>
+                                                            ))}
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </td>
@@ -198,6 +205,12 @@ const Dashboard = () => {
                                                                 {roundHole.holeScore}
                                                             </td>
                                                         ))}
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Par</th>
+                                                            {bestNineHole.course.courseHolesList.map((courseHole) => (
+                                                                 <td key={courseHole.id}>{courseHole.courseHolePar}</td>
+                                                            ))}
                                                     </tr>
                                                 </tbody>
                                             </table>

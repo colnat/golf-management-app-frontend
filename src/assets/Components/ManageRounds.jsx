@@ -110,6 +110,12 @@ const ManageRounds = () => {
                                                     <td key={roundHole.id}>{roundHole.holeScore}</td>
                                                 ))}
                                             </tr>
+                                            <tr>
+                                            <th>Par</th>
+                                            {round.course.courseHolesList.map((courseHole) => (
+                                                <td key={courseHole.id}>{courseHole.courseHolePar}</td>
+                                            ))}
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </td>
@@ -127,7 +133,7 @@ const ManageRounds = () => {
             />
         
         </> 
-        :<BeatLoader />}
+        :<BeatLoader/>}
             
         </>
     )
