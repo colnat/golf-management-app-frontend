@@ -20,6 +20,27 @@ const Dashboard = () => {
     const [handicap,setHandicap] = useState("");
     const [insights, setInsights] = useState("");
 
+  // Getting the users location to use for the AI to suggest courses near them
+  //store thier location in the browser
+  const getUserLocation  = () =>{
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const {latitude, longitude} = position.coords;
+          const userLocation = JSON.stringify({ latitude, longitude });
+          sessionStorage.setItem('userLocation',userLocation);
+        },
+        (error) => {
+          console.error('Error getting location:',error)
+        }
+      );
+    }
+    else{
+      console.error('Location is not supported');
+    }
+  }
+
+
     const logout = async () => {
         UserService.logout().then(() => {
             sessionStorage.removeItem('userLocation');
@@ -31,13 +52,20 @@ const Dashboard = () => {
         const fetchUserStats = async () => {
             setLoading(true)
             try {
+                getUserLocation();
+                
                 const userLocation = sessionStorage.getItem('userLocation');
-                const insightsRes = await InsightsService.getInsights(userLocation);
-                const handicapRes = await RoundService.getHandicap();
-                const bestEighteenHoleRes = await RoundService.getBestEighteenHole();
-                const bestNineHoleRes = await RoundService.getBestNineHole();
-                const favouriteCourseRes = await CourseService.findFavouriteCourse();
-                const mostPlayedCourseRes = await CourseService.findMostPlayedCourse();
+                
+                const [insightsRes,handicapRes,bestEighteenHoleRes,bestNineHoleRes,favouriteCourseRes,mostPlayedCourseRes] = await Promise.all([
+                    InsightsService.getInsights(userLocation),
+                    RoundService.getHandicap(),
+                    RoundService.getBestEighteenHole(),
+                    RoundService.getBestNineHole(),
+                    CourseService.findFavouriteCourse(),
+                    CourseService.findMostPlayedCourse()
+
+                ]);
+                
                 setInsights(insightsRes.data);
                 setHandicap(handicapRes.data);
                 setBestEighteenHole(bestEighteenHoleRes.data);
@@ -47,7 +75,6 @@ const Dashboard = () => {
                 
             }
             catch (error) {
-                setLoading(false)
                 console.log(error)
             } finally{
                 setLoading(false);
@@ -55,6 +82,14 @@ const Dashboard = () => {
         };
         fetchUserStats();
     }, []);
+
+    if(isLoading){
+        return (
+            <div className='center-loader'>
+                <BeatLoader/>
+            </div>
+        )
+    }
 
     return (
         <>
@@ -80,7 +115,7 @@ const Dashboard = () => {
             </div>
 
             <div className='center-user-stats'>
-                {!isLoading ?
+        
                     <>
                     {/* Display the users insights */}
                     <h2>Your Insights</h2>
@@ -335,7 +370,7 @@ const Dashboard = () => {
                             </table>
                         }
                     </>
-                    : <BeatLoader />}
+                
 
             </div>
 

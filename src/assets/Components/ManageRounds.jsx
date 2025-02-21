@@ -50,6 +50,14 @@ const ManageRounds = () => {
     const indexOfFirstRound = indexOfLastRound - roundsPerPage;
     const currentRounds = filteredCRounds.slice(indexOfFirstRound, indexOfLastRound);
 
+    if(isLoading){
+        return (
+          <div className='center-loader'>
+              <BeatLoader/>
+          </div>
+      )
+    }
+
     return (
         <>
         <h1 className='manage-header'>Your Rounds</h1>
@@ -61,7 +69,7 @@ const ManageRounds = () => {
           onChange={(event) => setSearch(event.target.value)}
         />
 
-        {!isLoading ? 
+        
         <> 
             {currentRounds.map((round) => (
                 <div key={round.id} className='center-user-courses'>
@@ -133,7 +141,7 @@ const ManageRounds = () => {
             />
         
         </> 
-        :<BeatLoader/>}
+        
             
         </>
     )

@@ -9,31 +9,6 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // Getting the users location to use for the AI to suggest courses near them
-  //store thier location in the browser
-  const getUserLocation  = () =>{
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const {latitude, longitude} = position.coords;
-          const userLocation = JSON.stringify({ latitude, longitude });
-          sessionStorage.setItem('userLocation',userLocation);
-          console.log(userLocation);
-        },
-        (error) => {
-          console.error('Error getting location:',error)
-        }
-      );
-    }
-    else{
-      console.error('Location is not supported');
-    }
-  }
-
-  useEffect(() => {
-    getUserLocation();
-  },[])
-
 
   const login = (e) => {
     e.preventDefault();

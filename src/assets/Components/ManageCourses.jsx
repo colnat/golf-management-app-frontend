@@ -49,6 +49,14 @@ const ManageCourses = () => {
    const indexOfLastCourse = currentPage * coursesPerPage;
    const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
    const currentCourses = filteredCourses.slice(indexOfFirstCourse, indexOfLastCourse);
+
+   if(isLoading){
+    return (
+      <div className='center-loader'>
+          <BeatLoader/>
+      </div>
+  )
+   }
   
    return (
     <>
@@ -62,7 +70,7 @@ const ManageCourses = () => {
           onChange={(event) => setSearch(event.target.value)}
         />
     
-      {!isLoading ?
+      
         <>
           {currentCourses.map((course) => (
           <div key={course.id} className='center-user-courses'>
@@ -135,7 +143,7 @@ const ManageCourses = () => {
         />
       
         </>
-    :<BeatLoader />}
+  
         
 
 
