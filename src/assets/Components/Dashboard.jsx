@@ -23,27 +23,32 @@ const Dashboard = () => {
   // Getting the users location to use for the AI to suggest courses near them
   //store thier location in the browser
   const getUserLocation  = () =>{
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const {latitude, longitude} = position.coords;
-          const userLocation = JSON.stringify({ latitude, longitude });
-          sessionStorage.setItem('userLocation',userLocation);
-        },
-        (error) => {
-          console.error('Error getting location:',error)
-        }
-      );
-    }
-    else{
-      console.error('Location is not supported');
-    }
+    return new Promise((resolve) => {
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(
+              (position) => {
+                const {latitude, longitude} = position.coords;
+                const userLocation = JSON.stringify({ latitude, longitude });
+                resolve(userLocation);
+              },
+              (error) => {
+                console.error('Error getting location:',error);
+                resolve(null);
+              }
+            );
+          }
+          else{
+            console.error('Location is not supported');
+            resolve(null);
+         }
+    });
+
   }
 
 
     const logout = async () => {
         UserService.logout().then(() => {
-            sessionStorage.removeItem('userLocation');
+
             navigate('/login');
         }).catch(error => console.error('Error logging out:', error));
     }
@@ -52,9 +57,8 @@ const Dashboard = () => {
         const fetchUserStats = async () => {
             setLoading(true)
             try {
-                getUserLocation();
                 
-                const userLocation = sessionStorage.getItem('userLocation');
+                const userLocation = await getUserLocation();
                 
                 const [insightsRes,handicapRes,bestEighteenHoleRes,bestNineHoleRes,favouriteCourseRes,mostPlayedCourseRes] = await Promise.all([
                     InsightsService.getInsights(userLocation),
