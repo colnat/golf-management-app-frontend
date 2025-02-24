@@ -50,7 +50,6 @@ const AddCourse = () => {
     
    }
     
-    
     return (
         <>
         
@@ -93,253 +92,26 @@ const AddCourse = () => {
 
                         {/* Get information about holes (par and length) */}
                         <div className='holes'>
-                        <div className='hole'>
+                        {course.courseHolesList.map((hole,index) => (
+                                <div className='hole' key={index}>
+                                        <h3>Hole {hole.courseHoleNumber}</h3>
+                                        <label>Enter the Par</label>
+                                        <input  className='add-course-input '
+                                                type= "number"
+                                                name = {`courseHolesList[${index}].courseHolePar`}
+                                                value = {hole.courseHolePar}
+                                                placeholder='Par 3 to 5'
+                                                onChange={handleChange}/>
+                                        <label>Hole Length</label>
+                                        <input  className='add-course-input'
+                                                type= "number"
+                                                name = {`courseHolesList[${index}].courseHoleLength`}
+                                                value = {hole.courseHoleLength}
+                                                onChange={handleChange}/>
+                                </div>
                             
-                            <h3>Hole 1</h3>
-                        
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[0].courseHoleNumber"
-                                    value = {course.courseHolesList[0].courseHoleNumber}
-                                    readOnly
-                                    hidden
-                                    onChange={handleChange}
-                                    />
-                            <label>Enter the Par</label>
-                            <input  className='add-course-input '
-                                    type= "number"
-                                    name = "courseHolesList[0].courseHolePar"
-                                    value = {course.courseHolesList[0].courseHolePar}
-                                    placeholder='Par 3 to 5'
-                                    onChange={handleChange}/>
-                            <label>Hole Length</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[0].courseHoleLength"
-                                    value = {course.courseHolesList[0].courseHoleLength}
-                                    onChange={handleChange}/>
-                            </div>
-
-                            <div className='hole'>
-                            
-                            <h3>Hole 2</h3>
-                            
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[1].courseHoleNumber"
-                                    value = {course.courseHolesList[1].courseHoleNumber}
-                                    readOnly
-                                    hidden
-                                    onChange={handleChange}
-                                    />
-                            <label>Enter the Par</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[1].courseHolePar"
-                                    value = {course.courseHolesList[1].courseHolePar}
-                                    placeholder='Par 3 to 5'
-                                    onChange={handleChange}/>
-                            <label>Hole Length</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[1].courseHoleLength"
-                                    value = {course.courseHolesList[1].courseHoleLength}
-                                    onChange={handleChange}/>
-                            </div>
-                            
-                            <div className='hole'>
-                            
-                            <h3>Hole 3</h3>
-                            
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[2].courseHoleNumber"
-                                    value = {course.courseHolesList[2].courseHoleNumber}
-                                    readOnly
-                                    hidden
-                                    onChange={handleChange}
-                                    />
-                            <label>Enter the Par</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[2].courseHolePar"
-                                    value = {course.courseHolesList[2].courseHolePar}
-                                    placeholder='Par 3 to 5'
-                                    onChange={handleChange}/>
-                            <label>Hole Length</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[2].courseHoleLength"
-                                    value = {course.courseHolesList[2].courseHoleLength}
-                                    onChange={handleChange}/>
-                            </div>
-
-                            <div className='hole'>
-                        
-                            <h3>Hole 4</h3>
-                            
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[3].courseHoleNumber"
-                                    value = {course.courseHolesList[3].courseHoleNumber}
-                                    readOnly
-                                    hidden
-                                    onChange={handleChange}/>
-                            <label>Enter the Par</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[3].courseHolePar"
-                                    value = {course.courseHolesList[3].courseHolePar}
-                                    placeholder='Par 3 to 5'
-                                    onChange={handleChange}/>
-                            <label>Hole Length</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[3].courseHoleLength"
-                                    value = {course.courseHolesList[3].courseHoleLength}
-                                    onChange={handleChange}/>
-                            </div>
-                           
-                          
-                       
-                       
-                       
-                       <div className='hole'>
-                            
-                            <h3>Hole 5</h3>
-                            
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[4].courseHoleNumber"
-                                    value = {course.courseHolesList[4].courseHoleNumber}
-                                    readOnly
-                                    hidden
-                                    onChange={handleChange}
-                                    />
-                            <label>Enter the Par</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[4].courseHolePar"
-                                    value = {course.courseHolesList[4].courseHolePar}
-                                    placeholder='Par 3 to 5'
-                                    onChange={handleChange}/>
-                            <label>Hole Length</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[4].courseHoleLength"
-                                    value = {course.courseHolesList[4].courseHoleLength}
-                                    onChange={handleChange}/>
-                            </div>
-
-                       <div className='hole'>
-                            
-                            <h3>Hole 6</h3>
-                            
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[5].courseHoleNumber"
-                                    value = {course.courseHolesList[5].courseHoleNumber}
-                                    readOnly
-                                    hidden
-                                    onChange={handleChange}
-                                    />
-                            <label>Enter the Par</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[5].courseHolePar"
-                                    value = {course.courseHolesList[5].courseHolePar}
-                                    placeholder='Par 3 to 5'
-                                    onChange={handleChange}/>
-                            <label>Hole Length</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[5].courseHoleLength"
-                                    value = {course.courseHolesList[5].courseHoleLength}
-                                    onChange={handleChange}/>
-                            </div>
-                       <div className='hole'>
-                            
-                            <h3>Hole 7</h3>
-                            
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[6].courseHoleNumber"
-                                    value = {course.courseHolesList[6].courseHoleNumber  }
-                                    readOnly
-                                    hidden
-                                    onChange={handleChange}
-                                    />
-                            <label>Enter the Par</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[6].courseHolePar"
-                                    value = {course.courseHolesList[6].courseHolePar}
-                                    placeholder='Par 3 to 5'
-                                    onChange={handleChange}/>
-                            <label>Hole Length</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[6].courseHoleLength"
-                                    value = {course.courseHolesList[6].courseHoleLength}
-                                    onChange={handleChange}/>
-                        </div>
-
-                        <div className='hole'>
-                            
-                            <h3>Hole 8</h3>
-                            
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[7].courseHoleNumber"
-                                    value = {course.courseHolesList[7].courseHoleNumber}
-                                    readOnly
-                                    hidden
-                                    onChange={handleChange}
-                                    />
-                            <label>Enter the Par</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[7].courseHolePar"
-                                    value = {course.courseHolesList[7].courseHolePar}
-                                    placeholder='Par 3 to 5'
-                                    onChange={handleChange}/>
-                            <label>Hole Length</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[7].courseHoleLength"
-                                    value = {course.courseHolesList[7].courseHoleLength}
-                                    onChange={handleChange}/>
-                        </div>
-
-                        <div className='hole'>
-                            
-                            <h3>Hole 9</h3>
-                            
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[8].courseHoleNumber"
-                                    value = {course.courseHolesList[8].courseHoleNumber}
-                                    readOnly
-                                    hidden
-                                    onChange={handleChange}
-                                    />
-                            <label>Enter the Par</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[8].courseHolePar"
-                                    value = {course.courseHolesList[8].courseHolePar}
-                                    placeholder='Par 3 to 5'
-                                    onChange={handleChange}/>
-                            <label>Hole Length</label>
-                            <input  className='add-course-input'
-                                    type= "number"
-                                    name = "courseHolesList[8].courseHoleLength"
-                                    value = {course.courseHolesList[8].courseHoleLength}
-                                    onChange={handleChange}/>
-                        </div>
-
-                        
-                        
+                        ))}
+                                                
                         </div>          
                 
                         {errorMessage && <div className="error">{errorMessage}</div>}
