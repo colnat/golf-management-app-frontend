@@ -19,11 +19,11 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/register" element={<RegisterUser/>}/>
         <Route path="/login" element={<Login/>}/>
-        <Route path="/add-course" element={<AddCourse/>}/>
-        <Route path="/add-course18" element={<AddCourse18/>}/>
+        <Route path="/add-course/:id" element={<AddCourse/>}/>
+        <Route path="/add-course18/:id" element={<AddCourse18/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='/add-round' element={<AddRound/>}/>
-        <Route path='/add-round18' element={<AddRound18/>}/>
+        <Route path='/add-round/:id' element={<AddRound/>}/>
+        <Route path='/add-round18/:id' element={<AddRound18/>}/>
         <Route path='/manage-courses' element={<ManageCourses/>}/>
         <Route path='/manage-rounds' element={<ManageRounds/>}/>
       </Routes>

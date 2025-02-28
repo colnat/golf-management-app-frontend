@@ -23,9 +23,13 @@ class CourseService{
         return axios.get(`${COURSE_API}/most-played-course`,{withCredentials:true,headers:{ 'Content-Type': 'application/json'}})
     }
 
+    updateCourse(courseId,course){
+        return axios.put(`${COURSE_API}/update-course/${courseId}`,course,{withCredentials:true,headers:{ 'Content-Type': 'application/json'}})
+    }
+
+    getCourseById(courseId){
+        return axios.get(`${COURSE_API}/get-course-by-id/${courseId}`,{headers:{ 'Content-Type': 'application/json'}})
+    }
     
-
-
-
 }
 export default new CourseService();

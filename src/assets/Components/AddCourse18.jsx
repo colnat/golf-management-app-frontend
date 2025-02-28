@@ -1,13 +1,14 @@
 //Array(9).fill({courseHoleNumber:0, courseHolePar: 0, courseHoleLength: 0})
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CourseService from './Service-API-Calls/CourseService.jsx';
 import '/src/CSS/AddCourse.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import set from "lodash/set";
 
 const AddCourse18 = () => {
         const [errorMessage, setErrorMessage] = useState('');
         const navigate = useNavigate();
+        const { id } = useParams();
         const [course, setCourse] = useState({
                 courseName: '',
                 courseRating: 0,
@@ -43,18 +44,36 @@ const AddCourse18 = () => {
                                         courseHoleLength: 0,
                                 }))
                         })
-
-                       
                 }).catch(error => {
                         console.error('Error adding course:', error);
                         setErrorMessage('Error saving course');
                 });
         }
+
+        const updateCourse = (e) => {
+                e.preventDefault();
+                CourseService.updateCourse(id,course).then(() => {
+                        setErrorMessage('');
+                        alert('Course updated');
+                }).catch(error => {
+                        console.error('Error adding course:', error);
+                        setErrorMessage('Error saving course');
+                })
+        }
+
+        useEffect(() => {
+                if (id !== 'new') {
+                        CourseService.getCourseById(id)
+                                .then((response) => {
+                                        setCourse(response.data);
+                                }).catch((error) => console.log(error));
+                }
+        }, [id, setCourse]);
         return (
                 <>
                         <div className='center-add-course'>
-                              
-                                <h1 className='add-course-header'>Add 18 Hole Course</h1>
+
+                                <h1 className='add-course-header'>{id != 'new' ? 'Update Course' : 'Add 18 Hole Course'}</h1>
                                 <form className='center-add-course add-course-form'>
                                         {/* Get information about the course */}
                                         <label>Course Name</label>
@@ -84,37 +103,37 @@ const AddCourse18 = () => {
                                                 onChange={handleChange} />
 
                                         {/* Navigate to add 9 hole course page */}
-                                        <button className='switch-course' onClick={() => navigate('/add-course')}>Add 9 Hole Course</button>
+                                        <button className='switch-course' onClick={() => navigate('/add-course/new')}>Add 9 Hole Course</button>
                                         {/* Get inforamtion about each hole (par and length) */}
                                         <div className='holes'>
-                                                {course.courseHolesList.map((hole,index) => (
+                                                {course.courseHolesList.map((hole, index) => (
                                                         <div className='hole' key={index}>
-                            
-                                                        <h3>Hole {hole.courseHoleNumber}</h3>
-                                                    
-                                        
-                                                        <label>Enter the Par</label>
-                                                        <input  className='add-course-input '
-                                                                type= "number"
-                                                                name = {`courseHolesList[${index}].courseHolePar`}
-                                                                value = {hole.courseHolePar}
-                                                                placeholder='Par 3 to 5'
-                                                                onChange={handleChange}/>
-                                                        <label>Hole Length</label>
-                                                        <input  className='add-course-input'
-                                                                type= "number"
-                                                                name = {`courseHolesList[${index}].courseHoleLength`}
-                                                                value = {hole.courseHoleLength}
-                                                                onChange={handleChange}/>
+
+                                                                <h3>Hole {hole.courseHoleNumber}</h3>
+
+
+                                                                <label>Enter the Par</label>
+                                                                <input className='add-course-input '
+                                                                        type="number"
+                                                                        name={`courseHolesList[${index}].courseHolePar`}
+                                                                        value={hole.courseHolePar}
+                                                                        placeholder='Par 3 to 5'
+                                                                        onChange={handleChange} />
+                                                                <label>Hole Length</label>
+                                                                <input className='add-course-input'
+                                                                        type="number"
+                                                                        name={`courseHolesList[${index}].courseHoleLength`}
+                                                                        value={hole.courseHoleLength}
+                                                                        onChange={handleChange} />
                                                         </div>
-                            
+
                                                 ))}
 
                                         </div>
 
                                         {errorMessage && <div className="error">{errorMessage}</div>}
 
-                                        <button className="save-button" type="submit" onClick={addCourse}>Save Course </button>
+                                        <button className="save-button" type="submit" onClick={id != 'new' ? updateCourse : addCourse}>Save Course </button>
 
                                 </form>
 

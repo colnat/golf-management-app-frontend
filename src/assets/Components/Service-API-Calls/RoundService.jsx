@@ -27,6 +27,15 @@ class RoundService {
             return axios.get(`${ROUNDS_API}/handicap`,{withCredentials:true,headers:{'Content-Type':'application/json'}})
         }
 
+        updateRound(round,roundId,courseId){
+            return axios.put(`${ROUNDS_API}/update-round/${roundId}/${courseId}`,round,{withCredentials:true,headers:{ 'Content-Type': 'application/json'}})
+        }
+
+        getRoundById(roundId){
+            return axios.get(`${ROUNDS_API}/get-round-by-id/${roundId}`,{withCredentials:true,headers:{'Content-Type': 'application/json'}})
+        }
+
+
        
 }
 

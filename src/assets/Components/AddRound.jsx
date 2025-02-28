@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import CourseService from './Service-API-Calls/CourseService.jsx';
 import RoundService from './Service-API-Calls/RoundService.jsx'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import '/src/CSS/AddRound.css';
 import set from "lodash/set";
 
@@ -10,6 +10,7 @@ const AddRound = () => {
         const [errorMessage, setErrorMessage] = useState('');
         const [courseId, setCourseId] = useState();
         const navigate = useNavigate();
+        const { id } = useParams();
         const [courseNameList, setCourseNameList] = useState([]);
         const [round, setRound] = useState({
                 datePlayed: '',
@@ -41,6 +42,26 @@ const AddRound = () => {
                 }).catch((error) => console.log(error));
         }, [])
 
+        const updateRound = (e) => {
+                e.preventDefault();
+                RoundService.updateRound(round, id, courseId).then(() => {
+                        setErrorMessage('');
+                        alert('Round updated');
+                }).catch(error => {
+                        console.error('Error updating round:', error);
+                        setErrorMessage('Error updating round');
+                })
+        }
+
+        useEffect(() => {
+                if (id !== 'new') {
+                        RoundService.getRoundById(id)
+                                .then((response) => {
+                                        setRound(response.data);
+                                }).catch((error) => console.log(error));
+                }
+        }, [id, setRound]);
+
         const addRound = (e) => {
                 e.preventDefault();
                 setErrorMessage('');
@@ -66,77 +87,77 @@ const AddRound = () => {
                 <>
 
                         <div className='center-add-round'>
-                               
+
                                 <h1 className='add-round-title'>Add 9 Hole Round</h1>
                                 <form className='center-add-round add-round-form'>
-                                                {/* Display users courses in dropdown */}
-                                                <label>Course Played</label>
-                                                
-                                                <select className=' pick-course custom-select'
-                                                        value={courseId}
-                                                        onChange={(e) => {
-                                                                const selectedValue = e.currentTarget.value;
-                                                                setCourseId(selectedValue);
-                                                                console.log("Selected course type:", selectedValue);
-                                                        }}>
-                                                        {courseNameList.map((item) => (
-                                                                <option key={item.id} value={item.id}>
-                                                                        {item.courseName}
-                                                                </option>
-                                                        ))}
-                                                </select>
-                                                {/* Get other info about the round */}
-                                                <label>Date Played</label>
-                                                <input className="add-round-input date"
-                                                        type="date"
-                                                        name="datePlayed"
-                                                        value={round.datePlayed}
-                                                        onChange={handleChange} />
+                                        {/* Display users courses in dropdown */}
+                                        <label>Course Played</label>
 
-                                                <label>Number of Fairways Hit</label>
-                                                <input className="add-round-input round-info"
-                                                        type="number"
-                                                        name="fairwaysHit"
-                                                        value={round.fairwaysHit}
-                                                        onChange={handleChange} />
+                                        <select className=' pick-course custom-select'
+                                                value={courseId}
+                                                onChange={(e) => {
+                                                        const selectedValue = e.currentTarget.value;
+                                                        setCourseId(selectedValue);
+                                                        console.log("Selected course type:", selectedValue);
+                                                }}>
+                                                {courseNameList.map((item) => (
+                                                        <option key={item.id} value={item.id}>
+                                                                {item.courseName}
+                                                        </option>
+                                                ))}
+                                        </select>
+                                        {/* Get other info about the round */}
+                                        <label>Date Played</label>
+                                        <input className="add-round-input date"
+                                                type="date"
+                                                name="datePlayed"
+                                                value={round.datePlayed}
+                                                onChange={handleChange} />
 
-                                                <label>Number of Three Putts</label>
-                                                <input className="add-round-input round-info"
-                                                        type="number"
-                                                        name="threePutts"
-                                                        value={round.threePutts}
-                                                        onChange={handleChange} />
+                                        <label>Number of Fairways Hit</label>
+                                        <input className="add-round-input round-info"
+                                                type="number"
+                                                name="fairwaysHit"
+                                                value={round.fairwaysHit}
+                                                onChange={handleChange} />
 
-                                                <label>Number of Slices or Draws</label>
-                                                <input className="add-round-input round-info"
-                                                        type="number"
-                                                        name="slicesOrDraws"
-                                                        value={round.slicesOrDraws}
-                                                        onChange={handleChange} />
-                                       
+                                        <label>Number of Three Putts</label>
+                                        <input className="add-round-input round-info"
+                                                type="number"
+                                                name="threePutts"
+                                                value={round.threePutts}
+                                                onChange={handleChange} />
+
+                                        <label>Number of Slices or Draws</label>
+                                        <input className="add-round-input round-info"
+                                                type="number"
+                                                name="slicesOrDraws"
+                                                value={round.slicesOrDraws}
+                                                onChange={handleChange} />
+
                                         {/* Navigate to add 18 hole round page  */}
-                                        <button className='switch-round' onClick={() => navigate('/add-round18')}>Add 18 Hole Round</button>
-                                        
+                                        <button className='switch-round' onClick={() => navigate('/add-round18/new')}>Add 18 Hole Round</button>
+
                                         {/* Get scores from the round */}
                                         <div className='holes'>
-                                        
+
                                                 {round.roundHolesList.map((hole, index) => (
-                                                   <div className='hole' key={index}>
-                                                         <h3>Hole {hole.roundHoleNumber}</h3>
-                                
-                                                         <label>Enter Your Score</label>
-                                                         <input className='add-round-input'
-                                                                 type="number"
-                                                                 name={`roundHolesList[${index}].holeScore`}
-                                                                 value={hole.holeScore}
-                                                                 onChange={handleChange} />
-                                                   </div>
-                                                
+                                                        <div className='hole' key={index}>
+                                                                <h3>Hole {hole.roundHoleNumber}</h3>
+
+                                                                <label>Enter Your Score</label>
+                                                                <input className='add-round-input'
+                                                                        type="number"
+                                                                        name={`roundHolesList[${index}].holeScore`}
+                                                                        value={hole.holeScore}
+                                                                        onChange={handleChange} />
+                                                        </div>
+
                                                 ))}
-                                        
+
                                         </div>
                                         {errorMessage && <div className="error">{errorMessage}</div>}
-                                        <button className="save-button" type="submit" onClick={addRound}>Save Round </button>
+                                        <button className="save-button" type="submit" onClick={id != 'new' ? updateRound : addRound}>Save Round</button>
                                 </form>
 
 

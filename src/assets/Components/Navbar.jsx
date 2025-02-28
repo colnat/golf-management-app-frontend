@@ -22,11 +22,11 @@ export default function Navbar(){
    <nav className="nav">
         <Link to='/dashboard' className='nav-dashboard'><GoHomeFill /></Link>
         <ul>
-            <li  className={currentPage == '/add-course18' || currentPage=='/add-course' ? 'active' : ''}> 
-            <Link to="/add-course18">Add Course</Link>
+            <li  className={currentPage == '/add-course18/new' || currentPage=='/add-course/new' ? 'active' : ''}> 
+            <Link to="/add-course18/new">Add Course</Link>
             </li>
-            <li className={currentPage == '/add-round18' || currentPage=='/add-round' ? 'active' : ''}>
-            <Link to="/add-round18">Add Round</Link>
+            <li className={currentPage == '/add-round18/new' || currentPage=='/add-round/new' ? 'active' : ''}>
+            <Link to="/add-round18/new">Add Round</Link>
             </li>
             <li className= {currentPage == '/manage-courses' ? 'active' : ''}> 
             <Link to="/manage-courses">Manage Courses</Link>

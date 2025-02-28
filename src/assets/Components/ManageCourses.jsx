@@ -3,8 +3,9 @@ import CourseService from './Service-API-Calls/CourseService.jsx';
 import '/src/CSS/Manage.css';
 import Pagination from './Pagination.jsx';
 import { BeatLoader } from 'react-spinners';
+import { useNavigate } from "react-router-dom";
 const ManageCourses = () => {
-
+  const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [coursesPerPage] = useState(5);
@@ -132,6 +133,7 @@ const ManageCourses = () => {
 
             </table>
             <button className='delete-button' onClick={() => deleteCourse(course.id)}>Delete</button>
+            <button className='delete-button' onClick={() =>{course.courseType == 18 ? navigate('/add-course18/' + course.id) : navigate('/add-course/' + course.id)}}>Update</button>
           </div>
 
         ))}

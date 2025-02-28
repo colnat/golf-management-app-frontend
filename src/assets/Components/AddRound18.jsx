@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import CourseService from './Service-API-Calls/CourseService.jsx';
 import RoundService from './Service-API-Calls/RoundService.jsx'
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 import '/src/CSS/AddRound.css';
 import set from "lodash/set";
 
@@ -9,6 +9,7 @@ const AddRound18 = () => {
         const [errorMessage, setErrorMessage] = useState('');
         const [courseId, setCourseId] = useState();
         const navigate = useNavigate();
+        const { id } = useParams();
         const [courseNameList, setCourseNameList] = useState([]);
         const [round, setRound] = useState({
                 datePlayed: '',
@@ -59,11 +60,32 @@ const AddRound18 = () => {
                 });
         }
 
+                
+        const updateRound = (e) => {
+                e.preventDefault();
+                RoundService.updateRound(round,id,courseId).then(() => {
+                        setErrorMessage('');
+                        alert('Round updated');
+                }).catch(error => {
+                        console.error('Error updating round:', error);
+                        setErrorMessage('Error updating round');
+                })
+        }
+        
+                useEffect(() => {
+                        if (id !== 'new') {
+                                RoundService.getRoundById(id)
+                                        .then((response) => {
+                                                setRound(response.data);
+                                        }).catch((error) => console.log(error));
+                        }
+                }, [id, setRound]);
+
         return (
                 <>
                         <div className='center-add-round'>
 
-                                <h1 className='add-round-title'>Add 18 Hole Round</h1>
+                                <h1 className='add-round-title'>{id !== 'new' ? 'Update Round' : 'Add 18 Hole Round'}</h1>
                                 <form className='center-add-round add-round-form'>
 
                                         <label>Course Played</label>
@@ -113,7 +135,7 @@ const AddRound18 = () => {
                                                 onChange={handleChange} />
 
                                         {/* Navigate to add 9 hole page */}
-                                        <button className='switch-round' onClick={() => navigate('/add-round')}>Add 9 Hole Round</button>
+                                        <button className='switch-round' onClick={() => navigate('/add-round/new')}>Add 9 Hole Round</button>
                                         
                                         {/* Collect hole scores */}
                                         <div className='holes'>
@@ -132,7 +154,7 @@ const AddRound18 = () => {
                                                 ))}
                                         </div>
                                         {errorMessage && <div className="error">{errorMessage}</div>}
-                                        <button className="save-button" type="submit" onClick={addRound}>Save Round </button>
+                                        <button className="save-button" type="submit" onClick={id != 'new' ? updateRound : addRound}>Save Round</button>
                                 </form>
 
 

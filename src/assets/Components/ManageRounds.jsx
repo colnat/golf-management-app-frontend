@@ -3,7 +3,9 @@ import RoundService from './Service-API-Calls/RoundService.jsx';
 import '/src/CSS/Manage.css';
 import Pagination from './Pagination.jsx';
 import { BeatLoader } from 'react-spinners';
+import { useNavigate } from "react-router-dom";
 const ManageRounds = () => {
+    const navigate = useNavigate();
     const [rounds, setRounds] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [roundsPerPage] = useState(5);
@@ -131,6 +133,7 @@ const ManageRounds = () => {
                         </tbody>
                     </table>
                     <button className='delete-button' onClick={() => deleteRound(round.id)}>Delete</button>
+                    <button className='delete-button' onClick={() =>{round.roundLength == 18 ? navigate('/add-round18/' + round.id) : navigate('/add-round/' + round.id)}}>Update</button>
                 </div>
             ))}
             <Pagination
