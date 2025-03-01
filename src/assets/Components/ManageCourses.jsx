@@ -132,8 +132,10 @@ const ManageCourses = () => {
               </tbody>
 
             </table>
-            <button className='delete-button' onClick={() => deleteCourse(course.id)}>Delete</button>
-            <button className='delete-button' onClick={() =>{course.courseType == 18 ? navigate('/add-course18/' + course.id) : navigate('/add-course/' + course.id)}}>Update</button>
+            <div className='manage-button-container'>
+                <button className='delete-button' onClick={() => deleteCourse(course.id)}>Delete</button>
+                <button className='update-button' onClick={() =>{course.courseType == 18 ? navigate('/add-course18/' + course.id) : navigate('/add-course/' + course.id)}}>Update</button>
+            </div>
           </div>
 
         ))}

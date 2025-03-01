@@ -132,8 +132,10 @@ const ManageRounds = () => {
                             </tr>
                         </tbody>
                     </table>
-                    <button className='delete-button' onClick={() => deleteRound(round.id)}>Delete</button>
-                    <button className='delete-button' onClick={() =>{round.roundLength == 18 ? navigate('/add-round18/' + round.id) : navigate('/add-round/' + round.id)}}>Update</button>
+                    <div className='manage-button-container'>
+                        <button className='delete-button' onClick={() => deleteRound(round.id)}>Delete</button>
+                        <button className='update-button' onClick={() =>{round.roundLength == 18 ? navigate('/add-round18/' + round.id) : navigate('/add-round/' + round.id)}}>Update</button>
+                    </div>
                 </div>
             ))}
             <Pagination
