@@ -13,14 +13,21 @@ const ManageCourses = () => {
   const [isLoading, setLoading] = useState(true)
 
   const fetchCourses = async () => {
-    CourseService.getCourses().then((response) => {
+    try{
+      const response = await CourseService.getCourses();
       setCourses(response.data);
-    }).catch((error) => console.log(error));
+    } catch(error){
+      console.log(error);
+    }
   }
 
   const deleteCourse = async (courseId) => {
-    CourseService.deleteCourse(courseId);
-    fetchCourses();
+    try{
+      await CourseService.deleteCourse(courseId);
+      fetchCourses();
+    } catch(error){
+      console.log(error);
+    }
   }
 
   useEffect(() => {

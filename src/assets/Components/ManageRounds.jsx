@@ -13,16 +13,22 @@ const ManageRounds = () => {
     const [isLoading, setLoading] = useState(true)
 
     const fetchRounds = async () => {
-        
-        RoundService.getRounds().then((response) => {
+        try {
+            const response = await RoundService.getRounds();
             setRounds(response.data);
-        }).catch((error) => console.log(error));
-    }
-
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    
     const deleteRound = async (roundId) => {
-        RoundService.deleteRound(roundId);
-        fetchRounds();
-    }
+        try {
+            await RoundService.deleteRound(roundId);  
+            fetchRounds(); 
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     useEffect(() => {
     const fetchUserRounds = async () => {

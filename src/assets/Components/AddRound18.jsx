@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import CourseService from './Service-API-Calls/CourseService.jsx';
 import RoundService from './Service-API-Calls/RoundService.jsx'
-import { useNavigate,useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import '/src/CSS/AddRound.css';
 import set from "lodash/set";
 
@@ -30,7 +30,7 @@ const AddRound18 = () => {
                 setRound(roundCopy);
         };
 
-     //If the user selects the default course in the dropdown then onChange will not be called so needed too set the first course manually
+        //If the user selects the default course in the dropdown then onChange will not be called so needed too set the first course manually
         useEffect(() => {
                 CourseService.getCourses().then((response) => {
                         setCourseNameList(response.data)
@@ -60,10 +60,10 @@ const AddRound18 = () => {
                 });
         }
 
-                
+
         const updateRound = (e) => {
                 e.preventDefault();
-                RoundService.updateRound(round,id,courseId).then(() => {
+                RoundService.updateRound(round, id, courseId).then(() => {
                         setErrorMessage('');
                         alert('Round updated');
                 }).catch(error => {
@@ -71,15 +71,17 @@ const AddRound18 = () => {
                         setErrorMessage('Error updating round');
                 })
         }
-        
-                useEffect(() => {
-                        if (id !== 'new') {
-                                RoundService.getRoundById(id)
-                                        .then((response) => {
-                                                setRound(response.data);
-                                        }).catch((error) => console.log(error));
-                        }
-                }, [id, setRound]);
+
+        useEffect(() => {
+                if (id !== 'new') {
+                        RoundService.getRoundById(id)
+                                .then((response) => {
+                                        console.log(response.data.course.id);
+                                        setCourseId(response.data.course.id);
+                                        setRound(response.data);
+                                }).catch((error) => console.log(error));
+                }
+        }, [id, setRound]);
 
         return (
                 <>
@@ -89,7 +91,7 @@ const AddRound18 = () => {
                                 <form className='center-add-round add-round-form'>
 
                                         <label>Course Played</label>
-                                        
+
                                         {/* Display users added courses in a dropdown */}
                                         <select className='pick-course custom-select'
                                                 value={courseId}
@@ -104,7 +106,7 @@ const AddRound18 = () => {
                                                         </option>
                                                 ))}
                                         </select>
-                                        
+
                                         {/* Gets other info about round */}
                                         <label>Date Played</label>
                                         <input className="add-round-input date"
@@ -136,21 +138,21 @@ const AddRound18 = () => {
 
                                         {/* Navigate to add 9 hole page */}
                                         <button className='switch-round' onClick={() => navigate('/add-round/new')}>Add 9 Hole Round</button>
-                                        
+
                                         {/* Collect hole scores */}
                                         <div className='holes'>
                                                 {round.roundHolesList.map((hole, index) => (
-                                                   <div className='hole' key={index}>
-                                                         <h3>Hole {hole.roundHoleNumber}</h3>
-                                
-                                                         <label>Enter Your Score</label>
-                                                         <input className='add-round-input'
-                                                                 type="number"
-                                                                 name={`roundHolesList[${index}].holeScore`}
-                                                                 value={hole.holeScore}
-                                                                 onChange={handleChange} />
-                                                   </div>
-                                                
+                                                        <div className='hole' key={index}>
+                                                                <h3>Hole {hole.roundHoleNumber}</h3>
+
+                                                                <label>Enter Your Score</label>
+                                                                <input className='add-round-input'
+                                                                        type="number"
+                                                                        name={`roundHolesList[${index}].holeScore`}
+                                                                        value={hole.holeScore}
+                                                                        onChange={handleChange} />
+                                                        </div>
+
                                                 ))}
                                         </div>
                                         {errorMessage && <div className="error">{errorMessage}</div>}
