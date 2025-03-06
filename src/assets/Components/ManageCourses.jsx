@@ -111,11 +111,11 @@ const ManageCourses = () => {
                     <Modal
                     handleDeleteTrue={deleteCourse}
                     handleDeleteFalse={deleteCourseFalse}
-                    message={"Are you sure you want to delete this course? Doing so will delete all rounds asscioated"}
+                    message={"Are you sure you want to delete this course? Doing so will delete all rounds associated"}
                 />
             </div>
               
-            )}
+        )};
       
         <>
           {currentCourses.map((course) => (

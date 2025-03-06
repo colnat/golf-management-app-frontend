@@ -44,6 +44,7 @@ const Login = () => {
                 className="login-register-input"
                 placeholder="Enter your password"
                 name="password"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
