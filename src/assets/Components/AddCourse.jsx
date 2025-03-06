@@ -63,6 +63,7 @@ const AddCourse = () => {
                 })
         }
 
+        //If this is an update request fill out the form with the old course data
         useEffect(() => {
                 if (id !== 'new') {
                         CourseService.getCourseById(id)

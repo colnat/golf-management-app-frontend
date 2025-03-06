@@ -53,6 +53,7 @@ const AddRound = () => {
                 })
         }
 
+        //If this is an update request fill out the form with the old round data
         useEffect(() => {
                 if (id !== 'new') {
                         RoundService.getRoundById(id)

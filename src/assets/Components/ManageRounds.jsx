@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import RoundService from './Service-API-Calls/RoundService.jsx';
 import '/src/CSS/Manage.css';
 import Pagination from './Pagination.jsx';
+import Modal from './Modal.jsx';
+import '/src/CSS/Modal.css'
 import { BeatLoader } from 'react-spinners';
 import { useNavigate } from "react-router-dom";
 const ManageRounds = () => {
@@ -10,7 +12,11 @@ const ManageRounds = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [roundsPerPage] = useState(5);
     const [search, setSearch] = useState("");
-    const [isLoading, setLoading] = useState(true)
+    const [isLoading, setLoading] = useState(true);
+    const [confirmDelete, setConfirmDelete] = useState ({
+        show: false, 
+        roundId: null,
+    });
 
     const fetchRounds = async () => {
         try {
@@ -20,14 +26,36 @@ const ManageRounds = () => {
             console.log(error);
         }
     };
+
+    //Called when user first clicks delete and renders Modal
+    const deleteConfirmation = (roundId) => {
+        setConfirmDelete({
+            show: true, 
+            roundId,
+        });
+    };
     
-    const deleteRound = async (roundId) => {
+    //If user confirms deletion
+    const deleteRound = async () => {
         try {
-            await RoundService.deleteRound(roundId);  
+            await RoundService.deleteRound(confirmDelete.roundId);  
             fetchRounds(); 
         } catch (error) {
             console.log(error);
+        } finally{
+            setConfirmDelete({
+                show: false, 
+                roundId: null,
+            });
         }
+    };
+
+    //If user cancels
+    const deleteRoundFalse = () => {
+        setConfirmDelete({
+            show: false, 
+            roundId: null,
+        });
     };
 
     useEffect(() => {
@@ -76,7 +104,19 @@ const ManageRounds = () => {
           value={search}
           onChange={(event) => setSearch(event.target.value)}
         />
-
+    
+            {confirmDelete.show && (
+            <div className='center-modal'>
+                    <Modal
+                    handleDeleteTrue={deleteRound}
+                    handleDeleteFalse={deleteRoundFalse}
+                    message={"Are you sure you want to delete this round?"}
+                />
+            </div>
+              
+            )}
+       
+       
         
         <> 
             {currentRounds.map((round) => (
@@ -137,13 +177,18 @@ const ManageRounds = () => {
                                 </td>
                             </tr>
                         </tbody>
+                   
                     </table>
                     <div className='manage-button-container'>
-                        <button className='delete-button' onClick={() => deleteRound(round.id)}>Delete</button>
+                        <button className='delete-button' onClick={() => deleteConfirmation(round.id)}>Delete</button>
+                        {/* If user wants to update send the id of the round as a param and navigate to the appropriate add round */}
                         <button className='update-button' onClick={() =>{round.roundLength == 18 ? navigate('/add-round18/' + round.id) : navigate('/add-round/' + round.id)}}>Update</button>
+                
                     </div>
+                 
                 </div>
             ))}
+            
             <Pagination
                 itemsPerPage={roundsPerPage}
                 totalItems={rounds.length}

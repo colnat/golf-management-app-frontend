@@ -1,16 +1,23 @@
 import { useState, useEffect } from 'react';
 import CourseService from './Service-API-Calls/CourseService.jsx';
 import '/src/CSS/Manage.css';
+import '/src/CSS/Modal.css'
 import Pagination from './Pagination.jsx';
 import { BeatLoader } from 'react-spinners';
 import { useNavigate } from "react-router-dom";
+import Modal from "./Modal.jsx"
 const ManageCourses = () => {
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [coursesPerPage] = useState(5);
   const [search, setSearch] = useState("");
-  const [isLoading, setLoading] = useState(true)
+  const [isLoading, setLoading] = useState(true);
+  const [confirmDelete, setConfirmDelete] = useState ({
+    show: false, 
+    courseId: null,
+});
+
 
   const fetchCourses = async () => {
     try{
@@ -19,16 +26,37 @@ const ManageCourses = () => {
     } catch(error){
       console.log(error);
     }
-  }
+  };
 
-  const deleteCourse = async (courseId) => {
+  //Called when user first clicks delete and renders Modal
+  const deleteConfirmation = (courseId) => {
+      setConfirmDelete({
+            show: true, 
+            courseId,
+      });
+  };
+
+  const deleteCourse = async () => {
     try{
-      await CourseService.deleteCourse(courseId);
+      await CourseService.deleteCourse(confirmDelete.courseId);
       fetchCourses();
     } catch(error){
       console.log(error);
+    } finally{
+      setConfirmDelete({
+        show: false, 
+        courseIdId: null,
+      });
     }
-  }
+  };
+
+    //If user cancels
+  const deleteCourseFalse = () => {
+    setConfirmDelete({
+          show: false, 
+          courseIdId: null,
+    });
+  };
 
   useEffect(() => {
    const fetchUserCourses = async () => {
@@ -77,7 +105,17 @@ const ManageCourses = () => {
           value={search}
           onChange={(event) => setSearch(event.target.value)}
         />
-    
+       
+       {confirmDelete.show && (
+            <div className='center-modal'>
+                    <Modal
+                    handleDeleteTrue={deleteCourse}
+                    handleDeleteFalse={deleteCourseFalse}
+                    message={"Are you sure you want to delete this course? Doing so will delete all rounds asscioated"}
+                />
+            </div>
+              
+            )}
       
         <>
           {currentCourses.map((course) => (
@@ -140,7 +178,8 @@ const ManageCourses = () => {
 
             </table>
             <div className='manage-button-container'>
-                <button className='delete-button' onClick={() => deleteCourse(course.id)}>Delete</button>
+                <button className='delete-button' onClick={() => deleteConfirmation(course.id)}>Delete</button>
+                {/* If user wants to update send the id of the course as a param and navigate to the appropriate add course */}
                 <button className='update-button' onClick={() =>{course.courseType == 18 ? navigate('/add-course18/' + course.id) : navigate('/add-course/' + course.id)}}>Update</button>
             </div>
           </div>
