@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import UserService from './Service-API-Calls/UserService.jsx';
 import { useNavigate } from "react-router-dom";
@@ -10,18 +11,23 @@ const RegisterUser = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword,setConfirmPassword] = useState('');
 
+  
   const saveUser = (e) => {
     e.preventDefault();
     const user = { firstName, lastName, email, password };
-    UserService.register(user).then(() => {
-      navigate('/login');
-    }).catch(error => console.error('Error registering:', error, setErrorMessage('Email already exists or missing information'))
-
-    );
-
-
+    if(password !== confirmPassword){
+      setErrorMessage('Passwords do not match');
+    } else{
+      UserService.register(user).then(() => {
+        navigate('/login');
+      }).catch(error => console.error('Error registering:', error, setErrorMessage('Email already exists or missing information'))
+  
+      );
+    }
   };
+
 
   return (
     <>
@@ -45,7 +51,11 @@ const RegisterUser = () => {
             </div>
             <div>
               <label className='login-register'>Password</label>
-              <input className='login-register-input' placeholder="Enter your password" name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+              <input type='password' className='login-register-input' placeholder="Enter your password" name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <div>
+              <label className='login-register'>Confirm Password</label>
+              <input type='password' className='login-register-input' placeholder="Confirm password" name='confirmPassword' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
             </div>
             
           </form>
