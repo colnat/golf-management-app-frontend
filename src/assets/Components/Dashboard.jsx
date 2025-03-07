@@ -102,7 +102,7 @@ const Dashboard = () => {
                 <div className='handicap'>
                  {handicap == 101 ? <h3>N/A</h3> : <h3>{handicap}</h3>}
                 </div>
-                <p className='handicap-label'>Handicap</p>
+                <p className='handicap-label'>Handicap Index</p>
            </div> 
            
 
