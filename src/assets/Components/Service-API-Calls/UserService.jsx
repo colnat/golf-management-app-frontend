@@ -1,19 +1,26 @@
  import axios from 'axios';
 
-const USER_API = "http://localhost:8080/users"
+const USER_API = "http://localhost:8080/auth"
 
 class UserService{
     register(user){
         return axios.post(`${USER_API}/register`,user)
     }
 
-    login(user){
-        return axios.post(`${USER_API}/login`,user,{withCredentials:true,headers:{ 'Content-Type': 'application/json',}});
+    async login(user){
+        const response = await axios.post(`${USER_API}/login`, user, {
+            headers: { 'Content-Type': 'application/json', }
+        });
+        if (response.data) {
+            let token  =  response.data.token;
+            localStorage.setItem("token", token);
+        }
+        return response.data;
         
     }
 
     logout(){
-        return axios.get(`${USER_API}/logout`,{withCredentials:true,headers:{'Content-Type':'application/json'}});
+        return sessionStorage.removeItem("token");
     }
 }
 export default new UserService();

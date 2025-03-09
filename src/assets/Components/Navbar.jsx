@@ -13,9 +13,9 @@ export default function Navbar(){
     if (noNavbar.includes(pathname)) return null;
    
      const logout = async () => {
-            UserService.logout().then(() => {
+            UserService.logout()
                 navigate('/login');
-            }).catch(error => console.error('Error logging out:', error));
+            
         }
    
    return (
