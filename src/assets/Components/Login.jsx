@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import UserService from './Service-API-Calls/UserService.jsx';
+import AuthService from './Service-API-Calls/AuthService.jsx';
 import '/src/CSS/loginRegister.css';
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +13,7 @@ const Login = () => {
   const login = (e) => {
     e.preventDefault();
     const user = { email, password};
-    UserService.login(user).then(() => {
+    AuthService.login(user).then(() => {
       navigate('/dashboard');
     }).catch(error => console.error('Error logging in:', error, setErrorMessage('Email or password incorrect or missing information'))
     )

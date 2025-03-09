@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import UserService from './Service-API-Calls/UserService.jsx';
+import AuthService from './Service-API-Calls/AuthService.jsx';
 import { useNavigate } from "react-router-dom";
 //import { useNavigate } from 'react-router-dom
 import '/src/CSS/loginRegister.css';
@@ -20,7 +20,7 @@ const RegisterUser = () => {
     if(password !== confirmPassword){
       setErrorMessage('Passwords do not match');
     } else{
-      UserService.register(user).then(() => {
+      AuthService.register(user).then(() => {
         navigate('/login');
       }).catch(error => console.error('Error registering:', error, setErrorMessage('Email already exists or missing information'))
   

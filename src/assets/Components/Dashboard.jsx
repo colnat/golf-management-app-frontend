@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import RoundService from './Service-API-Calls/RoundService.jsx';
 import CourseService from './Service-API-Calls/CourseService.jsx';
 import InsightsService from './Service-API-Calls/InsightsService.jsx';
-import UserService from './Service-API-Calls/UserService.jsx';
+import AuthService from './Service-API-Calls/AuthService.jsx';
 import { BeatLoader } from 'react-spinners';
 
 const Dashboard = () => {
@@ -46,12 +46,10 @@ const Dashboard = () => {
   }
 
 
-    const logout = async () => {
-        UserService.logout().then(() => {
-
-            navigate('/login');
-        }).catch(error => console.error('Error logging out:', error));
-    }
+  const logout = async () => {
+    localStorage.removeItem("token");
+    navigate('/login'); 
+};
 
    useEffect(() => {
         const fetchUserStats = async () => {

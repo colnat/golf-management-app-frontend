@@ -46,4 +46,10 @@
     border-bottom:3px solid white;
   }
 
+.nav-logout-button{
+    background-color: transparent !important;
+    border-radius: 0px;
+    color: white;
+}
+
 

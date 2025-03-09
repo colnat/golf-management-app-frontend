@@ -2,7 +2,7 @@
 
 const USER_API = "http://localhost:8080/auth"
 
-class UserService{
+class AuthService{
     register(user){
         return axios.post(`${USER_API}/register`,user)
     }
@@ -18,9 +18,5 @@ class UserService{
         return response.data;
         
     }
-
-    logout(){
-        return sessionStorage.removeItem("token");
-    }
 }
-export default new UserService();
+export default new AuthService();
