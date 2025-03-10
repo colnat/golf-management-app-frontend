@@ -12,6 +12,7 @@ const AddRound = () => {
         const navigate = useNavigate();
         const { id } = useParams();
         const [courseNameList, setCourseNameList] = useState([]);
+        const token = localStorage.getItem("token");
         const [round, setRound] = useState({
                 datePlayed: '',
                 fairwaysHit: 0,
@@ -34,7 +35,7 @@ const AddRound = () => {
 
         //If the user selects the default course in the dropdown then onChange will not be called so I set the first course manually
         useEffect(() => {
-                CourseService.getCourses().then((response) => {
+                CourseService.getCourses(token).then((response) => {
                         setCourseNameList(response.data)
                         if (response.data.length > 0) {
                                 setCourseId(response.data[0].id);
@@ -44,7 +45,7 @@ const AddRound = () => {
 
         const updateRound = (e) => {
                 e.preventDefault();
-                RoundService.updateRound(round, id, courseId).then(() => {
+                RoundService.updateRound(round, id, courseId,token).then(() => {
                         setErrorMessage('');
                         alert('Round updated');
                 }).catch(error => {
@@ -56,7 +57,7 @@ const AddRound = () => {
         //If this is an update request fill out the form with the old round data
         useEffect(() => {
                 if (id !== 'new') {
-                        RoundService.getRoundById(id)
+                        RoundService.getRoundById(id,token)
                                 .then((response) => {
                                         setRound(response.data);
                                 }).catch((error) => console.log(error));
@@ -66,7 +67,7 @@ const AddRound = () => {
         const addRound = (e) => {
                 e.preventDefault();
                 setErrorMessage('');
-                RoundService.addRound(round, courseId).then(() => {
+                RoundService.addRound(round, courseId,token).then(() => {
                         setRound({
                                 datePlayed: '',
                                 fairwaysHit: 0,

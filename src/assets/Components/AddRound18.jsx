@@ -11,6 +11,7 @@ const AddRound18 = () => {
         const navigate = useNavigate();
         const { id } = useParams();
         const [courseNameList, setCourseNameList] = useState([]);
+        const token = localStorage.getItem("token");
         const [round, setRound] = useState({
                 datePlayed: '',
                 fairwaysHit: 0,
@@ -32,7 +33,7 @@ const AddRound18 = () => {
 
         //If the user selects the default course in the dropdown then onChange will not be called so needed too set the first course manually
         useEffect(() => {
-                CourseService.getCourses().then((response) => {
+                CourseService.getCourses(token).then((response) => {
                         setCourseNameList(response.data)
                         if (response.data.length > 0) {
                                 setCourseId(response.data[0].id);
@@ -42,7 +43,7 @@ const AddRound18 = () => {
 
         const addRound = (e) => {
                 e.preventDefault();
-                RoundService.addRound(round, courseId).then(() => {
+                RoundService.addRound(round, courseId,token).then(() => {
                         setErrorMessage('');
                         setRound({
                                 datePlayed: '',
@@ -63,7 +64,7 @@ const AddRound18 = () => {
 
         const updateRound = (e) => {
                 e.preventDefault();
-                RoundService.updateRound(round, id, courseId).then(() => {
+                RoundService.updateRound(round, id, courseId,token).then(() => {
                         setErrorMessage('');
                         alert('Round updated');
                 }).catch(error => {
@@ -75,7 +76,7 @@ const AddRound18 = () => {
         //If this is an update request fill out the form with the old round data
         useEffect(() => {
                 if (id !== 'new') {
-                        RoundService.getRoundById(id)
+                        RoundService.getRoundById(id,token)
                                 .then((response) => {
                                         console.log(response.data.course.id);
                                         setCourseId(response.data.course.id);

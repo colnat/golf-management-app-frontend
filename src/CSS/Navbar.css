@@ -48,8 +48,10 @@
 
 .nav-logout-button{
     background-color: transparent !important;
-    border-radius: 0px;
+    border-radius: 0px !important;
     color: white;
+    padding-bottom: 3px;
+    border:none !important;
 }
 
 

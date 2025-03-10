@@ -37,7 +37,7 @@
 }
 
 .modal-description {
-    /* font-weight:500; */
+   
     color: rgb(0, 0, 0);
     font-weight: bold;
     font-size: large;
@@ -62,12 +62,12 @@
 }
 
 .modal-delete {
-    background-color: rgb(255, 69, 62);
+    background-color: rgb(253, 31, 24);
     color: white;
   }
   
 .modal-delete:hover {
-    background-color: rgb(255, 8, 0);
+    background-color: rgb(226, 8, 0);
 }
   
 .modal-cancel {

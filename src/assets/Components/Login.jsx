@@ -13,8 +13,10 @@ const Login = () => {
   const login = (e) => {
     e.preventDefault();
     const user = { email, password};
-    AuthService.login(user).then(() => {
-      navigate('/dashboard');
+    AuthService.login(user).then((response) => {
+     const token  =  response.data.token;
+     localStorage.setItem("token", token);
+     navigate('/dashboard');
     }).catch(error => console.error('Error logging in:', error, setErrorMessage('Email or password incorrect or missing information'))
     )
   };

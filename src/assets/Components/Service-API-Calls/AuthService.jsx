@@ -7,15 +7,12 @@ class AuthService{
         return axios.post(`${USER_API}/register`,user)
     }
 
-    async login(user){
-        const response = await axios.post(`${USER_API}/login`, user, {
-            headers: { 'Content-Type': 'application/json', }
+     login(user){ 
+        return axios.post(`${USER_API}/login`, user, {
+            headers: { 'Content-Type': 'application/json'}
         });
-        if (response.data) {
-            let token  =  response.data.token;
-            localStorage.setItem("token", token);
-        }
-        return response.data;
+    
+        
         
     }
 }

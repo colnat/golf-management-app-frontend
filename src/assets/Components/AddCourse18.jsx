@@ -9,6 +9,7 @@ const AddCourse18 = () => {
         const [errorMessage, setErrorMessage] = useState('');
         const navigate = useNavigate();
         const { id } = useParams();
+        const token = localStorage.getItem("token");
         const [course, setCourse] = useState({
                 courseName: '',
                 courseRating: 0,
@@ -32,7 +33,7 @@ const AddCourse18 = () => {
         const addCourse = (e) => {
                 e.preventDefault();
                 console.log("Course being sent:", course);
-                CourseService.addCourse(course).then(() => {
+                CourseService.addCourse(course,token).then(() => {
                         setErrorMessage('');
                         setCourse({
                                 courseName: '',
@@ -52,7 +53,7 @@ const AddCourse18 = () => {
 
         const updateCourse = (e) => {
                 e.preventDefault();
-                CourseService.updateCourse(id,course).then(() => {
+                CourseService.updateCourse(id,course,token).then(() => {
                         setErrorMessage('');
                         alert('Course updated');
                 }).catch(error => {
@@ -64,7 +65,7 @@ const AddCourse18 = () => {
         //If this is an update request fill out the form with the old course data
         useEffect(() => {
                 if (id !== 'new') {
-                        CourseService.getCourseById(id)
+                        CourseService.getCourseById(id,token)
                                 .then((response) => {
                                         setCourse(response.data);
                                 }).catch((error) => console.log(error));

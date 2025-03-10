@@ -13,6 +13,7 @@ const ManageRounds = () => {
     const [roundsPerPage] = useState(5);
     const [search, setSearch] = useState("");
     const [isLoading, setLoading] = useState(true);
+    const token = localStorage.getItem("token");
     const [confirmDelete, setConfirmDelete] = useState ({
         show: false, 
         roundId: null,
@@ -20,7 +21,7 @@ const ManageRounds = () => {
 
     const fetchRounds = async () => {
         try {
-            const response = await RoundService.getRounds();
+            const response = await RoundService.getRounds(token);
             setRounds(response.data);
         } catch (error) {
             console.log(error);
@@ -38,7 +39,7 @@ const ManageRounds = () => {
     //If user confirms deletion
     const deleteRound = async () => {
         try {
-            await RoundService.deleteRound(confirmDelete.roundId);  
+            await RoundService.deleteRound(confirmDelete.roundId,token);  
             fetchRounds(); 
         } catch (error) {
             console.log(error);

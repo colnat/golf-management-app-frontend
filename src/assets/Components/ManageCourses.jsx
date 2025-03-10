@@ -13,6 +13,7 @@ const ManageCourses = () => {
   const [coursesPerPage] = useState(5);
   const [search, setSearch] = useState("");
   const [isLoading, setLoading] = useState(true);
+  const token = localStorage.getItem("token");
   const [confirmDelete, setConfirmDelete] = useState ({
     show: false, 
     courseId: null,
@@ -21,7 +22,7 @@ const ManageCourses = () => {
 
   const fetchCourses = async () => {
     try{
-      const response = await CourseService.getCourses();
+      const response = await CourseService.getCourses(token);
       setCourses(response.data);
     } catch(error){
       console.log(error);
@@ -38,7 +39,7 @@ const ManageCourses = () => {
 
   const deleteCourse = async () => {
     try{
-      await CourseService.deleteCourse(confirmDelete.courseId);
+      await CourseService.deleteCourse(confirmDelete.courseId,token);
       fetchCourses();
     } catch(error){
       console.log(error);

@@ -19,6 +19,8 @@ const Dashboard = () => {
     const [mostPlayedCourse, setMostPlayedCourse] = useState([]);
     const [handicap,setHandicap] = useState("");
     const [insights, setInsights] = useState("");
+    const token = localStorage.getItem("token");
+
 
   // Getting the users location to use for the AI to suggest courses near them
   //store thier location in the browser
@@ -59,12 +61,12 @@ const Dashboard = () => {
                 const userLocation = await getUserLocation();
                 
                 const [insightsRes,handicapRes,bestEighteenHoleRes,bestNineHoleRes,favouriteCourseRes,mostPlayedCourseRes] = await Promise.all([
-                    InsightsService.getInsights(userLocation),
-                    RoundService.getHandicap(),
-                    RoundService.getBestEighteenHole(),
-                    RoundService.getBestNineHole(),
-                    CourseService.findFavouriteCourse(),
-                    CourseService.findMostPlayedCourse()
+                    InsightsService.getInsights(userLocation,token),
+                    RoundService.getHandicap(token),
+                    RoundService.getBestEighteenHole(token),
+                    RoundService.getBestNineHole(token),
+                    CourseService.findFavouriteCourse(token),
+                    CourseService.findMostPlayedCourse(token)
 
                 ]);
                 
