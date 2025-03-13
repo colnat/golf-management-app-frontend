@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import AuthService from './Service-API-Calls/AuthService.jsx';
 import '/src/CSS/loginRegister.css';
 import { useNavigate } from "react-router-dom";

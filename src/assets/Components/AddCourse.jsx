@@ -72,7 +72,7 @@ const AddCourse = () => {
                                         setCourse(response.data);
                                 }).catch((error) => console.log(error));
                 }
-        }, [id, setCourse]);
+        }, [id, setCourse,token]);
 
         return (
                 <>

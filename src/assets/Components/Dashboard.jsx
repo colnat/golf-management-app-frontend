@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import RoundService from './Service-API-Calls/RoundService.jsx';
 import CourseService from './Service-API-Calls/CourseService.jsx';
 import InsightsService from './Service-API-Calls/InsightsService.jsx';
-import AuthService from './Service-API-Calls/AuthService.jsx';
 import { BeatLoader } from 'react-spinners';
 
 const Dashboard = () => {
@@ -85,7 +84,7 @@ const Dashboard = () => {
             }
         };
         fetchUserStats();
-    }, []);
+    }, [token]);
 
     if(isLoading){
         return (

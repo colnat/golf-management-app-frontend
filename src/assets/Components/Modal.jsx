@@ -1,4 +1,5 @@
 import '/src/CSS/Modal.css'
+import PropTypes from 'prop-types';
 const Modal = ({handleDeleteTrue, handleDeleteFalse, message }) => {
     return (
         <>
@@ -13,6 +14,12 @@ const Modal = ({handleDeleteTrue, handleDeleteFalse, message }) => {
             </div>
         </>
     );
+};
+
+Modal.propTypes = {
+  handleDeleteTrue: PropTypes.func.isRequired, 
+  handleDeleteFalse: PropTypes.func.isRequired, 
+  message: PropTypes.string.isRequired
 };
 
 export default Modal

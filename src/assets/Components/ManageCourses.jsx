@@ -20,16 +20,7 @@ const ManageCourses = () => {
 });
 
 
-  const fetchCourses = async () => {
-    try{
-      const response = await CourseService.getCourses(token);
-      setCourses(response.data);
-    } catch(error){
-      console.log(error);
-    }
-  };
-
-  //Called when user first clicks delete and renders Modal
+//Called when user first clicks delete and renders Modal
   const deleteConfirmation = (courseId) => {
       setConfirmDelete({
             show: true, 
@@ -40,7 +31,8 @@ const ManageCourses = () => {
   const deleteCourse = async () => {
     try{
       await CourseService.deleteCourse(confirmDelete.courseId,token);
-      fetchCourses();
+      const response = await CourseService.getCourses(token);
+      setCourses(response.data);
     } catch(error){
       console.log(error);
     } finally{
@@ -63,7 +55,8 @@ const ManageCourses = () => {
    const fetchUserCourses = async () => {
     setLoading(true)
     try{
-      fetchCourses();
+      const response = await CourseService.getCourses(token);
+      setCourses(response.data);
     }
     catch(error){
       setLoading(false)
@@ -75,7 +68,7 @@ const ManageCourses = () => {
    };
    fetchUserCourses();
     
-  }, [])
+  }, [token])
 
   //Used to search courses
   const filteredCourses = courses.filter((course) =>

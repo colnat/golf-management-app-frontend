@@ -39,7 +39,7 @@ const AddRound18 = () => {
                                 setCourseId(response.data[0].id);
                         }
                 }).catch((error) => console.log(error));
-        }, [])
+        }, [token])
 
         const addRound = (e) => {
                 e.preventDefault();
@@ -83,7 +83,7 @@ const AddRound18 = () => {
                                         setRound(response.data);
                                 }).catch((error) => console.log(error));
                 }
-        }, [id, setRound]);
+        }, [id, setRound,token]);
 
         return (
                 <>

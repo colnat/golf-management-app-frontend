@@ -41,7 +41,7 @@ const AddRound = () => {
                                 setCourseId(response.data[0].id);
                         }
                 }).catch((error) => console.log(error));
-        }, [])
+        }, [token])
 
         const updateRound = (e) => {
                 e.preventDefault();
@@ -62,7 +62,7 @@ const AddRound = () => {
                                         setRound(response.data);
                                 }).catch((error) => console.log(error));
                 }
-        }, [id, setRound]);
+        }, [id, setRound,token]);
 
         const addRound = (e) => {
                 e.preventDefault();

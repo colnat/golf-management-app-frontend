@@ -19,15 +19,6 @@ const ManageRounds = () => {
         roundId: null,
     });
 
-    const fetchRounds = async () => {
-        try {
-            const response = await RoundService.getRounds(token);
-            setRounds(response.data);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
     //Called when user first clicks delete and renders Modal
     const deleteConfirmation = (roundId) => {
         setConfirmDelete({
@@ -40,7 +31,8 @@ const ManageRounds = () => {
     const deleteRound = async () => {
         try {
             await RoundService.deleteRound(confirmDelete.roundId,token);  
-            fetchRounds(); 
+            const response = await RoundService.getRounds(token);
+            setRounds(response.data);
         } catch (error) {
             console.log(error);
         } finally{
@@ -63,7 +55,8 @@ const ManageRounds = () => {
     const fetchUserRounds = async () => {
     setLoading(true)
     try{
-      fetchRounds();
+        const response = await RoundService.getRounds(token);
+        setRounds(response.data);
     }
     catch(error){
       setLoading(false)
@@ -74,7 +67,7 @@ const ManageRounds = () => {
     }
    };
    fetchUserRounds();
-    }, [])
+    }, [token])
 
     //Used to search by course name or by a date
     const filteredCRounds = rounds.filter((round) =>

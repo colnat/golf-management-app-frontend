@@ -70,7 +70,7 @@ const AddCourse18 = () => {
                                         setCourse(response.data);
                                 }).catch((error) => console.log(error));
                 }
-        }, [id, setCourse]);
+        }, [id, setCourse,token]);
         return (
                 <>
                         <div className='center-add-course'>

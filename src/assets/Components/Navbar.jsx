@@ -18,8 +18,8 @@ export default function Navbar(){
    
    return (
    <nav className="nav">
-        <Link to='/dashboard' className='nav-dashboard'><GoHomeFill /></Link>
-        <ul>
+        <Link to='/dashboard' className='nav-dashboard'><GoHomeFill size={40}/></Link>
+        <ul className='nav-dashboard'>
             <li  className={currentPage == '/add-course18/new' || currentPage=='/add-course/new' ? 'active' : ''}> 
             <Link to="/add-course18/new">Add Course</Link>
             </li>
