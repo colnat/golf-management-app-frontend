@@ -103,9 +103,11 @@ const ManageCourses = () => {
        {confirmDelete.show && (
             <div className='center-modal'>
                     <Modal
-                    handleDeleteTrue={deleteCourse}
-                    handleDeleteFalse={deleteCourseFalse}
+                    handleTrue={deleteCourse}
+                    handleFalse={deleteCourseFalse}
                     message={"Are you sure you want to delete this course? Doing so will delete all rounds associated"}
+                    buttonTrue='Delete'
+                    buttonFalse='Cancel'
                 />
             </div>
               

@@ -102,9 +102,11 @@ const ManageRounds = () => {
             {confirmDelete.show && (
             <div className='center-modal'>
                     <Modal
-                    handleDeleteTrue={deleteRound}
-                    handleDeleteFalse={deleteRoundFalse}
+                    handleTrue={deleteRound}
+                    handleFalse={deleteRoundFalse}
                     message={"Are you sure you want to delete this round?"}
+                    buttonTrue='Delete'
+                    buttonFalse='Cancel'
                 />
             </div>
               
