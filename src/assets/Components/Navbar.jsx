@@ -48,7 +48,7 @@ export default function Navbar() {
 
             )}
             <nav className="nav">
-                <Link to='/dashboard' className='nav-dashboard'><GoHomeFill size={40} /></Link>
+                <Link to='/dashboard' className='nav-dashboard'><GoHomeFill size={30} /></Link>
                 <ul className='nav-dashboard'>
                     <li className={currentPage == '/add-course18/new' || currentPage == '/add-course/new' ? 'active' : ''}>
                         <Link to="/add-course18/new">Add Course</Link>
