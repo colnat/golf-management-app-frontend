@@ -52,8 +52,11 @@ const Dashboard = () => {
 
 
     const logout = () => {
-        localStorage.removeItem("token");
         navigate('/login');
+        localStorage.removeItem("token");
+        setConfirmLogout({
+            show: false
+        });
     };
 
     const logoutConfirmation = () => {

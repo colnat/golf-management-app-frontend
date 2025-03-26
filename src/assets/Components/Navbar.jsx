@@ -17,13 +17,17 @@ export default function Navbar() {
     if (noNavbar.includes(pathname)) return null;
 
     const logout = () => {
-        localStorage.removeItem("token");
         navigate('/login');
+        localStorage.removeItem("token");
+        setConfirmLogout({
+            show: false
+        });
     };
 
     const logoutConfirmation = () => {
         setConfirmLogout({
             show: true
+            
         });
     };
 
